@@ -131,8 +131,8 @@ GameObject:
   - component: {fileID: 6792773}
   - component: {fileID: 6792772}
   - component: {fileID: 6792769}
-  - component: {fileID: 6792774}
   - component: {fileID: 6792775}
+  - component: {fileID: 6792774}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -260,16 +260,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b22b71da2d6a04b9907ee2547128a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: {x: 0, y: 0}
-  Controller: {fileID: 0}
-  TransformCamera: {fileID: 0}
-  TurnSmoothTime: 0.1
-  GroundCheck: {fileID: 0}
-  GroundDistance: 0.3
-  GroundMask:
+  transformCamera: {fileID: 419882208}
+  moveSpeed: 7
+  turnSmoothTime: 0.1
+  groundCheck: {fileID: 610569717}
+  groundDistance: 0.3
+  groundMask:
     serializedVersion: 2
-    m_Bits: 0
-  Gravity: -9.81
+    m_Bits: 4294967295
+  gravity: -9.81
 --- !u!143 &6792775
 CharacterController:
   m_ObjectHideFlags: 0
@@ -774,8 +773,8 @@ MonoBehaviour:
         CancelDeltaTime: 0
       InputValue: 0
       Driver:
-        AccelTime: 0
-        DecelTime: 0
+        AccelTime: 0.1
+        DecelTime: 0.1
     - Name: Look Orbit Y
       Owner: {fileID: 419882206}
       Enabled: 1
@@ -787,8 +786,8 @@ MonoBehaviour:
         CancelDeltaTime: 0
       InputValue: 0
       Driver:
-        AccelTime: 0
-        DecelTime: 0
+        AccelTime: 0.1
+        DecelTime: 0.1
     - Name: Orbit Scale
       Owner: {fileID: 419882206}
       Enabled: 1
