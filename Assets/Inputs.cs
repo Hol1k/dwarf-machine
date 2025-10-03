@@ -225,7 +225,7 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Mouse"",
                     ""id"": ""939d6220-e3bb-449f-b8f1-a9f564fd24fe"",
-                    ""path"": ""2DVector"",
+                    ""path"": ""2DVector(mode=2)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
