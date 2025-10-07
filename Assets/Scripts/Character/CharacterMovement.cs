@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 namespace Character
 {
-    public class Movement : MonoBehaviour
+    public class CharacterMovement : MonoBehaviour
     {
         private CharacterController _controller;
         [SerializeField] private Transform transformCamera;
