@@ -5,6 +5,10 @@ namespace Character
 {
     public class CharacterStatsComponent : MonoBehaviour, IDamageable
     {
+        [SerializeField] CharacterStatsConfig characterStatsConfig;
+        
+        private CharacterMovement _characterMovement;
+        
         private float _maxHealth;
         public float MaxHealth
         {
@@ -22,7 +26,29 @@ namespace Character
             get => _health;
             set => _health = Mathf.Clamp(value, 0, _maxHealth);
         }
-        
+
+        private void Awake()
+        {
+            _characterMovement = GetComponent<CharacterMovement>();
+        }
+
+        private void Start()
+        {
+            InitializeStatsConfig();
+        }
+
+        private void InitializeStatsConfig()
+        {
+            if (characterStatsConfig)
+            {
+                MaxHealth = characterStatsConfig.maxHealth;
+                Health = characterStatsConfig.currentHealth;
+                _characterMovement.moveSpeed = characterStatsConfig.moveSpeed;
+            }
+            else
+                Debug.LogWarning("Start character stats are not set. Set to default values");
+        }
+
         public void TakeDamage(float damage)
         {
             Health -= damage;

@@ -8,7 +8,7 @@ namespace Character
         private CharacterController _controller;
         [SerializeField] private Transform transformCamera;
         
-        [SerializeField] private float moveSpeed;
+        public float moveSpeed;
 
         [SerializeField] private float turnSmoothTime = 0.1f; // регулирует плавность разворота
 
