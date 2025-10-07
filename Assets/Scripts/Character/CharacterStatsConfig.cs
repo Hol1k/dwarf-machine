@@ -1,5 +1,4 @@
-﻿using Unity.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Character
 {
@@ -13,6 +12,6 @@ namespace Character
         public float moveSpeed = 7f;
         [Tooltip("No using")] public float dashRangeX = 0f;
         [Tooltip("No using")] public float dashCooldownX = 0f;
-        [Tooltip("No using")] public float jumpHeightX = 0f;
+        public float jumpHeight = 2f;
     }
 }

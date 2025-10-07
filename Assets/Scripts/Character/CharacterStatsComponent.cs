@@ -44,6 +44,7 @@ namespace Character
                 MaxHealth = characterStatsConfig.maxHealth;
                 Health = characterStatsConfig.currentHealth;
                 _characterMovement.moveSpeed = characterStatsConfig.moveSpeed;
+                _characterMovement.jumpHeight = characterStatsConfig.jumpHeight;
             }
             else
                 Debug.LogWarning("Start character stats are not set. Set to default values");

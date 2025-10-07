@@ -264,6 +264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transformCamera: {fileID: 419882208}
   moveSpeed: 7
+  jumpHeight: 2
   turnSmoothTime: 0.1
   groundCheck: {fileID: 610569717}
   groundDistance: 0.3

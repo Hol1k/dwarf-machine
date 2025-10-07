@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,6 +10,7 @@ namespace Character
         [SerializeField] private Transform transformCamera;
         
         public float moveSpeed;
+        public float jumpHeight;
 
         [SerializeField] private float turnSmoothTime = 0.1f; // регулирует плавность разворота
 
@@ -21,6 +23,7 @@ namespace Character
         
         private Vector2 _vectorInput;
         private Vector3 _vectorMove;
+        private float _jumpForce;
         private Vector3 _cameraForward;
         private Vector3 _cameraRight;
         private float _turnSmoothVelocity;
@@ -35,6 +38,15 @@ namespace Character
             _vectorInput = value.Get<Vector2>();
         }
 
+        public void OnJump()
+        {
+            if (_isGrounded)
+            {
+                _jumpForce = Mathf.Sqrt(2 * -gravity * jumpHeight);
+                _velocity.y = _jumpForce;
+            }
+        }
+
         private void FixedUpdate()
         {
             GroundCheck();
@@ -42,6 +54,11 @@ namespace Character
             LookCharacterForward();
 
             ApplyMovement();
+        }
+
+        private void Update()
+        {
+            Debug.Log($"{_jumpForce}, {_velocity.y}");
         }
 
         private void GroundCheck()
@@ -85,8 +102,8 @@ namespace Character
             _controller.Move(_vectorMove * Time.fixedDeltaTime);
 
             // Гравитация
-            _velocity.y += gravity * Time.deltaTime;
-            _controller.Move(_velocity * Time.deltaTime);
+            _velocity.y += gravity * Time.fixedDeltaTime;
+            _controller.Move(_velocity * Time.fixedDeltaTime);
         }
     }
 }

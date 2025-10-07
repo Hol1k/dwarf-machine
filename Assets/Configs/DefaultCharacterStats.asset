@@ -18,4 +18,4 @@ MonoBehaviour:
   moveSpeed: 7
   dashRangeX: 0
   dashCooldownX: 0
-  jumpHeightX: 0
+  jumpHeight: 2
