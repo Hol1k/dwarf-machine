@@ -16,6 +16,7 @@ MonoBehaviour:
   currentHealth: 100
   armourX: 0
   moveSpeed: 7
-  dashRangeX: 0
-  dashCooldownX: 0
+  dashRange: 5
+  dashDuration: 0.3
+  dashCooldown: 1
   jumpHeight: 2

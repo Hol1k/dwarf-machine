@@ -10,8 +10,9 @@ namespace Character
         [Tooltip("No using")] public float armourX = 0f;
         [Space]
         public float moveSpeed = 7f;
-        [Tooltip("No using")] public float dashRangeX = 0f;
-        [Tooltip("No using")] public float dashCooldownX = 0f;
+        public float dashRange = 4f;
+        public float dashDuration = 0.5f;
+        public float dashCooldown = 1f;
         public float jumpHeight = 2f;
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,8 +10,11 @@ namespace Character
         private CharacterController _controller;
         [SerializeField] private Transform transformCamera;
         
-        public float moveSpeed;
-        public float jumpHeight;
+        [NonSerialized] public float MoveSpeed;
+        [NonSerialized] public float JumpHeight;
+        [NonSerialized] public float DashRange;
+        [NonSerialized] public float DashCooldown;
+        [NonSerialized] public float DashDuration;
 
         [SerializeField] private float turnSmoothTime = 0.1f; // регулирует плавность разворота
 
@@ -27,6 +31,10 @@ namespace Character
         private Vector3 _cameraForward;
         private Vector3 _cameraRight;
         private float _turnSmoothVelocity;
+        
+        private float _dashCurrCooldown;
+        private Vector3 _dashVector;
+        private bool _isDashing;
 
         private void Awake()
         {
@@ -42,9 +50,32 @@ namespace Character
         {
             if (_isGrounded)
             {
-                _jumpForce = Mathf.Sqrt(2 * -gravity * jumpHeight);
+                _jumpForce = Mathf.Sqrt(2 * -gravity * JumpHeight);
                 _velocity.y = _jumpForce;
             }
+        }
+
+        public void OnDash()
+        {
+            if (_dashCurrCooldown <= 0f)
+            {
+                _isDashing = true;
+                _dashCurrCooldown = DashCooldown;
+                _dashVector = _vectorMove.normalized * DashRange;
+                
+                Sequence sequence = DOTween.Sequence();
+                sequence.AppendInterval(DashDuration);
+                sequence.OnComplete(() =>
+                {
+                    _isDashing = false;
+                    _velocity.y = -2f;
+                });
+            }
+        }
+
+        private void Update()
+        {
+            CalculateDashCooldown();
         }
 
         private void FixedUpdate()
@@ -54,11 +85,6 @@ namespace Character
             LookCharacterForward();
 
             ApplyMovement();
-        }
-
-        private void Update()
-        {
-            Debug.Log($"{_jumpForce}, {_velocity.y}");
         }
 
         private void GroundCheck()
@@ -81,7 +107,7 @@ namespace Character
             _cameraForward.Normalize();
             _cameraRight.Normalize();
 
-            _vectorMove = (_cameraForward * _vectorInput.y * moveSpeed) + (_cameraRight * _vectorInput.x * moveSpeed);
+            _vectorMove = (_cameraForward * _vectorInput.y * MoveSpeed) + (_cameraRight * _vectorInput.x * MoveSpeed);
         }
 
         private void LookCharacterForward()
@@ -99,11 +125,22 @@ namespace Character
 
         private void ApplyMovement()
         {
-            _controller.Move(_vectorMove * Time.fixedDeltaTime);
+            if (_isDashing)
+            {
+                var dashSpeed = _dashVector / DashDuration;
+                _controller.Move(dashSpeed * Time.fixedDeltaTime);
+            }
+            else
+                _controller.Move(_vectorMove * Time.fixedDeltaTime);
 
             // Гравитация
             _velocity.y += gravity * Time.fixedDeltaTime;
             _controller.Move(_velocity * Time.fixedDeltaTime);
+        }
+
+        private void CalculateDashCooldown()
+        {
+            _dashCurrCooldown -= Time.deltaTime;
         }
     }
 }
