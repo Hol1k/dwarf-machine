@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 923a2e60bea9479fb0b09b984de7c5ec, type: 3}
-  m_Name: Hummer
+  m_Script: {fileID: 11500000, guid: 7d15270355ff4a53803027cdae0d79e5, type: 3}
+  m_Name: Testenemy
   m_EditorClassIdentifier: 
-  gizmosColor: {r: 0.6981132, g: 0.15477037, b: 0.22135134, a: 1}
-  attackOffset: {x: 0, y: -0.64, z: 2.9}
-  attackArea: 1
-  damage: 10
-  attackSpeed: 60
+  maxHealth: 100
+  currentHealth: 100
