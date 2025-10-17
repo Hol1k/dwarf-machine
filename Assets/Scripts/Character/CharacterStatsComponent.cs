@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Character
 {
+    [RequireComponent(typeof(CharacterMovement))]
     public class CharacterStatsComponent : MonoBehaviour, IDamageable
     {
         [SerializeField] CharacterStatsConfig characterStatsConfig;
