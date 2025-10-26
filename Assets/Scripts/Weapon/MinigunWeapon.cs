@@ -22,7 +22,7 @@ namespace Weapon
         
         public override void Attack(Vector3 playerPosition, Transform cameraTransform, out float cooldownAfterAttack)
         {
-            var startShootPosition = playerPosition + shootPositionOffset;
+            var startShootPosition = playerPosition + cameraTransform.rotation * shootPositionOffset;
 
             //Calculating aim
             CalculateShootEndPoint(cameraTransform, startShootPosition, out var shootDirection);
@@ -48,7 +48,8 @@ namespace Weapon
         {
             Gizmos.color = gizmosColor;
 
-            var startShootPosition = playerPosition + shootPositionOffset;
+            var startShootPosition = playerPosition + cameraTransform.rotation * shootPositionOffset;
+            
             //Calculating aim
             var shootEndPoint = CalculateShootEndPoint(cameraTransform, startShootPosition, out var shootDirection);
 
@@ -75,7 +76,7 @@ namespace Weapon
         private Vector3 CalculateShootEndPoint(Transform cameraTransform, Vector3 startShootPosition, out Vector3 shootDirection)
         {
             if (Physics.Raycast(cameraTransform.position, cameraTransform.forward,
-                    out RaycastHit hitInfo, float.MaxValue)) 
+                    out RaycastHit hitInfo, float.MaxValue, hitObjectsMask)) 
             {
                 var hitPosition = hitInfo.point;
                 
