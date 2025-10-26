@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using Weapon;
 
 namespace Character
@@ -7,6 +6,7 @@ namespace Character
     public class WeaponHandlerComponent : MonoBehaviour
     {
         [SerializeField] private bool isDevelopmentMode = false;
+        [SerializeField] private Transform playerLookTransform;
         
         public PlayersWeapon chosenWeapon;
 
@@ -20,13 +20,13 @@ namespace Character
         private void OnDrawGizmos()
         {
             if (isDevelopmentMode & chosenWeapon)
-                chosenWeapon.DrawGizmos(transform.position, transform.rotation);
+                chosenWeapon.DrawGizmos(transform.position, playerLookTransform);
         }
 
         public void OnAttack()
         {
             if (_currAttackCooldown < 0f)
-                chosenWeapon.Attack(transform.position, transform.rotation, out _currAttackCooldown);
+                chosenWeapon.Attack(transform.position, playerLookTransform, out _currAttackCooldown);
         }
     }
 }

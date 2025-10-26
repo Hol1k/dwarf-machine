@@ -1,7 +1,8 @@
 ﻿using Entities;
+using Player;
 using UnityEngine;
 
-namespace Player
+namespace Enemy
 {
     public class EnemyComponent : MonoBehaviour, IDamageable
     {
