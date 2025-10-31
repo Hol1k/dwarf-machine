@@ -1,4 +1,7 @@
-﻿using Entities;
+﻿using System;
+using System.Threading.Tasks;
+using Entities;
+using JetBrains.Annotations;
 using Player;
 using UnityEngine;
 
@@ -20,11 +23,14 @@ namespace Enemy
         }
 
         private float _health;
+
         public float Health
         {
             get => _health;
             set => _health = Mathf.Clamp(value, 0, _maxHealth);
         }
+
+        [CanBeNull] public event Action<float> OnTakeDamage;
 
         private void Start()
         {
@@ -45,6 +51,7 @@ namespace Enemy
         public void TakeDamage(float damage)
         {
             Health -= damage;
+            OnTakeDamage?.Invoke(damage);
             Debug.Log($"{gameObject.name} damaged by {damage} damage\r\nCurrent health: {Health}");
         }
     }

@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 6792775}
   - component: {fileID: 6792774}
   - component: {fileID: 6792776}
+  - component: {fileID: 6792779}
   - component: {fileID: 6792777}
   - component: {fileID: 6792778}
   m_Layer: 0
@@ -340,6 +341,23 @@ MonoBehaviour:
   isDevelopmentMode: 1
   playerLookTransform: {fileID: 419882208}
   chosenWeapon: {fileID: 11400000, guid: 395cd280b3e5633498a7310031549b05, type: 2}
+--- !u!114 &6792779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6792767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 323782ff77274c5e8a5c27284c2846d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets:
+  - {fileID: 6792772}
+  - {fileID: 444978488}
+  flashColor: {r: 1, g: 0, b: 0, a: 0}
+  flashDuration: 0.15
 --- !u!1 &20948083
 GameObject:
   m_ObjectHideFlags: 0
@@ -2155,6 +2173,7 @@ GameObject:
   - component: {fileID: 1920419739}
   - component: {fileID: 1920419738}
   - component: {fileID: 1920419737}
+  - component: {fileID: 1920419742}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -2270,6 +2289,23 @@ Transform:
   - {fileID: 196634942}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1920419742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920419736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 323782ff77274c5e8a5c27284c2846d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets:
+  - {fileID: 1920419739}
+  - {fileID: 1393331267}
+  flashColor: {r: 1, g: 0, b: 0, a: 0}
+  flashDuration: 0.15
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

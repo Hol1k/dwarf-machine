@@ -1,4 +1,5 @@
-﻿using Entities;
+﻿using System;
+using Entities;
 using UnityEngine;
 
 namespace Character
@@ -27,6 +28,8 @@ namespace Character
             get => _health;
             set => _health = Mathf.Clamp(value, 0, _maxHealth);
         }
+
+        public event Action<float> OnTakeDamage;
 
         private void Awake()
         {
@@ -57,6 +60,7 @@ namespace Character
         public void TakeDamage(float damage)
         {
             Health -= damage;
+            OnTakeDamage?.Invoke(damage);
         }
     }
 }
