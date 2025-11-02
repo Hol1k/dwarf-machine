@@ -2,7 +2,7 @@
 
 namespace Entities
 {
-    public class DamageFlashReactingComponent : MonoBehaviour
+    public class FlashDamageReactingComponent : MonoBehaviour
     {
         [SerializeField] private Renderer[] targets;
         [SerializeField] private Color flashColor = Color.red;

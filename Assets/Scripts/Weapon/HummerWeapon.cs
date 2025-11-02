@@ -15,6 +15,10 @@ namespace Weapon
         [SerializeField] [Min(0f)] private float damage;
         [SerializeField] [Min(0.0000001f)] [Tooltip("Hits per minute")] private float attackSpeed = 1f;
         
+        [Space]
+        [SerializeField] [Min(0f)] private float knockbackHeight;
+        [SerializeField] [Min(0f)] private float knockbackForce;
+        
         public override void Attack(Vector3 playerPosition, Transform cameraTransform, out float cooldownAfterAttack)
         {
             var playerRotation = cameraTransform.rotation;
@@ -29,6 +33,13 @@ namespace Weapon
                 if (hitObject.TryGetComponent(out IDamageable damageable) & damageable is not CharacterStatsComponent)
                 {
                     damageable.TakeDamage(damage);
+
+                    if (hitObject.TryGetComponent(out CharacterControllerForceDamageReactingComponent forceComponent))
+                    {
+                        var attackVector = playerRotation * Vector3.forward * knockbackForce;
+                        attackVector.y = knockbackHeight;
+                        forceComponent.AddKnockbackForce(attackVector);
+                    }
                 }
             }
 

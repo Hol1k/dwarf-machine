@@ -20,3 +20,5 @@ MonoBehaviour:
   attackArea: 1
   damage: 10
   attackSpeed: 60
+  knockbackHeight: 1
+  knockbackForce: 2

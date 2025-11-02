@@ -340,7 +340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDevelopmentMode: 1
   playerLookTransform: {fileID: 419882208}
-  chosenWeapon: {fileID: 11400000, guid: 395cd280b3e5633498a7310031549b05, type: 2}
+  chosenWeapon: {fileID: 11400000, guid: f40bcecac8ecf424d819ed1ca1b26fd3, type: 2}
 --- !u!114 &6792779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2249,6 +2249,7 @@ GameObject:
   - component: {fileID: 1920419738}
   - component: {fileID: 1920419737}
   - component: {fileID: 1920419742}
+  - component: {fileID: 1920419743}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -2381,6 +2382,24 @@ MonoBehaviour:
   - {fileID: 1393331267}
   flashColor: {r: 1, g: 0, b: 0, a: 0}
   flashDuration: 0.15
+--- !u!114 &1920419743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920419736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81f1182cbe4d44eaa2a065cb3db11f42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundCheck: {fileID: 196634942}
+  groundDistance: 0.3
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  gravity: -9.81
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
