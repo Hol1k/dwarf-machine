@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GameObjects
+namespace InteractiveObjects
 {
     public abstract class InteractableObject : MonoBehaviour
     {

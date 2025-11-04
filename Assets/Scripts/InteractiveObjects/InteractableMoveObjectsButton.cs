@@ -1,7 +1,7 @@
 ﻿using DG.Tweening;
 using UnityEngine;
 
-namespace GameObjects
+namespace InteractiveObjects
 {
     public class InteractableMoveObjectsButton : InteractableObject
     {

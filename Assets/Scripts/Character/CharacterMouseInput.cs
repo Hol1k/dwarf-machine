@@ -1,4 +1,4 @@
-﻿using GameObjects;
+﻿using InteractiveObjects;
 using UnityEngine;
 
 namespace Character
