@@ -1,5 +1,6 @@
 using System;
 using DG.Tweening;
+using Modifiers;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -36,14 +37,23 @@ namespace Character
         private Vector3 _dashVector;
         private bool _isDashing;
 
+        private ModifierHandler _modifierHandler;
+
         private void Awake()
         {
             _controller = GetComponent<CharacterController>();
+            _modifierHandler = GetComponent<ModifierHandler>();
+        }
+
+        private void Start()
+        {
+            _modifierHandler.AddModifier(new MovementModifier(10f, ModifierType.Multiplication, Vector2.one * 2));
         }
 
         public void OnMove(InputValue value)
         {      
             _vectorInput = value.Get<Vector2>();
+            _vectorInput = _modifierHandler.ModifyMovement(_vectorInput);
         }
 
         public void OnJump()
