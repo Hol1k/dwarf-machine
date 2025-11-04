@@ -19,8 +19,8 @@ namespace GameObjects
         {
             if (!target) return;
             
-            _startPosition = target.position;
-            _startRotation = Vector3.zero;
+            _startPosition = target.localPosition;
+            _startRotation = target.localRotation.eulerAngles;
         }
 
         public override void Interact()
@@ -33,14 +33,14 @@ namespace GameObjects
 
             if (_isOnStart)
             {
-                target.DOMove(_startPosition + positionOffset, animationDuration);
-                target.DORotate(rotationOffset, animationDuration);
+                target.DOLocalMove(_startPosition + positionOffset, animationDuration);
+                target.DOLocalRotate(_startRotation + rotationOffset, animationDuration);
                 _isOnStart = false;
             }
             else
             {
-                target.DOMove(_startPosition, animationDuration);
-                target.DORotate(_startRotation, animationDuration);
+                target.DOLocalMove(_startPosition, animationDuration);
+                target.DOLocalRotate(_startRotation, animationDuration);
                 _isOnStart = true;
             }
         }
