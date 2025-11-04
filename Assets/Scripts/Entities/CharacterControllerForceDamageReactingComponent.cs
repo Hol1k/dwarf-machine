@@ -25,11 +25,6 @@ namespace Entities
             _forceRequest += new Vector3(force.x, Mathf.Sqrt(2 * -gravity * force.y), force.z);
         }
 
-        private void Update()
-        {
-            Debug.Log(_velocity);
-        }
-
         private void FixedUpdate()
         {
             SetVelocity();
