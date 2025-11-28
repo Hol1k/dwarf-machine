@@ -122,7 +122,7 @@ namespace Character
 
         private void LookCharacterForward()
         {
-            Vector3 directionLook = transform.position - transformCamera.position;
+            Vector3 directionLook = transformCamera.forward;
             directionLook.y = 0f;
 
             if (directionLook.sqrMagnitude > 0.01f)
