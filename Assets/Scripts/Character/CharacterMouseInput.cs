@@ -24,7 +24,7 @@ namespace Character
             CalculateTargetObject();
         }
 
-        public void OnInteract()
+        private void OnInteract()
         {
             if (_interactableTarget)
                 _interactableTarget.Interact();

@@ -9,7 +9,7 @@ namespace Character
         public Ability ability1;
         public Ability ability2;
 
-        public void OnAbility1()
+        private void OnAbility1()
         {
             if (!ability1)
             {
@@ -20,7 +20,7 @@ namespace Character
             ability1.Cast();
         }
 
-        public void OnAbility2()
+        private void OnAbility2()
         {
             if (ability2 == null)
             {

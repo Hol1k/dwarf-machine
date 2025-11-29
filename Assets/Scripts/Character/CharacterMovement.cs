@@ -50,13 +50,13 @@ namespace Character
             _modifierHandler.AddModifier(new MovementModifier(10f, ModifierType.Multiplication, Vector2.one * 2));
         }
 
-        public void OnMove(InputValue value)
+        private void OnMove(InputValue value)
         {      
             _vectorInput = value.Get<Vector2>();
             _vectorInput = _modifierHandler.ModifyMovement(_vectorInput);
         }
 
-        public void OnJump()
+        private void OnJump()
         {
             if (_isGrounded)
             {
@@ -65,7 +65,7 @@ namespace Character
             }
         }
 
-        public void OnDash()
+        private void OnDash()
         {
             if (_dashCurrCooldown <= 0f)
             {
