@@ -129,7 +129,7 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Equip1"",
+                    ""name"": ""Equipment1"",
                     ""type"": ""Button"",
                     ""id"": ""9b132281-7be7-4ea5-89e4-ae7b329d92bc"",
                     ""expectedControlType"": """",
@@ -138,7 +138,7 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Equip2"",
+                    ""name"": ""Equipment2"",
                     ""type"": ""Button"",
                     ""id"": ""c4e5048f-cc45-417c-bc8c-b810b9e6496f"",
                     ""expectedControlType"": """",
@@ -147,7 +147,7 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Equip3"",
+                    ""name"": ""Equipment3"",
                     ""type"": ""Button"",
                     ""id"": ""5204349c-7ba9-46ca-be57-e39c355692fd"",
                     ""expectedControlType"": """",
@@ -486,7 +486,7 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Equip1"",
+                    ""action"": ""Equipment1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -497,7 +497,7 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Equip2"",
+                    ""action"": ""Equipment2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -508,7 +508,7 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Equip3"",
+                    ""action"": ""Equipment3"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -545,9 +545,9 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
         m_Gameplay_Dash = m_Gameplay.FindAction("Dash", throwIfNotFound: true);
         m_Gameplay_Look = m_Gameplay.FindAction("Look", throwIfNotFound: true);
-        m_Gameplay_Equip1 = m_Gameplay.FindAction("Equip1", throwIfNotFound: true);
-        m_Gameplay_Equip2 = m_Gameplay.FindAction("Equip2", throwIfNotFound: true);
-        m_Gameplay_Equip3 = m_Gameplay.FindAction("Equip3", throwIfNotFound: true);
+        m_Gameplay_Equipment1 = m_Gameplay.FindAction("Equipment1", throwIfNotFound: true);
+        m_Gameplay_Equipment2 = m_Gameplay.FindAction("Equipment2", throwIfNotFound: true);
+        m_Gameplay_Equipment3 = m_Gameplay.FindAction("Equipment3", throwIfNotFound: true);
         m_Gameplay_Ability1 = m_Gameplay.FindAction("Ability1", throwIfNotFound: true);
         m_Gameplay_Ability2 = m_Gameplay.FindAction("Ability2", throwIfNotFound: true);
         m_Gameplay_Attack = m_Gameplay.FindAction("Attack", throwIfNotFound: true);
@@ -636,9 +636,9 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Jump;
     private readonly InputAction m_Gameplay_Dash;
     private readonly InputAction m_Gameplay_Look;
-    private readonly InputAction m_Gameplay_Equip1;
-    private readonly InputAction m_Gameplay_Equip2;
-    private readonly InputAction m_Gameplay_Equip3;
+    private readonly InputAction m_Gameplay_Equipment1;
+    private readonly InputAction m_Gameplay_Equipment2;
+    private readonly InputAction m_Gameplay_Equipment3;
     private readonly InputAction m_Gameplay_Ability1;
     private readonly InputAction m_Gameplay_Ability2;
     private readonly InputAction m_Gameplay_Attack;
@@ -671,17 +671,17 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Look => m_Wrapper.m_Gameplay_Look;
         /// <summary>
-        /// Provides access to the underlying input action "Gameplay/Equip1".
+        /// Provides access to the underlying input action "Gameplay/Equipment1".
         /// </summary>
-        public InputAction @Equip1 => m_Wrapper.m_Gameplay_Equip1;
+        public InputAction @Equipment1 => m_Wrapper.m_Gameplay_Equipment1;
         /// <summary>
-        /// Provides access to the underlying input action "Gameplay/Equip2".
+        /// Provides access to the underlying input action "Gameplay/Equipment2".
         /// </summary>
-        public InputAction @Equip2 => m_Wrapper.m_Gameplay_Equip2;
+        public InputAction @Equipment2 => m_Wrapper.m_Gameplay_Equipment2;
         /// <summary>
-        /// Provides access to the underlying input action "Gameplay/Equip3".
+        /// Provides access to the underlying input action "Gameplay/Equipment3".
         /// </summary>
-        public InputAction @Equip3 => m_Wrapper.m_Gameplay_Equip3;
+        public InputAction @Equipment3 => m_Wrapper.m_Gameplay_Equipment3;
         /// <summary>
         /// Provides access to the underlying input action "Gameplay/Ability1".
         /// </summary>
@@ -736,15 +736,15 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @Look.started += instance.OnLook;
             @Look.performed += instance.OnLook;
             @Look.canceled += instance.OnLook;
-            @Equip1.started += instance.OnEquip1;
-            @Equip1.performed += instance.OnEquip1;
-            @Equip1.canceled += instance.OnEquip1;
-            @Equip2.started += instance.OnEquip2;
-            @Equip2.performed += instance.OnEquip2;
-            @Equip2.canceled += instance.OnEquip2;
-            @Equip3.started += instance.OnEquip3;
-            @Equip3.performed += instance.OnEquip3;
-            @Equip3.canceled += instance.OnEquip3;
+            @Equipment1.started += instance.OnEquipment1;
+            @Equipment1.performed += instance.OnEquipment1;
+            @Equipment1.canceled += instance.OnEquipment1;
+            @Equipment2.started += instance.OnEquipment2;
+            @Equipment2.performed += instance.OnEquipment2;
+            @Equipment2.canceled += instance.OnEquipment2;
+            @Equipment3.started += instance.OnEquipment3;
+            @Equipment3.performed += instance.OnEquipment3;
+            @Equipment3.canceled += instance.OnEquipment3;
             @Ability1.started += instance.OnAbility1;
             @Ability1.performed += instance.OnAbility1;
             @Ability1.canceled += instance.OnAbility1;
@@ -780,15 +780,15 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @Look.started -= instance.OnLook;
             @Look.performed -= instance.OnLook;
             @Look.canceled -= instance.OnLook;
-            @Equip1.started -= instance.OnEquip1;
-            @Equip1.performed -= instance.OnEquip1;
-            @Equip1.canceled -= instance.OnEquip1;
-            @Equip2.started -= instance.OnEquip2;
-            @Equip2.performed -= instance.OnEquip2;
-            @Equip2.canceled -= instance.OnEquip2;
-            @Equip3.started -= instance.OnEquip3;
-            @Equip3.performed -= instance.OnEquip3;
-            @Equip3.canceled -= instance.OnEquip3;
+            @Equipment1.started -= instance.OnEquipment1;
+            @Equipment1.performed -= instance.OnEquipment1;
+            @Equipment1.canceled -= instance.OnEquipment1;
+            @Equipment2.started -= instance.OnEquipment2;
+            @Equipment2.performed -= instance.OnEquipment2;
+            @Equipment2.canceled -= instance.OnEquipment2;
+            @Equipment3.started -= instance.OnEquipment3;
+            @Equipment3.performed -= instance.OnEquipment3;
+            @Equipment3.canceled -= instance.OnEquipment3;
             @Ability1.started -= instance.OnAbility1;
             @Ability1.performed -= instance.OnAbility1;
             @Ability1.canceled -= instance.OnAbility1;
@@ -883,26 +883,26 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnLook(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Equip1" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Equipment1" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnEquip1(InputAction.CallbackContext context);
+        void OnEquipment1(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Equip2" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Equipment2" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnEquip2(InputAction.CallbackContext context);
+        void OnEquipment2(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Equip3" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Equipment3" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnEquip3(InputAction.CallbackContext context);
+        void OnEquipment3(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Ability1" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>

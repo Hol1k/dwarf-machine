@@ -2,10 +2,10 @@
 using Entities;
 using UnityEngine;
 
-namespace Weapon
+namespace Equipment
 {
     [CreateAssetMenu(fileName = "NewMinigunWeapon", menuName = "Weapon/Minigun", order = 0)]
-    public class MinigunWeapon : PlayersWeapon
+    public class MinigunEquipment : PlayersEquipment
     {
         [Space]
         [SerializeField] [Min(0f)] private float maxShootDistance;

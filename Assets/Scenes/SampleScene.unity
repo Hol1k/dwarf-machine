@@ -324,10 +324,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db174286e84e49b2b016081af07c22d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Ability1: {fileID: 11400000, guid: 26967f24b4607744aa2335fd2bccf832, type: 2}
-  Ability2: {fileID: 0}
-  Ability3: {fileID: 0}
-  Ability4: {fileID: 0}
+  ability1: {fileID: 11400000, guid: 26967f24b4607744aa2335fd2bccf832, type: 2}
+  ability2: {fileID: 0}
 --- !u!114 &6792778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,7 +340,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDevelopmentMode: 1
   playerLookTransform: {fileID: 419882208}
-  chosenWeapon: {fileID: 11400000, guid: 395cd280b3e5633498a7310031549b05, type: 2}
+  equipmentSlot1: {fileID: 11400000, guid: f40bcecac8ecf424d819ed1ca1b26fd3, type: 2}
+  equipmentSlot2: {fileID: 11400000, guid: 395cd280b3e5633498a7310031549b05, type: 2}
+  equipmentSlot3: {fileID: 0}
+  chosenSlot: 1
 --- !u!114 &6792779
 MonoBehaviour:
   m_ObjectHideFlags: 0

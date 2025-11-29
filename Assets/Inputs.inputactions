@@ -43,7 +43,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Equip1",
+                    "name": "Equipment1",
                     "type": "Button",
                     "id": "9b132281-7be7-4ea5-89e4-ae7b329d92bc",
                     "expectedControlType": "",
@@ -52,7 +52,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Equip2",
+                    "name": "Equipment2",
                     "type": "Button",
                     "id": "c4e5048f-cc45-417c-bc8c-b810b9e6496f",
                     "expectedControlType": "",
@@ -61,7 +61,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Equip3",
+                    "name": "Equipment3",
                     "type": "Button",
                     "id": "5204349c-7ba9-46ca-be57-e39c355692fd",
                     "expectedControlType": "",
@@ -400,7 +400,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Equip1",
+                    "action": "Equipment1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -411,7 +411,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Equip2",
+                    "action": "Equipment2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -422,7 +422,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Equip3",
+                    "action": "Equipment3",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -2,10 +2,10 @@
 using Entities;
 using UnityEngine;
 
-namespace Weapon
+namespace Equipment
 {
     [CreateAssetMenu(fileName = "NewWeaponHummer", menuName = "Weapon/Hummer", order = 0)]
-    public class HummerWeapon : PlayersWeapon
+    public class HummerEquipment : PlayersEquipment
     {
         [Space]
         [SerializeField] private Vector3 attackOffset;

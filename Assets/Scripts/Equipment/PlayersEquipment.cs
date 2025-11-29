@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace Weapon
+namespace Equipment
 {
-    public abstract class PlayersWeapon : ScriptableObject
+    public abstract class PlayersEquipment : ScriptableObject
     {
         [SerializeField] protected Color gizmosColor = Color.red;
         [SerializeField] protected LayerMask hitObjectsMask;
