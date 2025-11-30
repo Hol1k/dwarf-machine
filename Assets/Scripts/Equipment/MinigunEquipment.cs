@@ -9,6 +9,7 @@ namespace Equipment
     {
         [Space]
         [SerializeField] [Min(0f)] private float maxShootDistance;
+        [SerializeField] [Min(0.0000001f)] private float raycastWidth = 0.13f;
         [SerializeField] private Vector3 shootPositionOffset;
         
         [Space]
@@ -31,7 +32,7 @@ namespace Equipment
             Vector3 rotatedDirection = scutterRotation * (Quaternion.Euler(Random.Range(0f, scutterValue), 0, 0) * shootDirection);
             
             //Shoot
-            if (Physics.Raycast(startShootPosition, rotatedDirection,
+            if (Physics.SphereCast(startShootPosition, raycastWidth, rotatedDirection,
                     out RaycastHit hitInfo, maxShootDistance, hitObjectsMask))
             {
                 if (hitInfo.collider.TryGetComponent(out IDamageable damageable) &

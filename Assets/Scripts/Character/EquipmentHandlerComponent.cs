@@ -1,5 +1,4 @@
-﻿using System;
-using Equipment;
+﻿using Equipment;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,6 +12,7 @@ namespace Character
         [SerializeField] private Transform playerLookTransform;
         
         [Space]
+        public PlayersEquipment defaultEquipment;
         public PlayersEquipment equipmentSlot1;
         public PlayersEquipment equipmentSlot2;
         public PlayersEquipment equipmentSlot3;
@@ -39,8 +39,11 @@ namespace Character
 
         private void OnDrawGizmos()
         {
-            if (isDevelopmentMode & _chosenEquipment)
-                _chosenEquipment.DrawGizmos(transform.position, playerLookTransform);
+            if (isDevelopmentMode)
+                if (_chosenEquipment)
+                    _chosenEquipment.DrawGizmos(transform.position, playerLookTransform);
+                else
+                    defaultEquipment.DrawGizmos(transform.position, playerLookTransform);
         }
 
         private void OnValidate()
@@ -117,7 +120,10 @@ namespace Character
             _currAttackCooldown -= Time.fixedDeltaTime;
             
             if (_attackRequest & _currAttackCooldown < 0f)
-                _chosenEquipment.Attack(transform.position, playerLookTransform, out _currAttackCooldown);
+                if (_chosenEquipment)
+                    _chosenEquipment.Attack(transform.position, playerLookTransform, out _currAttackCooldown);
+                else
+                    defaultEquipment.Attack(transform.position, playerLookTransform, out _currAttackCooldown);
         }
     }
 }

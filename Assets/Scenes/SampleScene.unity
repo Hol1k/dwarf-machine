@@ -340,6 +340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDevelopmentMode: 1
   playerLookTransform: {fileID: 419882208}
+  defaultEquipment: {fileID: 11400000, guid: 8254492ed08fd41498e5ea0ed25a1560, type: 2}
   equipmentSlot1: {fileID: 11400000, guid: f40bcecac8ecf424d819ed1ca1b26fd3, type: 2}
   equipmentSlot2: {fileID: 11400000, guid: 395cd280b3e5633498a7310031549b05, type: 2}
   equipmentSlot3: {fileID: 0}
@@ -2760,8 +2761,8 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 1.7
-  m_Radius: 0.45
+  m_Height: 2
+  m_Radius: 0.5
   m_SlopeLimit: 35
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
