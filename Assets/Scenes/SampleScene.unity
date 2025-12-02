@@ -344,7 +344,7 @@ MonoBehaviour:
   equipmentSlot1: {fileID: 11400000, guid: f40bcecac8ecf424d819ed1ca1b26fd3, type: 2}
   equipmentSlot2: {fileID: 11400000, guid: 395cd280b3e5633498a7310031549b05, type: 2}
   equipmentSlot3: {fileID: 0}
-  chosenSlot: 0
+  chosenSlot: 2
 --- !u!114 &6792779
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -26,10 +26,13 @@ namespace Equipment
             var startShootPosition = playerPosition + cameraTransform.rotation * shootPositionOffset;
 
             //Calculating aim
-            CalculateShootEndPoint(cameraTransform, startShootPosition, out var shootDirection);
+            CalculateShootEndPoint(cameraTransform, startShootPosition, out var normalizedShootDirection);
 
-            Quaternion scutterRotation = Quaternion.AngleAxis(Random.Range(0f, 360f), shootDirection);
-            Vector3 rotatedDirection = scutterRotation * (Quaternion.Euler(Random.Range(0f, scutterValue), 0, 0) * shootDirection);
+            var randomScutterValue = Random.insideUnitCircle * scutterValue;
+            Vector3 rotatedDirection = CalculateShootDirectionWithScutter(
+                normalizedShootDirection,
+                randomScutterValue.x,
+                randomScutterValue.y);
             
             //Shoot
             if (Physics.SphereCast(startShootPosition, raycastWidth, rotatedDirection,
@@ -52,7 +55,7 @@ namespace Equipment
             var startShootPosition = playerPosition + cameraTransform.rotation * shootPositionOffset;
             
             //Calculating aim
-            var shootEndPoint = CalculateShootEndPoint(cameraTransform, startShootPosition, out var shootDirection);
+            var shootEndPoint = CalculateShootEndPoint(cameraTransform, startShootPosition, out var normalizedShootDirection);
 
             //Draw middle line
             Gizmos.DrawLine(startShootPosition, shootEndPoint);
@@ -62,33 +65,48 @@ namespace Equipment
             Vector3[] scutterLinesPoints = new Vector3[scutterGizmosLinesCount * 2];
             for (int i = 0; i < scutterGizmosLinesCount; i++)
             {
-                Quaternion rotation = Quaternion.AngleAxis(angleStep * i, shootDirection);
-                Vector3 rotatedDirection = rotation * (Quaternion.Euler(scutterValue, 0, 0) * shootDirection);
+                Quaternion rotation = Quaternion.AngleAxis(angleStep * i, Vector3.up);
+                var scutterDirection = rotation * Vector3.forward * scutterValue;
+                Vector3 rotatedDirection = CalculateShootDirectionWithScutter(
+                    normalizedShootDirection,
+                    scutterDirection.x,
+                    scutterDirection.z);
                 
                 scutterLinesPoints[i * 2] = startShootPosition;
 
-                scutterLinesPoints[i * 2 + 1] = rotatedDirection * maxShootDistance;
+                scutterLinesPoints[i * 2 + 1] = startShootPosition + rotatedDirection * maxShootDistance;
             }
             
             Gizmos.color = scutterGizmosColor;
             Gizmos.DrawLineList(scutterLinesPoints);
         }
 
-        private Vector3 CalculateShootEndPoint(Transform cameraTransform, Vector3 startShootPosition, out Vector3 shootDirection)
+        private Vector3 CalculateShootEndPoint(Transform cameraTransform, Vector3 startShootPosition, out Vector3 normalizedShootDirection)
         {
             if (Physics.Raycast(cameraTransform.position, cameraTransform.forward,
                     out RaycastHit hitInfo, float.MaxValue, hitObjectsMask)) 
             {
                 var hitPosition = hitInfo.point;
                 
-                shootDirection = (hitPosition - startShootPosition).normalized;
+                normalizedShootDirection = (hitPosition - startShootPosition).normalized;
             }
             else
             {
-                shootDirection = (startShootPosition + cameraTransform.rotation * (Vector3.forward * maxShootDistance)
+                normalizedShootDirection = (startShootPosition + cameraTransform.rotation * (Vector3.forward * maxShootDistance)
                                   - startShootPosition).normalized;;
             }
-            return startShootPosition + shootDirection * maxShootDistance;
+            return startShootPosition + normalizedShootDirection * maxShootDistance;
+        }
+
+        private static Vector3 CalculateShootDirectionWithScutter(Vector3 shootDirection,float xScutterValue, float yScutterValue)
+        {
+            Quaternion shootRotationWithScutter = Quaternion.LookRotation(shootDirection);
+            shootRotationWithScutter *= Quaternion.Euler(
+                xScutterValue,
+                yScutterValue,
+                0);
+            
+            return shootRotationWithScutter * Vector3.forward;
         }
     }
 }
