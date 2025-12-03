@@ -13,10 +13,13 @@ namespace Character
         [Space]
         [SerializeField] private CanvasGroup interactLabel;
         [SerializeField] private float interactDistance = 20f;
+        
+        private Interactor _interactorComponent;
 
         private void Awake()
         {
             interactLabel.alpha = 0f;
+            TryGetComponent(out _interactorComponent);
         }
 
         private void FixedUpdate()
@@ -26,8 +29,8 @@ namespace Character
 
         private void OnInteract()
         {
-            if (_interactableTarget)
-                _interactableTarget.Interact();
+            if (_interactorComponent & _interactableTarget)
+                _interactorComponent.Interact(_interactableTarget);
         }
         
         private void CalculateTargetObject()

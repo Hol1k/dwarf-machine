@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5757452887408216229}
   - component: {fileID: 1066062249536493963}
   - component: {fileID: 5163785238654393760}
+  - component: {fileID: 6522662198908862017}
   m_Layer: 0
   m_Name: DefaultMech
   m_TagString: Untagged
@@ -136,3 +137,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &6522662198908862017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7992583384425312438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81eaa2fe2c034d11a04911f3e806d8dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  riderPositionOffset: {x: 0, y: 3.35, z: 0}

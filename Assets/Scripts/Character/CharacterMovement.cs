@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 namespace Character
 {
+    [RequireComponent(typeof(CharacterController))]
     public class CharacterMovement : MonoBehaviour
     {
         private CharacterController _controller;
@@ -43,11 +44,6 @@ namespace Character
         {
             _controller = GetComponent<CharacterController>();
             _modifierHandler = GetComponent<ModifierHandler>();
-        }
-
-        private void Start()
-        {
-            _modifierHandler.AddModifier(new MovementModifier(10f, ModifierType.Multiplication, Vector2.one * 2));
         }
 
         private void OnMove(InputValue value)
@@ -135,17 +131,20 @@ namespace Character
 
         private void ApplyMovement()
         {
-            if (_isDashing)
+            if (_controller.enabled)
             {
-                var dashSpeed = _dashVector / DashDuration;
-                _controller.Move(dashSpeed * Time.fixedDeltaTime);
-            }
-            else
-                _controller.Move(_vectorMove * Time.fixedDeltaTime);
+                if (_isDashing)
+                {
+                    var dashSpeed = _dashVector / DashDuration;
+                    _controller.Move(dashSpeed * Time.fixedDeltaTime);
+                }
+                else
+                    _controller.Move(_vectorMove * Time.fixedDeltaTime);
 
-            // Гравитация
-            _velocity.y += gravity * Time.fixedDeltaTime;
-            _controller.Move(_velocity * Time.fixedDeltaTime);
+                // Гравитация
+                _velocity.y += gravity * Time.fixedDeltaTime;
+                _controller.Move(_velocity * Time.fixedDeltaTime);
+            }
         }
 
         private void CalculateDashCooldown()

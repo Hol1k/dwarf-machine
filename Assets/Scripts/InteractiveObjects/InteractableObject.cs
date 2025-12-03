@@ -4,7 +4,7 @@ namespace InteractiveObjects
 {
     public abstract class InteractableObject : MonoBehaviour
     {
-        public virtual void Interact()
+        public virtual void Interact(Interactor interactor)
         {
             Debug.Log("Interacting with " + name);
         }

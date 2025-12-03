@@ -23,7 +23,7 @@ namespace InteractiveObjects
             _startRotation = target.localRotation.eulerAngles;
         }
 
-        public override void Interact()
+        public override void Interact(Interactor interactor)
         {
             if (!target)
             {
