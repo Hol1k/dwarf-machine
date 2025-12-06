@@ -2,12 +2,11 @@ using System;
 using DG.Tweening;
 using Modifiers;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Character
 {
     [RequireComponent(typeof(CharacterController))]
-    public class CharacterMovement : MonoBehaviour
+    public class CharacterMovementController : MonoBehaviour
     {
         private CharacterController _controller;
         [SerializeField] private Transform transformCamera;
@@ -46,13 +45,12 @@ namespace Character
             _modifierHandler = GetComponent<ModifierHandler>();
         }
 
-        private void OnMove(InputValue value)
-        {      
-            _vectorInput = value.Get<Vector2>();
-            _vectorInput = _modifierHandler.ModifyMovement(_vectorInput);
+        public void SetMoveVector(Vector2 movementVector)
+        {
+            _vectorInput = _modifierHandler.ModifyMovement(movementVector);
         }
 
-        private void OnJump()
+        public void JumpRequest()
         {
             if (_isGrounded)
             {
@@ -61,7 +59,7 @@ namespace Character
             }
         }
 
-        private void OnDash()
+        public void DashRequest()
         {
             if (_dashCurrCooldown <= 0f)
             {

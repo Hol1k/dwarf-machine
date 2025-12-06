@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace Character
 {
-    [RequireComponent(typeof(CharacterMovement))]
+    [RequireComponent(typeof(CharacterMovementController))]
     public class CharacterStatsComponent : MonoBehaviour, IDamageable
     {
         [SerializeField] CharacterStatsConfig characterStatsConfig;
         
-        private CharacterMovement _characterMovement;
+        private CharacterMovementController _characterMovementController;
         
         private float _maxHealth;
         public float MaxHealth
@@ -33,7 +33,7 @@ namespace Character
 
         private void Awake()
         {
-            _characterMovement = GetComponent<CharacterMovement>();
+            _characterMovementController = GetComponent<CharacterMovementController>();
         }
 
         private void Start()
@@ -47,11 +47,11 @@ namespace Character
             {
                 MaxHealth = characterStatsConfig.maxHealth;
                 Health = characterStatsConfig.currentHealth;
-                _characterMovement.MoveSpeed = characterStatsConfig.moveSpeed;
-                _characterMovement.JumpHeight = characterStatsConfig.jumpHeight;
-                _characterMovement.DashRange = characterStatsConfig.dashRange;
-                _characterMovement.DashCooldown = characterStatsConfig.dashCooldown;
-                _characterMovement.DashDuration = characterStatsConfig.dashDuration;
+                _characterMovementController.MoveSpeed = characterStatsConfig.moveSpeed;
+                _characterMovementController.JumpHeight = characterStatsConfig.jumpHeight;
+                _characterMovementController.DashRange = characterStatsConfig.dashRange;
+                _characterMovementController.DashCooldown = characterStatsConfig.dashCooldown;
+                _characterMovementController.DashDuration = characterStatsConfig.dashDuration;
             }
             else
                 Debug.LogWarning("Start character stats are not set. Set to default values");

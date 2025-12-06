@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Character
 {
-    public class CharacterMouseInput : MonoBehaviour
+    public class CharacterMouseInputController : MonoBehaviour
     {
         private GameObject _lookTarget;
         private InteractableObject _interactableTarget;
@@ -27,7 +27,7 @@ namespace Character
             CalculateTargetObject();
         }
 
-        private void OnInteract()
+        public void InteractRequest()
         {
             if (_interactorComponent & _interactableTarget)
                 _interactorComponent.Interact(_interactableTarget);
