@@ -132,13 +132,13 @@ GameObject:
   - component: {fileID: 6792772}
   - component: {fileID: 6792769}
   - component: {fileID: 6792775}
-  - component: {fileID: 6792783}
   - component: {fileID: 6792774}
+  - component: {fileID: 6792780}
+  - component: {fileID: 6792783}
   - component: {fileID: 6792776}
   - component: {fileID: 6792779}
   - component: {fileID: 6792777}
   - component: {fileID: 6792782}
-  - component: {fileID: 6792780}
   - component: {fileID: 6792778}
   - component: {fileID: 6792781}
   m_Layer: 8
@@ -378,7 +378,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerLookTransform: {fileID: 419882208}
   interactLabel: {fileID: 1721544941}
-  interactDistance: 15
+  interactDistance: 6
 --- !u!114 &6792781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2902,6 +2902,10 @@ PrefabInstance:
     - target: {fileID: 3853508103881329158, guid: 81fb55248291c4443b19cf99f6e116f0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6522662198908862017, guid: 81fb55248291c4443b19cf99f6e116f0, type: 3}
+      propertyPath: mountDownOffset.y
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7992583384425312438, guid: 81fb55248291c4443b19cf99f6e116f0, type: 3}
       propertyPath: m_Name

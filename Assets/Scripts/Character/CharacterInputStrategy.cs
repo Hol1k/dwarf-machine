@@ -1,7 +1,7 @@
-﻿using Character;
+﻿using Player;
 using UnityEngine;
 
-namespace Player
+namespace Character
 {
     public class CharacterInputStrategy : IInputStrategy
     {

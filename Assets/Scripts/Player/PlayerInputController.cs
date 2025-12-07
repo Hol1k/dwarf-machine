@@ -17,19 +17,20 @@ namespace Player
             CharacterMovementController characterMovementController = GetComponent<CharacterMovementController>();
             CharacterMouseInputController characterMouseInputController = GetComponent<CharacterMouseInputController>();
             
-            _defaultCharacterInputStrategy = 
+            _inputStrategy = _defaultCharacterInputStrategy = 
                 new CharacterInputStrategy(characterMovementController, characterMouseInputController);
-            SetDefaultInputStrategy();
         }
 
         public void SetInputStrategy(IInputStrategy strategy)
         {
             _inputStrategy = strategy;
+            _inputStrategy.MoveRequest(Vector2.zero);
         }
 
         public void SetDefaultInputStrategy()
         {
             _inputStrategy = _defaultCharacterInputStrategy;
+            _inputStrategy.MoveRequest(Vector2.zero);
         }
 
         private void OnMove(InputValue value)
