@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections;
+using Camera;
 using Character;
 using Mech;
 using Player;
 using Unity.Cinemachine;
 using UnityEngine;
+using Zenject;
 
 namespace InteractiveObjects
 {
+    [RequireComponent(typeof(ControlledEntityVirtualCameraContainer))]
     public class InteractableMount : InteractableObject
     {
         [Space]
@@ -21,13 +24,22 @@ namespace InteractiveObjects
         private CharacterController _riderCharacterController;
         private PlayerInputController _playerInputController;
         
-        [Space]
-        [SerializeField] private int cameraWeightId = 1;
-        [SerializeField] private float cameraChangeAnimationDuration = 1;
-        [SerializeField] private CinemachineMixingCamera cinemachineMixingCamera;
+        private ActiveCameraController _activeCameraController;
+        private ControlledEntityVirtualCameraContainer _mountCameraContainerContainer;
+        private ControlledEntityVirtualCameraContainer _riderVirtualCameraContainer;
+        
+        private bool isMounted = false;
 
+        [Inject]
+        private void Init(ActiveCameraController activeCameraController)
+        {
+            _activeCameraController = activeCameraController;
+        }
+        
         private void Awake()
         {
+            _mountCameraContainerContainer = GetComponent<ControlledEntityVirtualCameraContainer>();
+            
             InitInputStrategy();
         }
 
@@ -41,19 +53,24 @@ namespace InteractiveObjects
 
         public override void Interact(Interactor interactor)
         {
+            if (isMounted)
+                return;
+            
             _rider = interactor;
             
-            _rider.TryGetComponent(out _riderCharacterController);
-            if (_riderCharacterController)
+            if (_rider.TryGetComponent(out _riderCharacterController))
                 _riderCharacterController.enabled = false;
             _rider.transform.SetParent(transform);
             _rider.transform.position = transform.position + riderPositionOffset;
             
-            _rider.TryGetComponent(out _playerInputController);
-            if (_playerInputController)
+            if (_rider.TryGetComponent(out _playerInputController))
                 _playerInputController.SetInputStrategy(_inputStrategy);
 
-            StartCoroutine(SmoothChangeToMountCamera(cameraChangeAnimationDuration));
+            _rider.TryGetComponent(out _riderVirtualCameraContainer);
+
+            _activeCameraController.SetActiveCamera(_mountCameraContainerContainer.VirtualCamera);
+
+            isMounted = true;
         }
 
         public void MountDownRequest()
@@ -73,45 +90,10 @@ namespace InteractiveObjects
 
             _rider = null;
 
-            StartCoroutine(SmoothChangeToRiderCamera(cameraChangeAnimationDuration));
-        }
-
-        private IEnumerator SmoothChangeToMountCamera(float duration)
-        {
-            float currentTime = 0;
-
-            while (currentTime < duration)
-            {
-                currentTime += Time.deltaTime;
-                
-                var smoothValue = currentTime / duration;
-                cinemachineMixingCamera.Weight0 = 1 - smoothValue;
-                cinemachineMixingCamera.SetWeight(cameraWeightId, smoothValue);
-                
-                yield return null;
-            }
+            _activeCameraController.SetActiveCamera(_riderVirtualCameraContainer.VirtualCamera);
+            _riderVirtualCameraContainer = null;
             
-            cinemachineMixingCamera.Weight0 = 0;
-            cinemachineMixingCamera.SetWeight(cameraWeightId, 1);
-        }
-
-        private IEnumerator SmoothChangeToRiderCamera(float duration)
-        {
-            float currentTime = 0;
-
-            while (currentTime < duration)
-            {
-                currentTime += Time.deltaTime;
-                
-                var smoothValue = currentTime / duration;
-                cinemachineMixingCamera.Weight0 = smoothValue;
-                cinemachineMixingCamera.SetWeight(cameraWeightId, 1 - smoothValue);
-                
-                yield return null;
-            }
-            
-            cinemachineMixingCamera.Weight0 = 1;
-            cinemachineMixingCamera.SetWeight(cameraWeightId, 0);
+            isMounted = false;
         }
 
         private void InitInputStrategy()
