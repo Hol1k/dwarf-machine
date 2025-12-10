@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections;
-using Camera;
-using Character;
+﻿using Camera;
 using Mech;
 using Player;
-using Unity.Cinemachine;
 using UnityEngine;
 using Zenject;
 
@@ -19,6 +15,7 @@ namespace InteractiveObjects
         
         [SerializeField] private MountType mountType;
         private IInputStrategy _inputStrategy;
+        private MechInputStrategyFactory _mechInputStrategyFactory;
         
         private Interactor _rider;
         private CharacterController _riderCharacterController;
@@ -31,9 +28,12 @@ namespace InteractiveObjects
         private bool isMounted = false;
 
         [Inject]
-        private void Init(ActiveCameraController activeCameraController)
+        private void Init(
+            ActiveCameraController activeCameraController,
+            MechInputStrategyFactory mechInputStrategyFactory)
         {
             _activeCameraController = activeCameraController;
+            _mechInputStrategyFactory = mechInputStrategyFactory;
         }
         
         private void Awake()
@@ -47,8 +47,6 @@ namespace InteractiveObjects
         {
             if (_rider)
                 _rider.transform.position = transform.position + riderPositionOffset;
-
-            InitInputStrategy();
         }
 
         public override void Interact(Interactor interactor)
@@ -101,7 +99,7 @@ namespace InteractiveObjects
             switch (mountType)
             {
                 case MountType.Mech:
-                    _inputStrategy = new MechInputStrategy(this);
+                    _inputStrategy = _mechInputStrategyFactory.Create(this);
                     break;
             }
         }

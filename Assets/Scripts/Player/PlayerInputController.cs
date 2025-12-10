@@ -1,6 +1,7 @@
 ﻿using Character;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Zenject;
 
 namespace Player
 {
@@ -10,15 +11,12 @@ namespace Player
     {
         private IInputStrategy _inputStrategy;
         
-        private CharacterInputStrategy _defaultCharacterInputStrategy;
+        private IInputStrategy _defaultInputStrategy;
 
-        private void Awake()
+        [Inject]
+        public void Init(IInputStrategy inputStrategy)
         {
-            CharacterMovementController characterMovementController = GetComponent<CharacterMovementController>();
-            CharacterMouseInputController characterMouseInputController = GetComponent<CharacterMouseInputController>();
-            
-            _inputStrategy = _defaultCharacterInputStrategy = 
-                new CharacterInputStrategy(characterMovementController, characterMouseInputController);
+            _inputStrategy = _defaultInputStrategy = inputStrategy;
         }
 
         public void SetInputStrategy(IInputStrategy strategy)
@@ -29,7 +27,7 @@ namespace Player
 
         public void SetDefaultInputStrategy()
         {
-            _inputStrategy = _defaultCharacterInputStrategy;
+            _inputStrategy = _defaultInputStrategy;
             _inputStrategy.MoveRequest(Vector2.zero);
         }
 
