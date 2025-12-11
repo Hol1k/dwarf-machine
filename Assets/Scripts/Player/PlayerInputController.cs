@@ -1,12 +1,11 @@
-﻿using Character;
+﻿using System;
+using Character;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
 
 namespace Player
 {
-    [RequireComponent(typeof(CharacterMovementController))]
-    [RequireComponent(typeof(CharacterMouseInputController))]
     public class PlayerInputController : MonoBehaviour
     {
         private IInputStrategy _inputStrategy;
@@ -19,16 +18,23 @@ namespace Player
             _inputStrategy = _defaultInputStrategy = inputStrategy;
         }
 
+        private void FixedUpdate()
+        {
+            _inputStrategy.CalculateAimTargetRequest();
+        }
+
         public void SetInputStrategy(IInputStrategy strategy)
         {
+            _inputStrategy.ResetInputs();
             _inputStrategy = strategy;
-            _inputStrategy.MoveRequest(Vector2.zero);
+            _inputStrategy.ResetInputs();
         }
 
         public void SetDefaultInputStrategy()
         {
+            _inputStrategy.ResetInputs();
             _inputStrategy = _defaultInputStrategy;
-            _inputStrategy.MoveRequest(Vector2.zero);
+            _inputStrategy.ResetInputs();
         }
 
         private void OnMove(InputValue value)

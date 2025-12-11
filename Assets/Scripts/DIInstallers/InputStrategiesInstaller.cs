@@ -12,7 +12,7 @@ namespace DIInstallers
         {
             Container.Bind<IInputStrategy>().To<CharacterInputStrategy>().AsSingle();
             Container.Bind<CharacterMovementController>().FromComponentInHierarchy().AsSingle();
-            Container.Bind<CharacterMouseInputController>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<CharactersInteractInputController>().FromComponentInHierarchy().AsSingle();
             Container.Bind<PlayerInputController>().FromComponentInHierarchy().AsSingle();
             
             Container.BindFactory<InteractableMount, IInputStrategy, MechInputStrategyFactory>()

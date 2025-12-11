@@ -45,6 +45,15 @@ namespace Character
             _modifierHandler = GetComponent<ModifierHandler>();
         }
 
+        public void ResetInputs()
+        {
+            //reset movement
+            _vectorInput = Vector3.zero;
+            
+            //reset dash state
+            _isDashing = false;
+        }
+
         public void SetMoveVector(Vector2 movementVector)
         {
             _vectorInput = _modifierHandler.ModifyMovement(movementVector);
@@ -65,7 +74,6 @@ namespace Character
             {
                 _isDashing = true;
                 _dashCurrCooldown = DashCooldown;
-                _dashVector = _vectorMove.normalized * DashRange;
                 
                 Sequence sequence = DOTween.Sequence();
                 sequence.AppendInterval(DashDuration);

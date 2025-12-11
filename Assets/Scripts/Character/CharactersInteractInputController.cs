@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Character
 {
-    public class CharacterMouseInputController : MonoBehaviour
+    public class CharactersInteractInputController : MonoBehaviour
     {
         private GameObject _lookTarget;
         private InteractableObject _interactableTarget;
@@ -22,18 +22,18 @@ namespace Character
             TryGetComponent(out _interactorComponent);
         }
 
-        private void FixedUpdate()
-        {
-            CalculateTargetObject();
-        }
-
         public void InteractRequest()
         {
-            if (_interactorComponent & _interactableTarget)
-                _interactorComponent.Interact(_interactableTarget);
+            if (_interactorComponent)
+            {
+                if (_interactableTarget)
+                    _interactorComponent.Interact(_interactableTarget);
+            }
+            else
+                Debug.Log($"Interactor component not found on {gameObject.name} object");
         }
         
-        private void CalculateTargetObject()
+        public void CalculateTargetObject()
         {
             if (Physics.Raycast(playerLookTransform.position, playerLookTransform.forward,
                     out RaycastHit hitInfo, interactDistance)) 
@@ -52,6 +52,13 @@ namespace Character
                 _interactableTarget = null;
                 interactLabel.alpha = 0f;
             }
+        }
+
+        public void ResetTargets()
+        {
+            _lookTarget = null;
+            _interactableTarget = null;
+            interactLabel.alpha = 0f;
         }
     }
 }

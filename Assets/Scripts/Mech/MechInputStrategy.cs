@@ -13,6 +13,10 @@ namespace Mech
             _mountComponent = mountComponent;
         }
 
+        public void ResetInputs()
+        {
+        }
+
         public void MoveRequest(Vector2 movementVector)
         {
         }
@@ -22,6 +26,10 @@ namespace Mech
         }
 
         public void DashRequest()
+        {
+        }
+
+        public void CalculateAimTargetRequest()
         {
         }
 

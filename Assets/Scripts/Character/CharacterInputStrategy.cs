@@ -6,14 +6,20 @@ namespace Character
     public class CharacterInputStrategy : IInputStrategy
     {
         private readonly CharacterMovementController _characterMovementController;
-        private readonly CharacterMouseInputController _characterMouseInputController;
+        private readonly CharactersInteractInputController _charactersInteractInputController;
         
         public CharacterInputStrategy(
             CharacterMovementController characterMovementController,
-            CharacterMouseInputController characterMouseInputController)
+            CharactersInteractInputController charactersInteractInputController)
         {
             _characterMovementController = characterMovementController;
-            _characterMouseInputController = characterMouseInputController;
+            _charactersInteractInputController = charactersInteractInputController;
+        }
+
+        public void ResetInputs()
+        {
+            _charactersInteractInputController.ResetTargets();
+            _characterMovementController.ResetInputs();
         }
 
         public void MoveRequest(Vector2 movementVector)
@@ -31,9 +37,14 @@ namespace Character
             _characterMovementController.DashRequest();
         }
 
+        public void CalculateAimTargetRequest()
+        {
+            _charactersInteractInputController.CalculateTargetObject();
+        }
+
         public void InteractRequest()
         {
-            _characterMouseInputController.InteractRequest();
+            _charactersInteractInputController.InteractRequest();
         }
     }
 }
