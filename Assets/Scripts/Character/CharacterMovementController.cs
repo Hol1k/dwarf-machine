@@ -27,7 +27,7 @@ namespace Character
         [SerializeField] private float gravity = -9.81f;
         
         private Vector2 _vectorInput;
-        private Vector3 _vectorMove;
+        private Vector3 _moveVector;
         private float _jumpForce;
         private Vector3 _cameraForward;
         private Vector3 _cameraRight;
@@ -72,8 +72,12 @@ namespace Character
         {
             if (_dashCurrCooldown <= 0f)
             {
+                if (_moveVector == Vector3.zero)
+                    return;
+                
                 _isDashing = true;
                 _dashCurrCooldown = DashCooldown;
+                _dashVector = _moveVector;
                 
                 Sequence sequence = DOTween.Sequence();
                 sequence.AppendInterval(DashDuration);
@@ -119,7 +123,7 @@ namespace Character
             _cameraForward.Normalize();
             _cameraRight.Normalize();
 
-            _vectorMove = (_cameraForward * _vectorInput.y * MoveSpeed) + (_cameraRight * _vectorInput.x * MoveSpeed);
+            _moveVector = (_cameraForward * _vectorInput.y * MoveSpeed) + (_cameraRight * _vectorInput.x * MoveSpeed);
         }
 
         private void LookCharacterForward()
@@ -145,7 +149,7 @@ namespace Character
                     _controller.Move(dashSpeed * Time.fixedDeltaTime);
                 }
                 else
-                    _controller.Move(_vectorMove * Time.fixedDeltaTime);
+                    _controller.Move(_moveVector * Time.fixedDeltaTime);
 
                 // Гравитация
                 _velocity.y += gravity * Time.fixedDeltaTime;
