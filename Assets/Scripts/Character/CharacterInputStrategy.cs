@@ -37,6 +37,11 @@ namespace Character
             _characterMovementController.DashRequest();
         }
 
+        public void ChangeLookDirectionRequest()
+        {
+            _characterMovementController.LookCharacterForward();
+        }
+
         public void CalculateAimTargetRequest()
         {
             _charactersInteractInputController.CalculateTargetObject();

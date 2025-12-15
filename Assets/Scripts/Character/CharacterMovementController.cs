@@ -92,11 +92,23 @@ namespace Character
             CalculateDashCooldown();
         }
 
+        public void LookCharacterForward()
+        {
+            Vector3 directionLook = transformCamera.forward;
+            directionLook.y = 0f;
+
+            if (directionLook.sqrMagnitude > 0.01f)
+            {
+                float targetAngle = Mathf.Atan2(directionLook.x, directionLook.z) * Mathf.Rad2Deg;
+                float smoothedAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity, turnSmoothTime);
+                transform.rotation = Quaternion.Euler(0f, smoothedAngle, 0f);
+            }
+        }
+
         private void FixedUpdate()
         {
             GroundCheck();
             CalculateMoveVector();
-            LookCharacterForward();
 
             ApplyMovement();
         }
@@ -122,19 +134,6 @@ namespace Character
             cameraRight.Normalize();
 
             _moveVector = cameraForward * (_vectorInput.y * MoveSpeed) + cameraRight * (_vectorInput.x * MoveSpeed);
-        }
-
-        private void LookCharacterForward()
-        {
-            Vector3 directionLook = transformCamera.forward;
-            directionLook.y = 0f;
-
-            if (directionLook.sqrMagnitude > 0.01f)
-            {
-                float targetAngle = Mathf.Atan2(directionLook.x, directionLook.z) * Mathf.Rad2Deg;
-                float smoothedAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity, turnSmoothTime);
-                transform.rotation = Quaternion.Euler(0f, smoothedAngle, 0f);
-            }
         }
 
         private void ApplyMovement()

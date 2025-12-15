@@ -8,6 +8,7 @@ namespace Player
         public void MoveRequest(Vector2 movementVector);
         public void JumpRequest();
         public void DashRequest();
+        public void ChangeLookDirectionRequest();
         public void CalculateAimTargetRequest();
         public void InteractRequest();
     }

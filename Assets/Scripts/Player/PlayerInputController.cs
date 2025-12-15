@@ -1,6 +1,4 @@
-﻿using System;
-using Character;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
 
@@ -21,6 +19,7 @@ namespace Player
         private void FixedUpdate()
         {
             _inputStrategy.CalculateAimTargetRequest();
+            _inputStrategy.ChangeLookDirectionRequest();
         }
 
         public void SetInputStrategy(IInputStrategy strategy)

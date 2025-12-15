@@ -7,8 +7,11 @@ using Zenject;
 namespace InteractiveObjects
 {
     [RequireComponent(typeof(ControlledEntityVirtualCameraContainer))]
+    [RequireComponent(typeof(MechMovementController))]
     public class InteractableMount : InteractableObject
     {
+        private MechMovementController _mechMovementController;
+        
         [Space]
         [SerializeField] private Vector3 riderPositionOffset;
         [SerializeField] private Vector3 mountDownOffset;
@@ -25,7 +28,7 @@ namespace InteractiveObjects
         private ControlledEntityVirtualCameraContainer _mountCameraContainerContainer;
         private ControlledEntityVirtualCameraContainer _riderVirtualCameraContainer;
         
-        private bool isMounted = false;
+        private bool isMounted;
 
         [Inject]
         private void Init(
@@ -39,6 +42,7 @@ namespace InteractiveObjects
         private void Awake()
         {
             _mountCameraContainerContainer = GetComponent<ControlledEntityVirtualCameraContainer>();
+            _mechMovementController = GetComponent<MechMovementController>();
             
             InitInputStrategy();
         }
@@ -99,7 +103,7 @@ namespace InteractiveObjects
             switch (mountType)
             {
                 case MountType.Mech:
-                    _inputStrategy = _mechInputStrategyFactory.Create(this);
+                    _inputStrategy = _mechInputStrategyFactory.Create(this, _mechMovementController);
                     break;
             }
         }
