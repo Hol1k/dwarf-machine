@@ -29,8 +29,6 @@ namespace Character
         private Vector2 _vectorInput;
         private Vector3 _moveVector;
         private float _jumpForce;
-        private Vector3 _cameraForward;
-        private Vector3 _cameraRight;
         private float _turnSmoothVelocity;
         
         private float _dashCurrCooldown;
@@ -114,16 +112,16 @@ namespace Character
 
         private void CalculateMoveVector()
         {
-            _cameraForward = transformCamera.forward;
-            _cameraRight = transformCamera.right;
+            var cameraForward = transformCamera.forward;
+            var cameraRight = transformCamera.right;
 
-            _cameraForward.y = 0f;
-            _cameraRight.y = 0f;
+            cameraForward.y = 0f;
+            cameraRight.y = 0f;
 
-            _cameraForward.Normalize();
-            _cameraRight.Normalize();
+            cameraForward.Normalize();
+            cameraRight.Normalize();
 
-            _moveVector = (_cameraForward * _vectorInput.y * MoveSpeed) + (_cameraRight * _vectorInput.x * MoveSpeed);
+            _moveVector = (cameraForward * _vectorInput.y * MoveSpeed) + (cameraRight * _vectorInput.x * MoveSpeed);
         }
 
         private void LookCharacterForward()
