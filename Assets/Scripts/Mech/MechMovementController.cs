@@ -1,4 +1,5 @@
-﻿using Modifiers;
+﻿using System;
+using Modifiers;
 using UnityEngine;
 
 namespace Mech
@@ -8,7 +9,7 @@ namespace Mech
         private Rigidbody _rigidbody;
         [SerializeField] private Transform transformCamera;
         
-        [SerializeField] public float MoveSpeed; // need to make config init and make NonSerialize
+        [NonSerialized] public float MoveSpeed; // need to make config init and make NonSerialize
 
         [SerializeField] private float turnSmoothTime = 0.1f; // регулирует плавность разворота
         

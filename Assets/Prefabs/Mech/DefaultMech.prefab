@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1771042356212974814}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 6344259779653789238}
   - component: {fileID: 1179004897627735361}
   - component: {fileID: 1218313944981827751}
+  - component: {fileID: 1706160618005839381}
   m_Layer: 9
   m_Name: DefaultMech
   m_TagString: Untagged
@@ -227,14 +228,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transformCamera: {fileID: 1474285214400783449}
-  MoveSpeed: 5
   turnSmoothTime: 1.4
-  groundCheck: {fileID: 1771042356212974814}
-  groundDistance: 0.3
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 503
-  gravity: -9.81
+--- !u!114 &1706160618005839381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3996640884506013948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c68a48bb57f9423891f48d6d4378beae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mechStatsConfig: {fileID: 11400000, guid: e0550154999f73145bc1c40fa45e8ab3, type: 2}
 --- !u!1 &8290585181583142380
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,7 +255,7 @@ GameObject:
   - component: {fileID: 5479193831137357558}
   - component: {fileID: 8105693344143451828}
   - component: {fileID: 1113269931777572252}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mech'sCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
