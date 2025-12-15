@@ -121,7 +121,7 @@ namespace Character
             cameraForward.Normalize();
             cameraRight.Normalize();
 
-            _moveVector = (cameraForward * _vectorInput.y * MoveSpeed) + (cameraRight * _vectorInput.x * MoveSpeed);
+            _moveVector = cameraForward * (_vectorInput.y * MoveSpeed) + cameraRight * (_vectorInput.x * MoveSpeed);
         }
 
         private void LookCharacterForward()
