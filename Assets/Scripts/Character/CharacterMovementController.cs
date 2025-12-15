@@ -77,7 +77,7 @@ namespace Character
                 
                 _isDashing = true;
                 _dashCurrCooldown = DashCooldown;
-                _dashVector = _moveVector;
+                _dashVector = _moveVector.normalized * DashRange;
                 
                 Sequence sequence = DOTween.Sequence();
                 sequence.AppendInterval(DashDuration);
