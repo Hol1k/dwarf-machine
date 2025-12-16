@@ -74,5 +74,30 @@ namespace Player
         {
             _inputStrategy.SetAttackRequestStatus(_attackInputAction.IsPressed());
         }
+
+        private void OnEquipment1()
+        {
+            _inputStrategy.ChoseEquipmentSlot1Request();
+        }
+
+        private void OnEquipment2()
+        {
+            _inputStrategy.ChoseEquipmentSlot2Request();
+        }
+
+        private void OnEquipment3()
+        {
+            _inputStrategy.ChoseEquipmentSlot3Request();
+        }
+
+        private void OnAbility1()
+        {
+            _inputStrategy.CastAbility1Request();
+        }
+
+        private void OnAbility2()
+        {
+            _inputStrategy.CastAbility2Request();
+        }
     }
 }

@@ -5,60 +5,88 @@ namespace Character
 {
     public class CharacterInputStrategy : IInputStrategy
     {
-        private readonly CharacterMovementController _characterMovementController;
-        private readonly CharactersInteractInputController _charactersInteractInputController;
+        private readonly CharacterMovementController _movementController;
+        private readonly CharactersInteractInputController _interactInputController;
         private readonly EquipmentHandlerComponent _equipmentHandler;
+        private readonly CharacterAbilitiesController _abilitiesController;
         
         public CharacterInputStrategy(
-            CharacterMovementController characterMovementController,
-            CharactersInteractInputController charactersInteractInputController,
-            EquipmentHandlerComponent equipmentHandler)
+            CharacterMovementController movementController,
+            CharactersInteractInputController interactInputController,
+            EquipmentHandlerComponent equipmentHandler,
+            CharacterAbilitiesController abilitiesController)
         {
-            _characterMovementController = characterMovementController;
-            _charactersInteractInputController = charactersInteractInputController;
+            _movementController = movementController;
+            _interactInputController = interactInputController;
             _equipmentHandler = equipmentHandler;
+            _abilitiesController = abilitiesController;
         }
 
         public void ResetInputs()
         {
-            _charactersInteractInputController.ResetTargets();
-            _characterMovementController.ResetInputs();
+            _interactInputController.ResetTargets();
+            _movementController.ResetInputs();
             _equipmentHandler.ResetInputs();
         }
 
         public void MoveRequest(Vector2 movementVector)
         {
-            _characterMovementController.SetMoveVector(movementVector);
+            _movementController.SetMoveVector(movementVector);
         }
 
         public void JumpRequest()
         {
-            _characterMovementController.JumpRequest();
+            _movementController.JumpRequest();
         }
 
         public void DashRequest()
         {
-            _characterMovementController.DashRequest();
+            _movementController.DashRequest();
         }
 
         public void ChangeLookDirectionRequest()
         {
-            _characterMovementController.LookCharacterForward();
+            _movementController.LookCharacterForward();
         }
 
         public void CalculateAimTargetRequest()
         {
-            _charactersInteractInputController.CalculateTargetObject();
+            _interactInputController.CalculateTargetObject();
         }
 
         public void InteractRequest()
         {
-            _charactersInteractInputController.InteractRequest();
+            _interactInputController.InteractRequest();
         }
 
         public void SetAttackRequestStatus(bool status)
         {
             _equipmentHandler.attackRequestStatus = status;
+        }
+
+        public void ChoseEquipmentSlot1Request()
+        {
+            _equipmentHandler.ChoseSlot1();
+        }
+
+        public void ChoseEquipmentSlot2Request()
+        {
+            _equipmentHandler.ChoseSlot2();
+        }
+
+        public void ChoseEquipmentSlot3Request()
+        {
+            _equipmentHandler.ChoseSlot3();
+        }
+
+        public void CastAbility1Request()
+        {
+            _abilitiesController.CastAbility1Request();
+        }
+
+        public void CastAbility2Request()
+        {
+            _abilitiesController.CastAbility2Request();
         }
     }
 }

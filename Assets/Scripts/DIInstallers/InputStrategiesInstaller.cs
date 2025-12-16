@@ -14,6 +14,7 @@ namespace DIInstallers
             Container.Bind<CharacterMovementController>().FromComponentInHierarchy().AsSingle();
             Container.Bind<CharactersInteractInputController>().FromComponentInHierarchy().AsSingle();
             Container.Bind<EquipmentHandlerComponent>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<CharacterAbilitiesController>().FromComponentInHierarchy().AsSingle();
             Container.Bind<PlayerInputController>().FromComponentInHierarchy().AsSingle();
             
             Container.BindFactory<

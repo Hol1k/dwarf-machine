@@ -58,7 +58,7 @@ namespace Character
             attackRequestStatus = false;
         }
 
-        private void OnEquipment1()
+        public void ChoseSlot1()
         {
             if (chosenSlot == 1)
             {
@@ -72,7 +72,7 @@ namespace Character
             }
         }
 
-        private void OnEquipment2()
+        public void ChoseSlot2()
         {
             if (chosenSlot == 2)
             {
@@ -86,7 +86,7 @@ namespace Character
             }
         }
 
-        private void OnEquipment3()
+        public void ChoseSlot3()
         {
             if (chosenSlot == 3)
             {

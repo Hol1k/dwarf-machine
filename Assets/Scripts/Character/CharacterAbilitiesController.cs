@@ -1,6 +1,5 @@
 ﻿using Abilities;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Character
 {
@@ -9,7 +8,7 @@ namespace Character
         public Ability ability1;
         public Ability ability2;
 
-        private void OnAbility1()
+        public void CastAbility1Request()
         {
             if (!ability1)
             {
@@ -20,7 +19,7 @@ namespace Character
             ability1.Cast();
         }
 
-        private void OnAbility2()
+        public void CastAbility2Request()
         {
             if (ability2 == null)
             {

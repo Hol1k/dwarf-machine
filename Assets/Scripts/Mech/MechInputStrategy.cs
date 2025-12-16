@@ -56,5 +56,25 @@ namespace Mech
         {
             _attacksController.attackRequestStatus = status;
         }
+
+        public void ChoseEquipmentSlot1Request()
+        {
+        }
+
+        public void ChoseEquipmentSlot2Request()
+        {
+        }
+
+        public void ChoseEquipmentSlot3Request()
+        {
+        }
+
+        public void CastAbility1Request()
+        {
+        }
+
+        public void CastAbility2Request()
+        {
+        }
     }
 }
