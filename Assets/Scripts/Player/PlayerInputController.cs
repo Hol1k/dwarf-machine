@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
 
@@ -9,6 +10,8 @@ namespace Player
         private IInputStrategy _inputStrategy;
         
         private IInputStrategy _defaultInputStrategy;
+        
+        private InputAction _attackInputAction;
 
         [Inject]
         public void Init(IInputStrategy inputStrategy)
@@ -16,10 +19,20 @@ namespace Player
             _inputStrategy = _defaultInputStrategy = inputStrategy;
         }
 
+        private void Awake()
+        {
+            _attackInputAction = InputSystem.actions.FindAction("Attack");
+        }
+
         private void FixedUpdate()
         {
             _inputStrategy.CalculateAimTargetRequest();
             _inputStrategy.ChangeLookDirectionRequest();
+        }
+
+        private void Update()
+        {
+            SetAttackInput();
         }
 
         public void SetInputStrategy(IInputStrategy strategy)
@@ -55,6 +68,11 @@ namespace Player
         private void OnInteract()
         {
             _inputStrategy.InteractRequest();
+        }
+
+        private void SetAttackInput()
+        {
+            _inputStrategy.SetAttackRequestStatus(_attackInputAction.IsPressed());
         }
     }
 }

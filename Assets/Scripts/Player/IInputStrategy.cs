@@ -11,5 +11,6 @@ namespace Player
         public void ChangeLookDirectionRequest();
         public void CalculateAimTargetRequest();
         public void InteractRequest();
+        public void SetAttackRequestStatus(bool status);
     }
 }

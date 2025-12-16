@@ -46,5 +46,9 @@ namespace Mech
         {
             _mountComponent.MountDownRequest();
         }
+
+        public void SetAttackRequestStatus(bool status)
+        {
+        }
     }
 }

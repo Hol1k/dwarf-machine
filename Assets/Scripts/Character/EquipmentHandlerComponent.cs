@@ -1,13 +1,11 @@
 ﻿using Equipment;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 namespace Character
 {
     public class EquipmentHandlerComponent : MonoBehaviour
     {
-        private InputAction _attackInputAction;
-        
         [SerializeField] private bool isDevelopmentMode = false;
         [SerializeField] private Transform playerLookTransform;
         
@@ -19,22 +17,12 @@ namespace Character
         [Range(0,3)] public int chosenSlot;
         private PlayersEquipment _chosenEquipment;
 
+        public bool attackRequestStatus;
         private float _currAttackCooldown;
-        private bool _attackRequest;
-
-        private void Awake()
-        {
-            _attackInputAction = InputSystem.actions.FindAction("Attack");
-        }
 
         private void FixedUpdate()
         {
             Attack();
-        }
-
-        private void Update()
-        {
-            ReadAttackInput();
         }
 
         private void OnDrawGizmos()
@@ -63,6 +51,11 @@ namespace Character
                     _chosenEquipment = null;
                     break;
             }
+        }
+
+        public void ResetInputs()
+        {
+            attackRequestStatus = false;
         }
 
         private void OnEquipment1()
@@ -107,19 +100,11 @@ namespace Character
             }
         }
 
-        private void ReadAttackInput()
-        {
-            if (_attackInputAction.IsPressed())
-                _attackRequest = true;
-            else
-                _attackRequest = false;
-        }
-
         private void Attack()
         {
             _currAttackCooldown -= Time.fixedDeltaTime;
             
-            if (_attackRequest & _currAttackCooldown < 0f)
+            if (attackRequestStatus & _currAttackCooldown < 0f)
                 if (_chosenEquipment)
                     _chosenEquipment.Attack(transform.position, playerLookTransform, out _currAttackCooldown);
                 else
