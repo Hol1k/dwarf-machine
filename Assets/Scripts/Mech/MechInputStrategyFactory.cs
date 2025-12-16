@@ -4,5 +4,7 @@ using Zenject;
 
 namespace Mech
 {
-    public class MechInputStrategyFactory : PlaceholderFactory<InteractableMount, MechMovementController, IInputStrategy> {}
+    public class MechInputStrategyFactory : PlaceholderFactory<
+        InteractableMount, MechMovementController, MechAttacksController,
+        IInputStrategy> {}
 }

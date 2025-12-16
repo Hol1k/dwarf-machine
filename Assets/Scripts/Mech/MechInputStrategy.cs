@@ -8,11 +8,16 @@ namespace Mech
     {
         private readonly InteractableMount _mountComponent;
         private readonly MechMovementController _movementController;
+        private readonly MechAttacksController _attacksController;
 
-        public MechInputStrategy(InteractableMount mountComponent, MechMovementController movementController)
+        public MechInputStrategy(
+            InteractableMount mountComponent,
+            MechMovementController movementController,
+            MechAttacksController attacksController)
         {
             _mountComponent = mountComponent;
             _movementController = movementController;
+            _attacksController = attacksController;
         }
 
         public void ResetInputs()
@@ -49,6 +54,7 @@ namespace Mech
 
         public void SetAttackRequestStatus(bool status)
         {
+            _attacksController.attackRequestStatus = status;
         }
     }
 }

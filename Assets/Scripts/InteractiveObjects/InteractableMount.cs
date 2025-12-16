@@ -10,8 +10,6 @@ namespace InteractiveObjects
     [RequireComponent(typeof(MechMovementController))]
     public class InteractableMount : InteractableObject
     {
-        private MechMovementController _mechMovementController;
-        
         [Space]
         [SerializeField] private Vector3 riderPositionOffset;
         [SerializeField] private Vector3 mountDownOffset;
@@ -42,7 +40,6 @@ namespace InteractiveObjects
         private void Awake()
         {
             _mountCameraContainerContainer = GetComponent<ControlledEntityVirtualCameraContainer>();
-            _mechMovementController = GetComponent<MechMovementController>();
             
             InitInputStrategy();
         }
@@ -103,7 +100,10 @@ namespace InteractiveObjects
             switch (mountType)
             {
                 case MountType.Mech:
-                    _inputStrategy = _mechInputStrategyFactory.Create(this, _mechMovementController);
+                    _inputStrategy = _mechInputStrategyFactory.Create(
+                        this,
+                        GetComponent<MechMovementController>(),
+                        GetComponent<MechAttacksController>());
                     break;
             }
         }

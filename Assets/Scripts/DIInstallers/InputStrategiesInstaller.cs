@@ -16,7 +16,9 @@ namespace DIInstallers
             Container.Bind<EquipmentHandlerComponent>().FromComponentInHierarchy().AsSingle();
             Container.Bind<PlayerInputController>().FromComponentInHierarchy().AsSingle();
             
-            Container.BindFactory<InteractableMount, MechMovementController, IInputStrategy, MechInputStrategyFactory>()
+            Container.BindFactory<
+                    InteractableMount, MechMovementController, MechAttacksController,
+                    IInputStrategy, MechInputStrategyFactory>()
                 .To<MechInputStrategy>()
                 .AsSingle();
             Container.Bind<InteractableMount>().FromComponentsInHierarchy().AsCached();
