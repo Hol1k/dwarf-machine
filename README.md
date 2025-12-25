@@ -14,6 +14,7 @@ The main goal is to design clean, extensible gameplay systems that can be easily
 - Separate movement logic for player and mech
 - Basic melee combat
 - Configurable mech stats
+- Enemy AI foundation: FSM-based behaviour system (WIP)
 
 ---
 
@@ -47,6 +48,12 @@ Key principles:
 ### Dependency Injection
 - Core systems are wired through DI
 - Reduces tight coupling and improves maintainability
+
+### Enemy AI (FSM)
+- Finite State Machine foundation for enemy behaviour
+- Context object stores runtime data for AI decisions
+- State IDs and factory approach to support multiple enemy types
+- Wired through Zenject installer for clean dependencies
 
 ---
 
