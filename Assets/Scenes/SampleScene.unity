@@ -2839,6 +2839,7 @@ GameObject:
   - component: {fileID: 1911950875}
   - component: {fileID: 1911950874}
   - component: {fileID: 1911950877}
+  - component: {fileID: 1911950878}
   m_Layer: 0
   m_Name: SceneContext
   m_TagString: Untagged
@@ -2874,6 +2875,7 @@ MonoBehaviour:
   _monoInstallers:
   - {fileID: 1911950874}
   - {fileID: 1911950877}
+  - {fileID: 1911950878}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -2918,6 +2920,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 223f1dee71b6435f953ab3b74512168d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1911950878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911950873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a476d6c6aa664923a54df3bb9e3e287c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1920419736
 GameObject:
   m_ObjectHideFlags: 0
@@ -2933,6 +2947,7 @@ GameObject:
   - component: {fileID: 1920419737}
   - component: {fileID: 1920419742}
   - component: {fileID: 1920419743}
+  - component: {fileID: 1920419744}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -3083,6 +3098,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 887
   gravity: -9.81
+--- !u!114 &1920419744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920419736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b15812b5f3324e2493a3a462f85d0821, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyType: 0
 --- !u!1 &1943605790
 GameObject:
   m_ObjectHideFlags: 0
