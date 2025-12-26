@@ -1,6 +1,6 @@
 ﻿namespace Enemy
 {
-    public enum EnemyFsmStateID
+    public enum EnemyFsmStateId
     {
         Idle,
         Patrol,

@@ -6,19 +6,19 @@ namespace Enemy
     {
         private readonly EnemyFsmContext ctx = new();
         
-        private readonly Dictionary<EnemyFsmStateID, EnemyFsmState> states = new();
+        private readonly Dictionary<EnemyFsmStateId, EnemyFsmState> states = new();
 
-        private EnemyFsmStateID _currentState;
+        private EnemyFsmStateId _currentState;
 
         public EnemyFsm(EnemyFsmState idleState, EnemyFsmState patrolState, EnemyFsmState combatState, EnemyFsmState alertState, EnemyFsmState repositionState)
         {
-            states.Add(EnemyFsmStateID.Idle,  idleState);
-            states.Add(EnemyFsmStateID.Patrol,  patrolState);
-            states.Add(EnemyFsmStateID.Combat,  combatState);
-            states.Add(EnemyFsmStateID.Alert,  alertState);
-            states.Add(EnemyFsmStateID.Reposition,  repositionState);
+            states.Add(EnemyFsmStateId.Idle,  idleState);
+            states.Add(EnemyFsmStateId.Patrol,  patrolState);
+            states.Add(EnemyFsmStateId.Combat,  combatState);
+            states.Add(EnemyFsmStateId.Alert,  alertState);
+            states.Add(EnemyFsmStateId.Reposition,  repositionState);
             
-            _currentState = EnemyFsmStateID.Idle;
+            _currentState = EnemyFsmStateId.Idle;
         }
 
         public void Update()
@@ -38,7 +38,7 @@ namespace Enemy
             }
         }
 
-        private void SwapState(EnemyFsmStateID state)
+        private void SwapState(EnemyFsmStateId state)
         {
             states[_currentState].Exit(ctx);
             

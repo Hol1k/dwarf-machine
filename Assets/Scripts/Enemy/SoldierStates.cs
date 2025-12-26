@@ -4,18 +4,18 @@ namespace Enemy
 {
     public static class SoldierStates
     {
-        public static EnemyFsmState IdleState()
+        public static EnemyFsmState GetIdleState()
         {
             void Enter(EnemyFsmContext ctx)
             {
-                Debug.Log("Entered to Idle state");
+                Debug.Log($"Entered to Idle state for {ctx.IdleTimer} seconds");
             }
             
             void Update(EnemyFsmContext ctx)
             {
                 if (ctx.IdleTimer <= 0)
                 {
-                    ctx.RequestedState = EnemyFsmStateID.Patrol;
+                    ctx.RequestedState = EnemyFsmStateId.Patrol;
                 }
                 
                 ctx.IdleTimer -= Time.deltaTime;
@@ -29,7 +29,7 @@ namespace Enemy
             return new EnemyFsmState(Enter, Update, Exit);
         }
         
-        public static EnemyFsmState PatrolState()
+        public static EnemyFsmState GetPatrolState()
         {
             void Enter(EnemyFsmContext ctx)
             {
@@ -39,25 +39,24 @@ namespace Enemy
             void Update(EnemyFsmContext ctx)
             {
                 var idleTime = Random.Range(0f, 3f);
-                Debug.Log($"Requested Idle State with {idleTime} seconds duration");
                 ctx.IdleTimer = idleTime;
-                ctx.RequestedState = EnemyFsmStateID.Idle;
+                ctx.RequestedState = EnemyFsmStateId.Idle;
             }
 
             return new EnemyFsmState(Enter, Update, null);
         }
         
-        public static EnemyFsmState CombatState()
+        public static EnemyFsmState GetCombatState()
         {
             return new EnemyFsmState(null, null, null);
         }
         
-        public static EnemyFsmState AlertState()
+        public static EnemyFsmState GetAlertState()
         {
             return new EnemyFsmState(null, null, null);
         }
         
-        public static EnemyFsmState RepositionState()
+        public static EnemyFsmState GetRepositionState()
         {
             return new EnemyFsmState(null, null, null);
         }

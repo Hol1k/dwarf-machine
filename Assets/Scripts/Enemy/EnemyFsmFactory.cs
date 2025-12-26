@@ -3,19 +3,19 @@ using Zenject;
 
 namespace Enemy
 {
-    public class EnemyFsmFactory : PlaceholderFactory<EnemyTypeID, EnemyFsm>
+    public class EnemyFsmFactory : PlaceholderFactory<EnemyTypeId, EnemyFsm>
     {
-        public override EnemyFsm Create(EnemyTypeID enemyType)
+        public override EnemyFsm Create(EnemyTypeId enemyType)
         {
             switch (enemyType)
             {
-                case EnemyTypeID.Soldier:
+                case EnemyTypeId.Soldier:
                     return new EnemyFsm(
-                        SoldierStates.IdleState(),
-                        SoldierStates.PatrolState(),
-                        SoldierStates.CombatState(),
-                        SoldierStates.AlertState(),
-                        SoldierStates.RepositionState());
+                        SoldierStates.GetIdleState(),
+                        SoldierStates.GetPatrolState(),
+                        SoldierStates.GetCombatState(),
+                        SoldierStates.GetAlertState(),
+                        SoldierStates.GetRepositionState());
             }
             
             throw new ArgumentOutOfRangeException(nameof(enemyType));

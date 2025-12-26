@@ -1,6 +1,6 @@
 ﻿namespace Enemy
 {
-    public enum EnemyTypeID
+    public enum EnemyTypeId
     {
         Soldier
     }

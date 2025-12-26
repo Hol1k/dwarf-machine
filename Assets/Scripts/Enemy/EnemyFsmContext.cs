@@ -2,7 +2,7 @@
 {
     public class EnemyFsmContext
     {
-        public EnemyFsmStateID? RequestedState;
+        public EnemyFsmStateId? RequestedState;
 
         public float IdleTimer;
     }

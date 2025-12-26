@@ -3,11 +3,11 @@ using Zenject;
 
 namespace Enemy
 {
-    public class EnemyAIController : MonoBehaviour
+    public class EnemyAiComponent : MonoBehaviour
     {
         private EnemyFsm _fsm;
 
-        public EnemyTypeID enemyType;
+        public EnemyTypeId enemyType;
 
         [Inject]
         private void Init(EnemyFsmFactory fsmFactory)
