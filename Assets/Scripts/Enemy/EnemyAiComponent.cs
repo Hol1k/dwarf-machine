@@ -10,9 +10,9 @@ namespace Enemy
         public EnemyTypeId enemyType;
 
         [Inject]
-        private void Init(EnemyFsmFactory fsmFactory)
+        private void Init(EnemyFsmFactory fsmFactory, EnemyAiContext aiContext)
         {
-            _fsm = fsmFactory.Create(enemyType);
+            _fsm = fsmFactory.Create(enemyType, aiContext);
         }
 
         private void Update()

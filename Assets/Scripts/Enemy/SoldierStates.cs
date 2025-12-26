@@ -6,24 +6,24 @@ namespace Enemy
     {
         public static EnemyFsmState GetIdleState()
         {
-            void Enter(EnemyFsmContext ctx)
+            void Enter(EnemyAiContext aiContext, EnemyFsmContext fsmContext)
             {
-                Debug.Log($"Entered to Idle state for {ctx.IdleTimer} seconds");
+                Debug.Log($"Entered to Idle state for {fsmContext.IdleTimer} seconds");
             }
             
-            void Update(EnemyFsmContext ctx)
+            void Update(EnemyAiContext aiContext, EnemyFsmContext fsmContext)
             {
-                if (ctx.IdleTimer <= 0)
+                if (fsmContext.IdleTimer <= 0)
                 {
-                    ctx.RequestedState = EnemyFsmStateId.Patrol;
+                    fsmContext.RequestedState = EnemyFsmStateId.Patrol;
                 }
                 
-                ctx.IdleTimer -= Time.deltaTime;
+                fsmContext.IdleTimer -= Time.deltaTime;
             }
 
-            void Exit(EnemyFsmContext ctx)
+            void Exit(EnemyAiContext aiContext, EnemyFsmContext fsmContext)
             {
-                ctx.IdleTimer = 0f;
+                fsmContext.IdleTimer = 0f;
             }
 
             return new EnemyFsmState(Enter, Update, Exit);
@@ -31,16 +31,16 @@ namespace Enemy
         
         public static EnemyFsmState GetPatrolState()
         {
-            void Enter(EnemyFsmContext ctx)
+            void Enter(EnemyAiContext aiContext, EnemyFsmContext fsmContext)
             {
                 Debug.Log("Entered to Patrol state");
             }
             
-            void Update(EnemyFsmContext ctx)
+            void Update(EnemyAiContext aiContext, EnemyFsmContext fsmContext)
             {
                 var idleTime = Random.Range(0f, 3f);
-                ctx.IdleTimer = idleTime;
-                ctx.RequestedState = EnemyFsmStateId.Idle;
+                fsmContext.IdleTimer = idleTime;
+                fsmContext.RequestedState = EnemyFsmStateId.Idle;
             }
 
             return new EnemyFsmState(Enter, Update, null);
