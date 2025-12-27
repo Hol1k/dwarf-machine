@@ -8,17 +8,23 @@ namespace Enemy
         {
             void Enter(EnemyAiContext aiContext, EnemyFsmContext fsmContext)
             {
-                Debug.Log($"Entered to Idle state for {fsmContext.IdleTimer} seconds");
+                aiContext.LastSeePosition = null;
             }
             
             void Update(EnemyAiContext aiContext, EnemyFsmContext fsmContext)
             {
-                if (fsmContext.IdleTimer <= 0)
+                if (aiContext.IsSeePlayer)
+                {
+                    fsmContext.RequestedState = EnemyFsmStateId.Combat;
+                }
+                else if (fsmContext.IdleTimer > 0)
+                {
+                    fsmContext.IdleTimer -= Time.deltaTime;
+                }
+                else
                 {
                     fsmContext.RequestedState = EnemyFsmStateId.Patrol;
                 }
-                
-                fsmContext.IdleTimer -= Time.deltaTime;
             }
 
             void Exit(EnemyAiContext aiContext, EnemyFsmContext fsmContext)
@@ -31,11 +37,6 @@ namespace Enemy
         
         public static EnemyFsmState GetPatrolState()
         {
-            void Enter(EnemyAiContext aiContext, EnemyFsmContext fsmContext)
-            {
-                Debug.Log("Entered to Patrol state");
-            }
-            
             void Update(EnemyAiContext aiContext, EnemyFsmContext fsmContext)
             {
                 var idleTime = Random.Range(0f, 3f);
@@ -43,7 +44,7 @@ namespace Enemy
                 fsmContext.RequestedState = EnemyFsmStateId.Idle;
             }
 
-            return new EnemyFsmState(Enter, Update, null);
+            return new EnemyFsmState(null, Update, null);
         }
         
         public static EnemyFsmState GetCombatState()
