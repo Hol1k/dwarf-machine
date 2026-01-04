@@ -1,7 +1,8 @@
 ﻿using Enemy;
+using UnityEngine.AI;
 using Zenject;
 
-namespace DIInstallers
+namespace DiInstallers.Enemies
 {
     public class EnemyAiInstaller : MonoInstaller
     {
@@ -11,6 +12,9 @@ namespace DIInstallers
             
             Container.Bind<EnemyAiComponent>().FromComponentInHierarchy().AsSingle();
             Container.BindFactory<EnemyTypeId, EnemyAiContext, EnemyFsm, EnemyFsmFactory>().AsSingle();
+            
+            Container.Bind<EnemyMoveController>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<NavMeshAgent>().FromComponentInHierarchy().AsSingle();
         }
     }
 }
