@@ -15,6 +15,8 @@ namespace DiInstallers.Enemies
             
             Container.Bind<EnemyMoveController>().FromComponentInHierarchy().AsSingle();
             Container.Bind<NavMeshAgent>().FromComponentInHierarchy().AsSingle();
+            
+            Container.Bind<EnemyPatrolComponent>().FromComponentInHierarchy().AsSingle();
         }
     }
 }
