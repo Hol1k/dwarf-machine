@@ -9,6 +9,7 @@ namespace Enemy
             void Enter(EnemyAiContext aiContext, EnemyFsmContext fsmContext)
             {
                 aiContext.LastSeePosition = null;
+                fsmContext.IdleTimer = Random.Range(1f, 3f);
             }
             
             void Update(EnemyAiContext aiContext, EnemyFsmContext fsmContext)
@@ -37,29 +38,53 @@ namespace Enemy
         
         public static EnemyFsmState GetPatrolState()
         {
+            void Enter(EnemyAiContext aiContext, EnemyFsmContext fsmContext)
+            {
+                aiContext.LastSeePosition = null;
+            }
+            
             void Update(EnemyAiContext aiContext, EnemyFsmContext fsmContext)
             {
-                var idleTime = Random.Range(0f, 3f);
-                fsmContext.IdleTimer = idleTime;
-                fsmContext.RequestedState = EnemyFsmStateId.Idle;
+                if (aiContext.IsSeePlayer)
+                {
+                    fsmContext.RequestedState = EnemyFsmStateId.Combat;
+                }
+                else if (fsmContext.PatrolPoint == null)
+                {
+                    fsmContext.PatrolPoint = aiContext.NextPatrolPoint;
+                }
+                else if (!aiContext.IsAgentArrivedToDestination())
+                {
+                    MoveTo(fsmContext.PatrolPoint.Value, aiContext);
+                }
+                else
+                {
+                    fsmContext.PatrolPoint = null;
+                    fsmContext.RequestedState = EnemyFsmStateId.Idle;
+                }
             }
 
-            return new EnemyFsmState(null, Update, null);
+            return new EnemyFsmState(Enter, Update, null);
         }
-        
+
         public static EnemyFsmState GetCombatState()
         {
             return new EnemyFsmState(null, null, null);
         }
-        
+
         public static EnemyFsmState GetAlertState()
         {
             return new EnemyFsmState(null, null, null);
         }
-        
+
         public static EnemyFsmState GetRepositionState()
         {
             return new EnemyFsmState(null, null, null);
+        }
+
+        private static void MoveTo(Vector3 movePosition, EnemyAiContext aiContext)
+        {
+            aiContext.MoveTo(movePosition);
         }
     }
 }

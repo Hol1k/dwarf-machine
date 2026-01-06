@@ -1,14 +1,30 @@
 ﻿using UnityEngine;
-using Zenject;
 
 namespace Enemy
 {
     public class EnemyAiContext
     {
+        public EnemyAiContext(
+            Transform enemyTransform,
+            EnemyPatrolComponent patrolComponent,
+            EnemyMoveController moveController)
+        {
+            _enemyTransform = enemyTransform;
+            _patrolComponent = patrolComponent;
+            _moveController = moveController;
+        }
+
+        public Vector3 EnemyPosition => _enemyTransform.position;
+        private readonly Transform _enemyTransform;
+        
         public bool IsSeePlayer { get; private set; }
         public Vector3? LastSeePosition { get; set; }
-        public Vector3 NextPatrolPoint => patrolComponent.GetNextPoint();
-
-        [Inject] private EnemyPatrolComponent patrolComponent;
+        
+        public Vector3 NextPatrolPoint => _patrolComponent.GetNextPoint();
+        private readonly EnemyPatrolComponent _patrolComponent;
+        
+        public void MoveTo(Vector3 position) => _moveController.MoveTo(position);
+        public bool IsAgentArrivedToDestination() => _moveController.IsAgentArrivedToDestination();
+        private readonly EnemyMoveController _moveController;
     }
 }
