@@ -43,10 +43,9 @@ namespace Enemy
             if (_agent.pathStatus == NavMeshPathStatus.PathInvalid)
                 return true;
 
-            var agentPos = _agent.nextPosition;
-            var agentY = _agent.nextPosition.y - _agent.height / 2;
-            agentPos.y = agentY;
-            var distanceFromEndOfPath = Vector3.Distance(agentPos, _agent.pathEndPosition);
+            var agentPos = new Vector2(_agent.nextPosition.x, _agent.nextPosition.z);
+            var endPos = new Vector2(_agent.pathEndPosition.x, _agent.pathEndPosition.z);
+            var distanceFromEndOfPath = Vector2.Distance(agentPos, endPos);
             
             return distanceFromEndOfPath < 0.05f;
         }
