@@ -8,13 +8,13 @@ namespace Enemy
         {
             void Enter(EnemyAiContext aiContext, EnemyFsmContext fsmContext)
             {
-                aiContext.LastSeePosition = null;
+                aiContext.ForgetLastSeePosition();
                 fsmContext.IdleTimer = Random.Range(1f, 3f);
             }
             
             void Update(EnemyAiContext aiContext, EnemyFsmContext fsmContext)
             {
-                if (aiContext.IsSeePlayer)
+                if (aiContext.IsSeeTarget)
                 {
                     fsmContext.RequestedState = EnemyFsmStateId.Combat;
                 }
@@ -40,12 +40,12 @@ namespace Enemy
         {
             void Enter(EnemyAiContext aiContext, EnemyFsmContext fsmContext)
             {
-                aiContext.LastSeePosition = null;
+                aiContext.ForgetLastSeePosition();
             }
             
             void Update(EnemyAiContext aiContext, EnemyFsmContext fsmContext)
             {
-                if (aiContext.IsSeePlayer)
+                if (aiContext.IsSeeTarget)
                 {
                     fsmContext.RequestedState = EnemyFsmStateId.Combat;
                 }

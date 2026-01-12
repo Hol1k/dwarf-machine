@@ -19,6 +19,8 @@ namespace DiInstallers.Enemies
             
             Container.Bind<EnemyPatrolComponent>().FromComponentInHierarchy().AsSingle();
             Container.Bind<Transform>().FromComponentOnRoot().AsSingle();
+            
+            Container.Bind<EnemyLookComponent>().FromComponentInHierarchy().AsSingle();
         }
     }
 }
