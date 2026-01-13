@@ -19,6 +19,23 @@ namespace Enemy
         
         public void ForgetLastSeePosition() => LastSeePosition = null;
 
+        public CharacterStatsComponent GetClosestTarget()
+        {
+            CharacterStatsComponent closestTarget = null;
+            var closestDistance = float.MaxValue;
+            
+            foreach (var target in _visibleObjects)
+            {
+                if (!closestTarget || Vector3.Distance(transform.position, target.transform.position) < closestDistance)
+                {
+                    closestDistance = Vector3.Distance(transform.position, target.transform.position);
+                    closestTarget = target;
+                }
+            }
+            
+            return closestTarget;
+        }
+
         private void DetectTarget()
         {
             IsSeeTarget = false;

@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Character;
 using Level;
 using Unity.AI.Navigation;
 using UnityEngine;
@@ -34,6 +35,13 @@ namespace Enemy
         }
 
         public void StopMove() => _agent.isStopped = true;
+
+        public void LookAt(Vector3 target)
+        {
+            target.y = transform.position.y;
+            
+            transform.LookAt(target);
+        }
 
         public bool IsAgentArrivedToDestination()
         {

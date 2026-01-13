@@ -76,7 +76,7 @@ namespace Enemy
         {
             void Update(EnemyAiContext aiContext, EnemyFsmContext fsmContext)
             {
-                if (!aiContext.IsSeeTarget)
+                if (!aiContext.IsSeeTarget && !aiContext.IsTargetEliminated)
                 {
                     fsmContext.RequestedState = EnemyFsmStateId.Alert;
                 }
@@ -87,7 +87,8 @@ namespace Enemy
                 }
                 else if (!aiContext.IsTargetEliminated)
                 {
-                    aiContext.AttackTarget();
+                    aiContext.LookAt(aiContext.ClosestTarget.transform.position);
+                    aiContext.AttackTarget(aiContext.ClosestTarget);
                 }
                 else
                 {

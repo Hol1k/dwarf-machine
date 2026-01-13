@@ -276,7 +276,7 @@ MonoBehaviour:
   groundDistance: 0.3
   groundMask:
     serializedVersion: 2
-    m_Bits: 759
+    m_Bits: 64
   gravity: -9.81
 --- !u!143 &6792775
 CharacterController:
@@ -632,9 +632,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 686636b4412240f6ba49ecdd116ee9a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetLayerMask:
-    serializedVersion: 2
-    m_Bits: 256
   obstaclesLayerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -3280,6 +3277,7 @@ GameObject:
   - component: {fileID: 1920419748}
   - component: {fileID: 1920419747}
   - component: {fileID: 1920419749}
+  - component: {fileID: 1920419750}
   m_Layer: 7
   m_Name: SoldierEnemy
   m_TagString: Untagged
@@ -3521,6 +3519,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   patrolPoints: {fileID: 520400946}
+--- !u!114 &1920419750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920419736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db21262e3d364123a8f52875f8097693, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitObjectsMask:
+    serializedVersion: 2
+    m_Bits: 256
+  scutterValue: 1
+  raycastWidth: 0.13
+  maxShootDistance: 2000
+  damage: 1
+  attackSpeed: 30
 --- !u!1 &1943605790
 GameObject:
   m_ObjectHideFlags: 0
