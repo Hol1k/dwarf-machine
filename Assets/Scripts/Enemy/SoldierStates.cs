@@ -64,7 +64,12 @@ namespace Enemy
                 }
             }
 
-            return new EnemyFsmState(Enter, Update, null);
+            void Exit(EnemyAiContext aiContext, EnemyFsmContext fsmContext)
+            {
+                aiContext.StopMove();
+            }
+
+            return new EnemyFsmState(Enter, Update, Exit);
         }
 
         public static EnemyFsmState GetCombatState()

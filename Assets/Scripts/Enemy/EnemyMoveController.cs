@@ -27,7 +27,13 @@ namespace Enemy
             StartCoroutine(EnableAgent());
         }
 
-        public void MoveTo(Vector3 position) => _agent.SetDestination(position);
+        public void MoveTo(Vector3 position)
+        {
+            _agent.isStopped = false;
+            _agent.SetDestination(position);
+        }
+
+        public void StopMove() => _agent.isStopped = true;
 
         public bool IsAgentArrivedToDestination()
         {
