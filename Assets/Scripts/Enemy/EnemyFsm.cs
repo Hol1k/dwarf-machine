@@ -27,6 +27,7 @@ namespace Enemy
             _aiContext = aiContext;
             
             _currentState = EnemyFsmStateId.Idle;
+            states[_currentState].Enter(_aiContext, _fsmContext);
         }
 
         public void Update()
