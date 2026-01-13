@@ -31,5 +31,14 @@ namespace Enemy
         public void StopMove() => _moveController.StopMove();
         public bool IsAgentArrivedToDestination() => _moveController.IsAgentArrivedToDestination();
         private readonly EnemyMoveController _moveController;
+
+        public bool IsShelterPossible => false;
+        public bool IsOnShelter => false;
+        public bool CanAttackTarget => false;
+        public bool IsTargetEliminated => true;
+        public void AttackTarget()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
