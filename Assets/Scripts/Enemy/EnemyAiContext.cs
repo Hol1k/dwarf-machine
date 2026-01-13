@@ -29,7 +29,7 @@ namespace Enemy
         
         public void MoveTo(Vector3 position) => _moveController.MoveTo(position);
         public void StopMove() => _moveController.StopMove();
-        public bool IsAgentArrivedToDestination() => _moveController.IsAgentArrivedToDestination();
+        public bool IsAgentArrivedToDestination => _moveController.IsAgentArrivedToDestination();
         private readonly EnemyMoveController _moveController;
 
         public bool IsShelterPossible => false;

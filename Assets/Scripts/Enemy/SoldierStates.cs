@@ -53,7 +53,7 @@ namespace Enemy
                 {
                     fsmContext.PatrolPoint = aiContext.NextPatrolPoint;
                 }
-                else if (!aiContext.IsAgentArrivedToDestination())
+                else if (!aiContext.IsAgentArrivedToDestination)
                 {
                     MoveTo(fsmContext.PatrolPoint.Value, aiContext);
                 }
