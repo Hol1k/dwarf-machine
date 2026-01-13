@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Character;
 using UnityEngine;
 
 namespace Enemy
@@ -8,8 +9,7 @@ namespace Enemy
         public bool IsSeeTarget { get; private set; }
         public Vector3? LastSeePosition { get; private set; }
         
-        private readonly List<GameObject> _visibleObjects = new();
-        [SerializeField] private LayerMask targetLayerMask;
+        private readonly List<CharacterStatsComponent> _visibleObjects = new();
         [SerializeField] private LayerMask obstaclesLayerMask;
 
         private void Update()
@@ -41,17 +41,20 @@ namespace Enemy
 
         private void OnTriggerEnter(Collider other)
         {
-            if (1 << other.gameObject.layer == targetLayerMask.value)
+            if (other.TryGetComponent(out CharacterStatsComponent characterStats) && !characterStats.IsDied)
             {
-                _visibleObjects.Add(other.gameObject);
+                _visibleObjects.Add(characterStats);
+                characterStats.OnDeath += () => _visibleObjects.Remove(characterStats);
             }
         }
 
         private void OnTriggerExit(Collider other)
         {
-            if (_visibleObjects.Contains(other.gameObject))
+            if (!other.TryGetComponent(out CharacterStatsComponent characterStats)) return;
+            
+            if (_visibleObjects.Contains(characterStats))
             {
-                _visibleObjects.Remove(other.gameObject);
+                _visibleObjects.Remove(characterStats);
             }
         }
     }

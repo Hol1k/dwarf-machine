@@ -23,13 +23,17 @@ namespace Character
         }
 
         private float _health;
+
         public float Health
         {
             get => _health;
             set => _health = Mathf.Clamp(value, 0, _maxHealth);
         }
 
+        public bool IsDied { get; private set; } = false;
+
         public event Action<float> OnTakeDamage;
+        public event Action OnDeath;
 
         private void Awake()
         {
@@ -61,6 +65,15 @@ namespace Character
         {
             Health -= damage;
             OnTakeDamage?.Invoke(damage);
+            
+            if (Health <= 0)
+                Death();
+        }
+
+        private void Death()
+        {
+            IsDied = true;
+            OnDeath?.Invoke();
         }
     }
 }
