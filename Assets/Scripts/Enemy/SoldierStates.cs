@@ -53,14 +53,18 @@ namespace Enemy
                 {
                     fsmContext.PatrolPoint = aiContext.NextPatrolPoint;
                 }
-                else if (!aiContext.IsAgentArrivedToDestination)
-                {
-                    MoveTo(fsmContext.PatrolPoint.Value, aiContext);
-                }
                 else
                 {
-                    fsmContext.PatrolPoint = null;
-                    fsmContext.RequestedState = EnemyFsmStateId.Idle;
+                    aiContext.MoveTo(fsmContext.PatrolPoint.Value);
+                    if (!aiContext.IsAgentArrivedToDestination)
+                    {
+                        aiContext.MoveTo(fsmContext.PatrolPoint.Value);
+                    }
+                    else
+                    {
+                        fsmContext.PatrolPoint = null;
+                        fsmContext.RequestedState = EnemyFsmStateId.Idle;
+                    }
                 }
             }
 
@@ -101,17 +105,50 @@ namespace Enemy
 
         public static EnemyFsmState GetAlertState()
         {
-            return new EnemyFsmState(null, null, null);
+            void Enter(EnemyAiContext aiContext, EnemyFsmContext fsmContext)
+            {
+                fsmContext.LookingTimer = 5f;
+            }
+            
+            void Update(EnemyAiContext aiContext, EnemyFsmContext fsmContext)
+            {
+                if (aiContext.IsSeeTarget)
+                {
+                    fsmContext.RequestedState = EnemyFsmStateId.Combat;
+                }
+                else if (aiContext.LastSeePosition == null)
+                {
+                    fsmContext.RequestedState = EnemyFsmStateId.Patrol;
+                }
+                else
+                {
+                    aiContext.MoveTo(aiContext.LastSeePosition.Value);
+                    if (!aiContext.IsAgentArrivedToDestination)
+                    {
+                        aiContext.MoveTo(aiContext.LastSeePosition.Value);
+                    }
+                    else if (fsmContext.LookingTimer >= 0f)
+                    {
+                        fsmContext.LookingTimer -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        fsmContext.RequestedState = EnemyFsmStateId.Patrol;
+                    }
+                }
+            }
+            
+            void Exit(EnemyAiContext aiContext, EnemyFsmContext fsmContext)
+            {
+                aiContext.StopMove();
+            }
+            
+            return new EnemyFsmState(Enter, Update, Exit);
         }
 
         public static EnemyFsmState GetRepositionState()
         {
             return new EnemyFsmState(null, null, null);
-        }
-
-        private static void MoveTo(Vector3 movePosition, EnemyAiContext aiContext)
-        {
-            aiContext.MoveTo(movePosition);
         }
     }
 }

@@ -50,10 +50,7 @@ namespace Enemy
 
             if (_agent.pathPending)
                 return false;
-
-            if (!_agent.hasPath)
-                return false;
-
+            
             if (_agent.pathStatus == NavMeshPathStatus.PathInvalid)
                 return true;
 

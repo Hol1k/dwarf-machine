@@ -9,5 +9,7 @@ namespace Enemy
         public float IdleTimer;
 
         public Vector3? PatrolPoint = null;
+        
+        public float LookingTimer;
     }
 }
