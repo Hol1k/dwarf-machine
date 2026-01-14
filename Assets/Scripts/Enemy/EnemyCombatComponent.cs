@@ -35,7 +35,7 @@ namespace Enemy
         [SerializeField] [Min(0f)] private float damage;
         [SerializeField] [Min(0.0000001f)] [Tooltip("Hits per minute")] private float attackSpeed;
 
-        private float _cooldownAfterAttack;
+        private float _lastAttackTime;
 
         [Inject]
         private void Init(EnemyAiContext aiContext)
@@ -45,11 +45,8 @@ namespace Enemy
 
         public void AttackTarget(CharacterStatsComponent target)
         {
-            if (_cooldownAfterAttack > 0f)
-            {
-                _cooldownAfterAttack -= Time.deltaTime;
+            if (Time.time - _lastAttackTime < 60f / attackSpeed)
                 return;
-            }
 
             //Calculating aim
             var normalizedShootDirection = (target.transform.position - transform.position).normalized;
@@ -77,7 +74,7 @@ namespace Enemy
                 }
             }
             
-            _cooldownAfterAttack = 60f / attackSpeed;
+            _lastAttackTime = Time.time;
         }
     }
 }
