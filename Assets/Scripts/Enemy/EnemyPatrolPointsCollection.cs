@@ -4,7 +4,7 @@ namespace Enemy
 {
     public class EnemyPatrolPointsCollection : MonoBehaviour
     {
-        public Transform[] patrolPoints;
+        [SerializeField] private Transform[] patrolPoints;
         public int Length => patrolPoints.Length;
         public Vector3 this[int index] => patrolPoints[index].position;
 

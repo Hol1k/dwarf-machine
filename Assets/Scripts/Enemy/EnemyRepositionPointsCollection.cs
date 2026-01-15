@@ -7,7 +7,8 @@ namespace Enemy
 {
     public class EnemyRepositionPointsCollection : MonoBehaviour
     {
-        public Transform[] repositionPoints;
+        [SerializeField] private Transform[] repositionPoints;
+        public IReadOnlyList<Vector3> Points => repositionPoints.Select(p => p.position).ToList();
 
         [SerializeField] private LayerMask obstaclesLayerMask;
 

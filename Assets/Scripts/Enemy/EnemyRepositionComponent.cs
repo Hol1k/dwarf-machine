@@ -9,8 +9,8 @@ namespace Enemy
 
         public bool IsOnShelter(EnemyAiContext enemyAiContext)
         {
-            return repositionPoints.repositionPoints
-                .Any(p => Vector3.Distance(p.position, enemyAiContext.EnemyPosition) <= 0.5f);
+            return repositionPoints.Points
+                .Any(p => Vector3.Distance(p, enemyAiContext.EnemyPosition) <= 0.5f);
         }
 
         public bool IsShelterPossible(EnemyAiContext aiContext) => GetFarthestValidShelter(aiContext) != null;
