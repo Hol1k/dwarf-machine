@@ -13,9 +13,9 @@ namespace Enemy
                 .Any(p => Vector3.Distance(p.position, enemyAiContext.EnemyPosition) <= 0.5f);
         }
 
-        public bool IsShelterPossible(EnemyAiContext aiContext) => GetFarestValidShelter(aiContext) != null;
+        public bool IsShelterPossible(EnemyAiContext aiContext) => GetFarthestValidShelter(aiContext) != null;
 
-        public Vector3? GetFarestValidShelter(EnemyAiContext aiContext)
+        public Vector3? GetFarthestValidShelter(EnemyAiContext aiContext)
         {
             var validPoints = repositionPoints.GetValidPoints(aiContext);
             

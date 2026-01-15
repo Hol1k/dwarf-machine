@@ -47,7 +47,7 @@ namespace Enemy
 
         public bool IsOnShelter => _repositionComponent.IsOnShelter(this);
         public bool IsShelterPossible => _repositionComponent.IsShelterPossible(this);
-        public Vector3? RandomValidShelterPoint => _repositionComponent.GetFarestValidShelter(this);
+        public Vector3? FarthestValidShelterPoint => _repositionComponent.GetFarthestValidShelter(this);
         private readonly EnemyRepositionComponent _repositionComponent;
     }
 }

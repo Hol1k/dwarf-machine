@@ -156,7 +156,7 @@ namespace Enemy
                 }
                 else if (fsmContext.RepositionPoint == null)
                 {
-                    fsmContext.RepositionPoint = aiContext.RandomValidShelterPoint;
+                    fsmContext.RepositionPoint = aiContext.FarthestValidShelterPoint;
                 }
                 else
                 {
