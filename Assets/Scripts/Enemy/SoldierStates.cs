@@ -148,7 +148,37 @@ namespace Enemy
 
         public static EnemyFsmState GetRepositionState()
         {
-            return new EnemyFsmState(null, null, null);
+            void Update(EnemyAiContext aiContext, EnemyFsmContext fsmContext)
+            {
+                if (aiContext.IsTargetEliminated)
+                {
+                    fsmContext.RequestedState = EnemyFsmStateId.Patrol;
+                }
+                else if (fsmContext.RepositionPoint == null)
+                {
+                    fsmContext.RepositionPoint = aiContext.RandomValidShelterPoint;
+                }
+                else
+                {
+                    aiContext.MoveTo(fsmContext.RepositionPoint.Value);
+                    if (!aiContext.IsAgentArrivedToDestination)
+                    {
+                        aiContext.MoveTo(fsmContext.RepositionPoint.Value);
+                    }
+                    else
+                    {
+                        fsmContext.RequestedState = EnemyFsmStateId.Combat;
+                    }
+                }
+            }
+            
+            void Exit(EnemyAiContext aiContext, EnemyFsmContext fsmContext)
+            {
+                fsmContext.RepositionPoint = null;
+                aiContext.StopMove();
+            }
+            
+            return new EnemyFsmState(null, Update, Exit);
         }
     }
 }

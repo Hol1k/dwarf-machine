@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Character;
 using UnityEngine;
+using Zenject;
 
 namespace Enemy
 {
@@ -9,9 +10,18 @@ namespace Enemy
         public bool IsSeeTarget { get; private set; }
         public Vector3? LastSeePosition { get; private set; }
         
+        public float LookRange => _lookSphereCollider.radius;
+        private SphereCollider _lookSphereCollider;
+
         private readonly List<CharacterStatsComponent> _visibleObjects = new();
         [SerializeField] private LayerMask obstaclesLayerMask;
 
+        [Inject]
+        private void Init(SphereCollider lookSphereCollider)
+        {
+            _lookSphereCollider = lookSphereCollider;
+        }
+        
         private void Update()
         {
             DetectTarget();
@@ -44,7 +54,7 @@ namespace Enemy
             {
                 foreach (var obj in _visibleObjects)
                 {
-                    var obstacles = Physics.OverlapCapsule(transform.position,
+                    var obstacles = Physics.OverlapCapsule(transform.position - transform.localPosition,
                         obj.transform.position, 0.05f, obstaclesLayerMask);
                     
                     if (obstacles.Length == 0)

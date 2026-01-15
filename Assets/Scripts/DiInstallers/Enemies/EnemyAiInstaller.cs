@@ -21,8 +21,11 @@ namespace DiInstallers.Enemies
             Container.Bind<Transform>().FromComponentOnRoot().AsSingle();
             
             Container.Bind<EnemyLookComponent>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<SphereCollider>().FromComponentInChildren().AsSingle();
             
             Container.Bind<EnemyCombatComponent>().FromComponentInHierarchy().AsSingle();
+            
+            Container.Bind<EnemyRepositionComponent>().FromComponentInHierarchy().AsSingle();
         }
     }
 }

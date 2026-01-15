@@ -10,13 +10,15 @@ namespace Enemy
             EnemyPatrolComponent patrolComponent,
             EnemyMoveController moveController,
             EnemyLookComponent lookComponent,
-            EnemyCombatComponent combatComponent)
+            EnemyCombatComponent combatComponent,
+            EnemyRepositionComponent repositionComponent)
         {
             _enemyTransform = enemyTransform;
             _patrolComponent = patrolComponent;
             _moveController = moveController;
             _lookComponent = lookComponent;
             _combatComponent = combatComponent;
+            _repositionComponent = repositionComponent;
         }
 
         public Vector3 EnemyPosition => _enemyTransform.position;
@@ -24,6 +26,7 @@ namespace Enemy
         
         public bool IsSeeTarget => _lookComponent.IsSeeTarget;
         public Vector3? LastSeePosition => _lookComponent.LastSeePosition;
+        public float LookRange => _lookComponent.LookRange;
         public void ForgetLastSeePosition() => _lookComponent.ForgetLastSeePosition();
         public CharacterStatsComponent ClosestTarget => _lookComponent.GetClosestTarget();
         private readonly EnemyLookComponent _lookComponent;
@@ -37,11 +40,14 @@ namespace Enemy
         public bool IsAgentArrivedToDestination => _moveController.IsAgentArrivedToDestination();
         private readonly EnemyMoveController _moveController;
 
-        public bool IsShelterPossible => false;
-        public bool IsOnShelter => false;
         public bool CanAttackTarget => _combatComponent.CanAttackTarget;
         public bool IsTargetEliminated => _combatComponent.IsTargetEliminated;
-        private readonly EnemyCombatComponent _combatComponent;
         public void AttackTarget(CharacterStatsComponent target) => _combatComponent.AttackTarget(target);
+        private readonly EnemyCombatComponent _combatComponent;
+
+        public bool IsOnShelter => _repositionComponent.IsOnShelter(this);
+        public bool IsShelterPossible => _repositionComponent.IsShelterPossible(this);
+        public Vector3? RandomValidShelterPoint => _repositionComponent.GetFarestValidShelter(this);
+        private readonly EnemyRepositionComponent _repositionComponent;
     }
 }

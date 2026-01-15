@@ -11,5 +11,7 @@ namespace Enemy
         public Vector3? PatrolPoint = null;
         
         public float LookingTimer;
+        
+        public Vector3? RepositionPoint;
     }
 }
