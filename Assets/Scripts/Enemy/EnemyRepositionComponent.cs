@@ -22,9 +22,20 @@ namespace Enemy
             if (validPoints.Count == 0)
                 return null;
 
-            return validPoints
-                .OrderByDescending(p => Vector3.Distance(p, aiContext.ClosestTarget.transform.position))
-                .First();
+            Vector3? farthestPoint = null;
+            var farthestDistance = float.MinValue;
+
+            foreach (var validPoint in validPoints)
+            {
+                var currDistance = Vector3.Distance(validPoint, aiContext.ClosestTarget.transform.position);
+                if (currDistance > farthestDistance)
+                {
+                    farthestPoint = validPoint;
+                    farthestDistance = currDistance;
+                }
+            }
+
+            return farthestPoint;
         }
     }
 }
