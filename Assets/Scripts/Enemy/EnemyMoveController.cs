@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using Character;
 using Level;
 using Unity.AI.Navigation;
 using UnityEngine;
@@ -13,6 +12,14 @@ namespace Enemy
     {
         private NavMeshAgent _agent;
         private NavMeshSurface _surface;
+        
+        private MoveControllerAction? _lastActionRequested = null;
+        private enum MoveControllerAction
+        {
+            MoveTo,
+            StopMove
+        }
+        private Vector3 _requestedPos;
         
         [Inject]
         private void Init(NavMeshAgent agent, NavMeshSurfaceController surfaceController)
@@ -30,17 +37,54 @@ namespace Enemy
 
         public void MoveTo(Vector3 position)
         {
+            if (!_agent.enabled)
+            {
+                _lastActionRequested = MoveControllerAction.MoveTo;
+                _requestedPos = position;
+                return;
+            }
+            
             _agent.isStopped = false;
             _agent.SetDestination(position);
         }
 
-        public void StopMove() => _agent.isStopped = true;
+        public void StopMove()
+        {
+            if (!_agent.enabled)
+            {
+                _lastActionRequested = MoveControllerAction.StopMove;
+                return;
+            }
+
+            _agent.isStopped = true;
+        }
 
         public void LookAt(Vector3 target)
         {
             target.y = transform.position.y;
             
             transform.LookAt(target);
+        }
+
+        private void Update()
+        {
+            RunLastRequestedAction();
+        }
+
+        private void RunLastRequestedAction()
+        {
+            if (_lastActionRequested == null) return;
+            
+            switch (_lastActionRequested.Value)
+            {
+                case MoveControllerAction.MoveTo:
+                    MoveTo(_requestedPos);
+                    break;
+                case MoveControllerAction.StopMove:
+                    StopMove();
+                    break;
+            }
+            _lastActionRequested = null;
         }
 
         public bool IsAgentArrivedToDestination()
