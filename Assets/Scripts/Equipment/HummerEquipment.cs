@@ -34,7 +34,7 @@ namespace Equipment
                 {
                     damageable.TakeDamage(damage);
 
-                    if (hitObject.TryGetComponent(out CharacterControllerForceDamageReactingComponent forceComponent))
+                    if (hitObject.TryGetComponent(out IForceDamageReactingComponent forceComponent))
                     {
                         var attackVector = playerRotation * Vector3.forward * knockbackForce;
                         attackVector.y = knockbackHeight;

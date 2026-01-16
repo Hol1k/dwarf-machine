@@ -1,10 +1,9 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Entities
 {
     [RequireComponent(typeof(CharacterController))]
-    public class CharacterControllerForceDamageReactingComponent : MonoBehaviour
+    public class CharacterControllerForceDamageReactingComponent : MonoBehaviour, IForceDamageReactingComponent
     {
         private CharacterController _controller;
         private bool _isGrounded;
