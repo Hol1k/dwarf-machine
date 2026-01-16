@@ -1,4 +1,5 @@
 ﻿using Enemy;
+using Entities;
 using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
@@ -26,6 +27,9 @@ namespace DiInstallers.Enemies
             Container.Bind<EnemyCombatComponent>().FromComponentInHierarchy().AsSingle();
             
             Container.Bind<EnemyRepositionComponent>().FromComponentInHierarchy().AsSingle();
+            
+            Container.Bind<NavMeshAgentForceDamageReactingComponent>().FromComponentOnRoot().AsSingle();
+            Container.Bind<Rigidbody>().FromComponentOnRoot().AsSingle();
         }
     }
 }
