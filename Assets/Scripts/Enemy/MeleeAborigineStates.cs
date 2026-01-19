@@ -38,7 +38,42 @@ namespace Enemy
 
         public static EnemyFsmState GetPatrolState()
         {
-            return new EnemyFsmState(null, null, null);
+            void Enter(EnemyAiContext aiContext, EnemyFsmContext fsmContext)
+            {
+                aiContext.ForgetLastSeePosition();
+            }
+            
+            void Update(EnemyAiContext aiContext, EnemyFsmContext fsmContext)
+            {
+                if (aiContext.IsSeeTarget)
+                {
+                    fsmContext.RequestedState = EnemyFsmStateId.Combat;
+                }
+                else if (fsmContext.PatrolPoint == null)
+                {
+                    fsmContext.PatrolPoint = aiContext.NextPatrolPoint;
+                }
+                else
+                {
+                    aiContext.MoveTo(fsmContext.PatrolPoint.Value);
+                    if (!aiContext.IsAgentArrivedToDestination)
+                    {
+                        aiContext.MoveTo(fsmContext.PatrolPoint.Value);
+                    }
+                    else
+                    {
+                        fsmContext.PatrolPoint = null;
+                        fsmContext.RequestedState = EnemyFsmStateId.Idle;
+                    }
+                }
+            }
+
+            void Exit(EnemyAiContext aiContext, EnemyFsmContext fsmContext)
+            {
+                aiContext.StopMove();
+            }
+
+            return new EnemyFsmState(Enter, Update, Exit);
         }
 
         public static EnemyFsmState GetCombatState()
