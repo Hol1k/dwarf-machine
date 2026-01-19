@@ -2,6 +2,7 @@
 {
     public enum EnemyTypeId
     {
-        Soldier
+        Soldier,
+        MeleeAborigine
     }
 }

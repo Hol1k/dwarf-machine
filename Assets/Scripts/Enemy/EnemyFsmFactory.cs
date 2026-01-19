@@ -11,6 +11,9 @@ namespace Enemy
             {
                 case EnemyTypeId.Soldier:
                     return CreateSoldierFsm(aiContext);
+                
+                case EnemyTypeId.MeleeAborigine:
+                    return CreateMeleeAborigineFsm(aiContext);
             }
             
             throw new ArgumentOutOfRangeException(nameof(enemyType));
@@ -24,6 +27,17 @@ namespace Enemy
                 SoldierStates.GetCombatState(),
                 SoldierStates.GetAlertState(),
                 SoldierStates.GetRepositionState(),
+                aiContext);
+        }
+
+        private static EnemyFsm CreateMeleeAborigineFsm(EnemyAiContext aiContext)
+        {
+            return new EnemyFsm(
+                MeleeAborigineStates.GetIdleState(),
+                MeleeAborigineStates.GetPatrolState(),
+                MeleeAborigineStates.GetCombatState(),
+                MeleeAborigineStates.GetAlertState(),
+                MeleeAborigineStates.GetRepositionState(),
                 aiContext);
         }
     }
