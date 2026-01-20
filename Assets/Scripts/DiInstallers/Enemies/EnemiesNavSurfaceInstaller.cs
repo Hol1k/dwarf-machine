@@ -9,7 +9,6 @@ namespace DiInstallers.Enemies
         public override void InstallBindings()
         {
             Container.Bind<NavMeshSurfaceController>().FromComponentInHierarchy().AsSingle();
-            Container.Bind<EnemyMoveController>().FromComponentsInHierarchy().AsTransient();
         }
     }
 }
