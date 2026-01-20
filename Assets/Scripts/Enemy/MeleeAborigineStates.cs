@@ -78,7 +78,28 @@ namespace Enemy
 
         public static EnemyFsmState GetCombatState()
         {
-            return new EnemyFsmState(null, null, null);
+            void Update(EnemyAiContext aiContext, EnemyFsmContext fsmContext)
+            {
+                if (!aiContext.IsSeeTarget && !aiContext.IsTargetEliminated)
+                {
+                    fsmContext.RequestedState = EnemyFsmStateId.Alert;
+                }
+                else if (!aiContext.CanAttackTarget)
+                {
+                    fsmContext.RequestedState = EnemyFsmStateId.Reposition;
+                }
+                else if (!aiContext.IsTargetEliminated)
+                {
+                    aiContext.LookAt(aiContext.ClosestTarget.transform.position);
+                    aiContext.AttackTarget(aiContext.ClosestTarget);
+                }
+                else
+                {
+                    fsmContext.RequestedState = EnemyFsmStateId.Patrol;
+                }
+            }
+            
+            return new EnemyFsmState(null, Update, null);
         }
 
         public static EnemyFsmState GetAlertState()
