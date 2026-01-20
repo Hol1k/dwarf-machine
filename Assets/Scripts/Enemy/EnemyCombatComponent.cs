@@ -8,7 +8,7 @@ namespace Enemy
     {
         protected EnemyAiContext AiContext;
 
-        public virtual bool CanAttackTarget => false;
+        public abstract bool CanAttackTarget { get; }
 
         public bool IsTargetEliminated
         {
