@@ -1,11 +1,11 @@
 ﻿using Character;
 using UnityEngine;
 
-namespace Enemy
+namespace Enemy.Soldier
 {
     public class SoldierCombatComponent : EnemyCombatComponent
     {
-        public override bool CanAttackTarget => AiContext.IsSeeTarget;
+        public override bool CanAttackTarget => LookAgent.IsSeeTarget;
         
         [SerializeField] private LayerMask hitObjectsMask;
 

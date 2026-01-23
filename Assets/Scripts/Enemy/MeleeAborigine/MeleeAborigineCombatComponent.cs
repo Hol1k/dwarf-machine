@@ -7,8 +7,8 @@ namespace Enemy
     public class MeleeAborigineCombatComponent : EnemyCombatComponent
     {
         public override bool CanAttackTarget =>
-            AiContext.IsSeeTarget &&
-            Vector3.Distance(transform.position + attackPositionOffset, AiContext.ClosestTarget.transform.position) <
+            LookAgent.IsSeeTarget &&
+            Vector3.Distance(transform.position + attackPositionOffset, LookAgent.ClosestTarget.transform.position) <
             attackRange;
         
         [SerializeField] private LayerMask hitObjectsMask;

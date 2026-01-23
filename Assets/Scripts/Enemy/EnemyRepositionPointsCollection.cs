@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
+using Enemy.AiContextInterfaces;
 using UnityEngine;
 
 namespace Enemy
@@ -21,13 +21,13 @@ namespace Enemy
                 }
         }
 
-        public IReadOnlyList<Vector3> GetValidPoints(EnemyAiContext aiContext)
+        public IReadOnlyList<Vector3> GetValidPoints(IAiLookAgent lookAgent)
         {
-            var target = aiContext.ClosestTarget.transform.position;
+            var target = lookAgent.ClosestTarget.transform.position;
 
             return repositionPoints
                 .Where(p =>
-                    Vector3.Distance(p.position, target) <= aiContext.LookRange &&
+                    Vector3.Distance(p.position, target) <= lookAgent.LookRange &&
                     Physics.OverlapCapsule(p.position, target, 0.05f, obstaclesLayerMask).Length == 0)
                 .ToList()
                 .ConvertAll(p => p.position);

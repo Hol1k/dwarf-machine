@@ -1,4 +1,5 @@
 ﻿using Character;
+using Enemy.AiContextInterfaces;
 using UnityEngine;
 using Zenject;
 
@@ -6,7 +7,7 @@ namespace Enemy
 {
     public abstract class EnemyCombatComponent : MonoBehaviour
     {
-        protected EnemyAiContext AiContext;
+        protected IAiLookAgent LookAgent;
 
         public abstract bool CanAttackTarget { get; }
 
@@ -25,9 +26,9 @@ namespace Enemy
         private bool _isTargetEliminated;
 
         [Inject]
-        protected void Init(EnemyAiContext aiContext)
+        protected void Init(IAiLookAgent lookAgent)
         {
-            AiContext = aiContext;
+            LookAgent = lookAgent;
         }
 
         public abstract void AttackTarget(CharacterStatsComponent target);

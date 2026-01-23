@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Player
+namespace Enemy
 {
     [CreateAssetMenu(fileName = "NewEnemyStatsConfig", menuName = "Configs/EnemyStatsConfig", order = 0)]
     public class EnemyStatsConfig : ScriptableObject

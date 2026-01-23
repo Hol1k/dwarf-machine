@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Threading.Tasks;
 using Entities;
 using JetBrains.Annotations;
-using Player;
 using UnityEngine;
 
 namespace Enemy

@@ -1,11 +1,12 @@
 ﻿using Character;
+using Enemy.AiContextInterfaces;
 using UnityEngine;
 
 namespace Enemy
 {
-    public class EnemyAiContext
+    public class HumanoidAiContext : IAiTransformAgent, IAiLookAgent, IAiPatrolAgent, IAiMoveAgent, IAiCombatAgent, IAiRepositionAgent
     {
-        public EnemyAiContext(
+        public HumanoidAiContext(
             Transform enemyTransform,
             EnemyPatrolComponent patrolComponent,
             EnemyMoveController moveController,
@@ -20,7 +21,7 @@ namespace Enemy
             _combatComponent = combatComponent;
             _repositionComponent = repositionComponent;
         }
-
+        
         public Vector3 EnemyPosition => _enemyTransform.position;
         private readonly Transform _enemyTransform;
         

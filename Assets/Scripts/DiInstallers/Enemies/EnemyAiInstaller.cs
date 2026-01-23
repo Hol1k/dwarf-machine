@@ -6,15 +6,18 @@ using Zenject;
 
 namespace DiInstallers.Enemies
 {
-    public class EnemyAiInstaller : MonoInstaller
+    public abstract class EnemyAiInstaller : MonoInstaller
     {
         public override void InstallBindings()
         {
-            Container.Bind<EnemyAiContext>().AsSingle();
-            
-            Container.Bind<EnemyAiComponent>().FromComponentInHierarchy().AsSingle();
-            Container.BindFactory<EnemyTypeId, EnemyAiContext, EnemyFsm, EnemyFsmFactory>().AsSingle();
-            
+            InstallCommon();
+            InstallAi();
+        }
+
+        protected abstract void InstallAi();
+
+        private void InstallCommon()
+        {
             Container.Bind<EnemyMoveController>().FromComponentInHierarchy().AsSingle();
             Container.Bind<NavMeshAgent>().FromComponentInHierarchy().AsSingle();
             

@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Enemy.AiContextInterfaces;
 using UnityEngine;
 
 namespace Enemy
@@ -7,17 +8,17 @@ namespace Enemy
     {
         [SerializeField] private EnemyRepositionPointsCollection repositionPoints;
 
-        public bool IsOnShelter(EnemyAiContext enemyAiContext)
+        public bool IsOnShelter(IAiTransformAgent transformAgent)
         {
             return repositionPoints.Points
-                .Any(p => Vector3.Distance(p, enemyAiContext.EnemyPosition) <= 0.5f);
+                .Any(p => Vector3.Distance(p, transformAgent.EnemyPosition) <= 0.5f);
         }
 
-        public bool IsShelterPossible(EnemyAiContext aiContext) => GetFarthestValidShelter(aiContext) != null;
+        public bool IsShelterPossible(IAiLookAgent lookAgent) => GetFarthestValidShelter(lookAgent) != null;
 
-        public Vector3? GetFarthestValidShelter(EnemyAiContext aiContext)
+        public Vector3? GetFarthestValidShelter(IAiLookAgent lookAgent)
         {
-            var validPoints = repositionPoints.GetValidPoints(aiContext);
+            var validPoints = repositionPoints.GetValidPoints(lookAgent);
             
             if (validPoints.Count == 0)
                 return null;
@@ -27,7 +28,7 @@ namespace Enemy
 
             foreach (var validPoint in validPoints)
             {
-                var currDistance = Vector3.Distance(validPoint, aiContext.ClosestTarget.transform.position);
+                var currDistance = Vector3.Distance(validPoint, lookAgent.ClosestTarget.transform.position);
                 if (currDistance > farthestDistance)
                 {
                     farthestPoint = validPoint;
