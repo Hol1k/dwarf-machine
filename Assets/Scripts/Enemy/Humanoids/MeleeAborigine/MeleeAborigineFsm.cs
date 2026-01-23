@@ -1,4 +1,4 @@
-﻿namespace Enemy.MeleeAborigine
+﻿namespace Enemy.Humanoids.MeleeAborigine
 {
     public class MeleeAborigineFsm : EnemyFsm
     {

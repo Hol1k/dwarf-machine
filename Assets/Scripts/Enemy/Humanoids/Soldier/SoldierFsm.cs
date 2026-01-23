@@ -1,4 +1,4 @@
-﻿namespace Enemy.Soldier
+﻿namespace Enemy.Humanoids.Soldier
 {
     public class SoldierFsm : EnemyFsm
     {

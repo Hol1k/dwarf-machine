@@ -1,6 +1,6 @@
 ﻿using Zenject;
 
-namespace Enemy.MeleeAborigine
+namespace Enemy.Humanoids.MeleeAborigine
 {
     public class MeleeAborigineFsmFactory : PlaceholderFactory<HumanoidAiContext, EnemyFsm>
     {

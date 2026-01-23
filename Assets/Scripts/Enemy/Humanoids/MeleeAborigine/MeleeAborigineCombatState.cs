@@ -1,6 +1,6 @@
 ﻿using Enemy.AiContextInterfaces;
 
-namespace Enemy.MeleeAborigine
+namespace Enemy.Humanoids.MeleeAborigine
 {
     public class MeleeAborigineCombatState : EnemyFsmState
     {

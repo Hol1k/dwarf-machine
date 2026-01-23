@@ -1,23 +1,22 @@
 ﻿using Enemy.AiContextInterfaces;
+using UnityEngine;
 
-namespace Enemy.MeleeAborigine
+namespace Enemy.Humanoids.Soldier
 {
-    public class MeleeAboriginePatrolState : EnemyFsmState
+    public class SoldierAlertState : EnemyFsmState
     {
         private readonly IAiLookAgent _lookAgent;
-        private readonly IAiPatrolAgent _patrolAgent;
         private readonly IAiMoveAgent _moveAgent;
 
-        public MeleeAboriginePatrolState(HumanoidAiContext aiContext)
+        public SoldierAlertState(HumanoidAiContext aiContext)
         {
             _lookAgent = aiContext;
-            _patrolAgent = aiContext;
             _moveAgent = aiContext;
         }
 
         public override void Enter(EnemyFsmContext fsmContext)
         {
-            _lookAgent.ForgetLastSeePosition();
+            fsmContext.LookingTimer = 5f;
         }
 
         public override void Update(EnemyFsmContext fsmContext)
@@ -26,21 +25,24 @@ namespace Enemy.MeleeAborigine
             {
                 fsmContext.RequestedState = EnemyFsmStateId.Combat;
             }
-            else if (fsmContext.PatrolPoint == null)
+            else if (_lookAgent.LastSeePosition == null)
             {
-                fsmContext.PatrolPoint = _patrolAgent.NextPatrolPoint;
+                fsmContext.RequestedState = EnemyFsmStateId.Patrol;
             }
             else
             {
-                _moveAgent.MoveTo(fsmContext.PatrolPoint.Value);
+                _moveAgent.MoveTo(_lookAgent.LastSeePosition.Value);
                 if (!_moveAgent.IsAgentArrivedToDestination)
                 {
-                    _moveAgent.MoveTo(fsmContext.PatrolPoint.Value);
+                    _moveAgent.MoveTo(_lookAgent.LastSeePosition.Value);
+                }
+                else if (fsmContext.LookingTimer >= 0f)
+                {
+                    fsmContext.LookingTimer -= Time.deltaTime;
                 }
                 else
                 {
-                    fsmContext.PatrolPoint = null;
-                    fsmContext.RequestedState = EnemyFsmStateId.Idle;
+                    fsmContext.RequestedState = EnemyFsmStateId.Patrol;
                 }
             }
         }

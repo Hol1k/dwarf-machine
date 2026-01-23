@@ -1,8 +1,7 @@
 ﻿using Character;
-using Entities;
 using UnityEngine;
 
-namespace Enemy
+namespace Enemy.Humanoids.MeleeAborigine
 {
     public class MeleeAborigineCombatComponent : EnemyCombatComponent
     {

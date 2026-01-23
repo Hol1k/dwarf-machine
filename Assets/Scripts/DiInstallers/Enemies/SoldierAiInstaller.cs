@@ -1,5 +1,6 @@
 ﻿using Enemy;
-using Enemy.Soldier;
+using Enemy.Humanoids;
+using Enemy.Humanoids.Soldier;
 
 namespace DiInstallers.Enemies
 {

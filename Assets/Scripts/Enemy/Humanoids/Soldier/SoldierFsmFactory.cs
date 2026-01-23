@@ -1,6 +1,6 @@
 ﻿using Zenject;
 
-namespace Enemy.Soldier
+namespace Enemy.Humanoids.Soldier
 {
     public class SoldierFsmFactory : PlaceholderFactory<HumanoidAiContext, EnemyFsm>
     {

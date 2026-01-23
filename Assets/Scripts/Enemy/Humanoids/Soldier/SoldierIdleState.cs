@@ -1,17 +1,17 @@
 ﻿using Enemy.AiContextInterfaces;
 using UnityEngine;
 
-namespace Enemy.MeleeAborigine
+namespace Enemy.Humanoids.Soldier
 {
-    public class MeleeAborigineIdleState : EnemyFsmState
+    public class SoldierIdleState : EnemyFsmState
     {
         private readonly IAiLookAgent _lookAgent;
 
-        public MeleeAborigineIdleState(IAiLookAgent lookAgent)
+        public SoldierIdleState(HumanoidAiContext aiContext)
         {
-            _lookAgent = lookAgent;
+            _lookAgent = aiContext;
         }
-        
+
         public override void Enter(EnemyFsmContext fsmContext)
         {
             _lookAgent.ForgetLastSeePosition();

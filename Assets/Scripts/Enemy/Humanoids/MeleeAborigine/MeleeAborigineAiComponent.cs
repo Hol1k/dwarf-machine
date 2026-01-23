@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 using Zenject;
 
-namespace Enemy.Soldier
+namespace Enemy.Humanoids.MeleeAborigine
 {
-    public class SoldierAiComponent : MonoBehaviour
+    public class MeleeAborigineAiComponent : MonoBehaviour
     {
         private EnemyFsm _fsm;
 
         [Inject]
-        private void Init(SoldierFsmFactory fsmFactory, HumanoidAiContext aiContext)
+        private void Init(MeleeAborigineFsmFactory fsmFactory, HumanoidAiContext aiContext)
         {
             _fsm = fsmFactory.Create(aiContext);
         }

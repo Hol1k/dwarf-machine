@@ -1,6 +1,6 @@
 ﻿using Enemy.AiContextInterfaces;
 
-namespace Enemy.Soldier
+namespace Enemy.Humanoids.Soldier
 {
     public class SoldierPatrolState : EnemyFsmState
     {

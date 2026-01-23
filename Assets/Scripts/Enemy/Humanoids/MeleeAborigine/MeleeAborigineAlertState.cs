@@ -1,12 +1,12 @@
-﻿namespace Enemy.MeleeAborigine
+﻿namespace Enemy.Humanoids.MeleeAborigine
 {
-    public class MeleeAborigineRepositionState : EnemyFsmState
+    public class MeleeAborigineAlertState : EnemyFsmState
     {
-        public MeleeAborigineRepositionState(HumanoidAiContext aiContext)
+        public MeleeAborigineAlertState(HumanoidAiContext aiContext)
         {
             
         }
-
+        
         public override void Enter(EnemyFsmContext fsmContext)
         {
             throw new System.NotImplementedException();

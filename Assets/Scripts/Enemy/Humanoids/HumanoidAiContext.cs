@@ -2,7 +2,7 @@
 using Enemy.AiContextInterfaces;
 using UnityEngine;
 
-namespace Enemy
+namespace Enemy.Humanoids
 {
     public class HumanoidAiContext : IAiTransformAgent, IAiLookAgent, IAiPatrolAgent, IAiMoveAgent, IAiCombatAgent, IAiRepositionAgent
     {
