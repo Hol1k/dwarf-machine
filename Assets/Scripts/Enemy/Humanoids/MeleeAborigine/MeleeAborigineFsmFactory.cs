@@ -7,8 +7,8 @@ namespace Enemy.Humanoids.MeleeAborigine
         public override EnemyFsm Create(HumanoidAiContext aiContext)
         {
             return new MeleeAborigineFsm(
-                new MeleeAborigineIdleState(aiContext),
-                new MeleeAboriginePatrolState(aiContext),
+                new HumanoidIdleState(aiContext),
+                new HumanoidPatrolState(aiContext),
                 new MeleeAborigineCombatState(aiContext),
                 new MeleeAborigineAlertState(aiContext),
                 new MeleeAborigineRepositionState(aiContext));

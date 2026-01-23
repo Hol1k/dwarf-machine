@@ -1,14 +1,14 @@
 ﻿using Enemy.AiContextInterfaces;
 
-namespace Enemy.Humanoids.Soldier
+namespace Enemy.Humanoids
 {
-    public class SoldierPatrolState : EnemyFsmState
+    public class HumanoidPatrolState : EnemyFsmState
     {
         private readonly IAiLookAgent _lookAgent;
         private readonly IAiPatrolAgent _patrolAgent;
         private readonly IAiMoveAgent _moveAgent;
 
-        public SoldierPatrolState(HumanoidAiContext aiContext)
+        public HumanoidPatrolState(HumanoidAiContext aiContext)
         {
             _lookAgent = aiContext;
             _patrolAgent = aiContext;

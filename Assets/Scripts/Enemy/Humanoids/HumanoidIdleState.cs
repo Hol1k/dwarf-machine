@@ -1,13 +1,13 @@
 ﻿using Enemy.AiContextInterfaces;
 using UnityEngine;
 
-namespace Enemy.Humanoids.Soldier
+namespace Enemy.Humanoids
 {
-    public class SoldierIdleState : EnemyFsmState
+    public class HumanoidIdleState : EnemyFsmState
     {
         private readonly IAiLookAgent _lookAgent;
 
-        public SoldierIdleState(HumanoidAiContext aiContext)
+        public HumanoidIdleState(HumanoidAiContext aiContext)
         {
             _lookAgent = aiContext;
         }
