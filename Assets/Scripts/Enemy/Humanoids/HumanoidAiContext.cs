@@ -26,6 +26,9 @@ namespace Enemy.Humanoids
         private readonly Transform _enemyTransform;
         
         public bool IsSeeTarget => _lookComponent.IsSeeTarget;
+
+        public bool IsSeeTargetFrom(Vector3 position) =>
+            _lookComponent.IsSeeTargetFrom(position);
         public Vector3? LastSeePosition => _lookComponent.LastSeePosition;
         public float LookRange => _lookComponent.LookRange;
         public void ForgetLastSeePosition() => _lookComponent.ForgetLastSeePosition();
@@ -42,6 +45,9 @@ namespace Enemy.Humanoids
         private readonly EnemyMoveController _moveController;
 
         public bool CanAttackTarget => _combatComponent.CanAttackTarget;
+
+        public bool CanAttackTargetFrom(Vector3 position) =>
+            _combatComponent.CanAttackTargetFrom(position);
         public bool IsTargetEliminated => _combatComponent.IsTargetEliminated;
         public void AttackTarget(CharacterStatsComponent target) => _combatComponent.AttackTarget(target);
         private readonly EnemyCombatComponent _combatComponent;

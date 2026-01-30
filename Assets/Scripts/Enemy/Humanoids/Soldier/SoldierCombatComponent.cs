@@ -5,8 +5,6 @@ namespace Enemy.Humanoids.Soldier
 {
     public class SoldierCombatComponent : EnemyCombatComponent
     {
-        public override bool CanAttackTarget => LookAgent.IsSeeTarget;
-        
         [SerializeField] private LayerMask hitObjectsMask;
 
         [Space]
@@ -19,6 +17,11 @@ namespace Enemy.Humanoids.Soldier
         [SerializeField] [Min(0.0000001f)] [Tooltip("Hits per minute")] private float attackSpeed;
 
         private float _lastAttackTime;
+        
+        public override bool CanAttackTarget => LookAgent.IsSeeTarget;
+
+        public override bool CanAttackTargetFrom(Vector3 position) =>
+            LookAgent.IsSeeTargetFrom(position);
 
         public override void AttackTarget(CharacterStatsComponent target)
         {

@@ -29,6 +29,23 @@ namespace Enemy
         
         public void ForgetLastSeePosition() => LastSeePosition = null;
 
+        public bool IsSeeTargetFrom(Vector3 position)
+        {
+            if (_visibleObjects.Count == 0)
+                return false;
+            
+            foreach (var obj in _visibleObjects)
+            {
+                var obstacles = Physics.OverlapCapsule(position,
+                    obj.transform.position, 0.05f, obstaclesLayerMask);
+                    
+                if (obstacles.Length == 0)
+                    return true;
+            }
+            
+            return false;
+        }
+
         public CharacterStatsComponent GetClosestTarget()
         {
             CharacterStatsComponent closestTarget = null;
@@ -54,16 +71,16 @@ namespace Enemy
             {
                 foreach (var obj in _visibleObjects)
                 {
-                    var obstacles = Physics.OverlapCapsule(transform.position - transform.localPosition,
+                    var obstacles = Physics.OverlapCapsule(transform.position,
                         obj.transform.position, 0.05f, obstaclesLayerMask);
                     
                     if (obstacles.Length == 0)
+                    {
                         IsSeeTarget = true;
+                        LastSeePosition = obj.transform.position;
+                    }
                 }
             }
-            
-            if (IsSeeTarget)
-                LastSeePosition = _visibleObjects[0].transform.position;
         }
 
         private void OnTriggerEnter(Collider other)

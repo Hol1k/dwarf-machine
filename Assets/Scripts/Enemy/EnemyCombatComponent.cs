@@ -23,6 +23,7 @@ namespace Enemy
 
             protected set => _isTargetEliminated = value;
         }
+
         private bool _isTargetEliminated;
 
         [Inject]
@@ -30,6 +31,8 @@ namespace Enemy
         {
             LookAgent = lookAgent;
         }
+
+        public abstract bool CanAttackTargetFrom(Vector3 position);
 
         public abstract void AttackTarget(CharacterStatsComponent target);
     }
