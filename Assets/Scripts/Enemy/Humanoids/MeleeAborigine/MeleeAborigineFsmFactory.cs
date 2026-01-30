@@ -10,7 +10,7 @@ namespace Enemy.Humanoids.MeleeAborigine
                 new HumanoidIdleState(aiContext),
                 new HumanoidPatrolState(aiContext),
                 new MeleeAborigineCombatState(aiContext),
-                new MeleeAborigineAlertState(aiContext),
+                new HumanoidAlertState(aiContext),
                 new MeleeAborigineRepositionState(aiContext));
         }
     }

@@ -10,7 +10,7 @@ namespace Enemy.Humanoids.Soldier
                 new HumanoidIdleState(aiContext),
                 new HumanoidPatrolState(aiContext),
                 new SoldierCombatState(aiContext),
-                new SoldierAlertState(aiContext),
+                new HumanoidAlertState(aiContext),
                 new SoldierRepositionState(aiContext));
         }
     }

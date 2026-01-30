@@ -1,14 +1,14 @@
 ﻿using Enemy.AiContextInterfaces;
 using UnityEngine;
 
-namespace Enemy.Humanoids.Soldier
+namespace Enemy.Humanoids
 {
-    public class SoldierAlertState : EnemyFsmState
+    public class HumanoidAlertState : EnemyFsmState
     {
         private readonly IAiLookAgent _lookAgent;
         private readonly IAiMoveAgent _moveAgent;
 
-        public SoldierAlertState(HumanoidAiContext aiContext)
+        public HumanoidAlertState(HumanoidAiContext aiContext)
         {
             _lookAgent = aiContext;
             _moveAgent = aiContext;
