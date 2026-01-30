@@ -1,25 +1,53 @@
-﻿namespace Enemy.Humanoids.MeleeAborigine
+﻿using Enemy.AiContextInterfaces;
+
+namespace Enemy.Humanoids.MeleeAborigine
 {
     public class MeleeAborigineRepositionState : EnemyFsmState
     {
+        private readonly IAiMoveAgent _moveAgent;
+        private readonly IAiCombatAgent _combatAgent;
+        private readonly IAiLookAgent _lookAgent;
+        
         public MeleeAborigineRepositionState(HumanoidAiContext aiContext)
         {
-            
+            _moveAgent = aiContext;
+            _combatAgent = aiContext;
+            _lookAgent = aiContext;
         }
 
         public override void Enter(EnemyFsmContext fsmContext)
         {
-            throw new System.NotImplementedException();
         }
 
         public override void Update(EnemyFsmContext fsmContext)
         {
-            throw new System.NotImplementedException();
+            if (_combatAgent.IsTargetEliminated)
+            {
+                fsmContext.RequestedState = EnemyFsmStateId.Patrol;
+            }
+            else if (fsmContext.RepositionPoint == null ||
+                     !_combatAgent.CanAttackTargetFrom(fsmContext.RepositionPoint.Value))
+            {
+                fsmContext.RepositionPoint = _lookAgent.ClosestTarget.transform.position;
+            }
+            else
+            {
+                _moveAgent.MoveTo(fsmContext.RepositionPoint.Value);
+                if (!_combatAgent.CanAttackTarget)
+                {
+                    _moveAgent.MoveTo(fsmContext.RepositionPoint.Value);
+                }
+                else
+                {
+                    fsmContext.RequestedState = EnemyFsmStateId.Combat;
+                }
+            }
         }
 
         public override void Exit(EnemyFsmContext fsmContext)
         {
-            throw new System.NotImplementedException();
+            fsmContext.RepositionPoint = null;
+            _moveAgent.StopMove();
         }
     }
 }
