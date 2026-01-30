@@ -29,7 +29,7 @@ namespace DiInstallers.Enemies
             
             Container.Bind<EnemyCombatComponent>().FromComponentInHierarchy().AsSingle();
             
-            Container.Bind<EnemyRepositionComponent>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<EnemyShelterRepositionComponent>().FromComponentInHierarchy().AsSingle();
             
             Container.Bind<NavMeshAgentForceDamageReactingComponent>().FromComponentOnRoot().AsSingle();
             Container.Bind<Rigidbody>().FromComponentOnRoot().AsSingle();

@@ -6,13 +6,13 @@ namespace Enemy.Humanoids.Soldier
     {
         private readonly IAiMoveAgent _moveAgent;
         private readonly IAiCombatAgent _combatAgent;
-        private readonly IAiRepositionAgent _repositionAgent;
+        private readonly IAiShelterRepositionAgent _shelterRepositionAgent;
 
         public SoldierRepositionState(HumanoidAiContext aiContext)
         {
             _moveAgent = aiContext;
             _combatAgent = aiContext;
-            _repositionAgent = aiContext;
+            _shelterRepositionAgent = aiContext;
         }
 
         public override void Enter(EnemyFsmContext fsmContext)
@@ -27,7 +27,7 @@ namespace Enemy.Humanoids.Soldier
             }
             else if (fsmContext.RepositionPoint == null)
             {
-                fsmContext.RepositionPoint = _repositionAgent.FarthestValidShelterPoint;
+                fsmContext.RepositionPoint = _shelterRepositionAgent.FarthestValidShelterPoint;
             }
             else
             {

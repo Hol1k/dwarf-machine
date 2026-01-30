@@ -7,14 +7,14 @@ namespace Enemy.Humanoids.Soldier
         private readonly IAiLookAgent _lookAgent;
         private readonly IAiMoveAgent _moveAgent;
         private readonly IAiCombatAgent _combatAgent;
-        private readonly IAiRepositionAgent _repositionAgent;
+        private readonly IAiShelterRepositionAgent _shelterRepositionAgent;
 
         public SoldierCombatState(HumanoidAiContext aiContext)
         {
             _lookAgent = aiContext;
             _moveAgent = aiContext;
             _combatAgent = aiContext;
-            _repositionAgent = aiContext;
+            _shelterRepositionAgent = aiContext;
         }
 
         public override void Enter(EnemyFsmContext fsmContext)
@@ -27,7 +27,7 @@ namespace Enemy.Humanoids.Soldier
             {
                 fsmContext.RequestedState = EnemyFsmStateId.Alert;
             }
-            else if (_repositionAgent.IsShelterPossible && !_repositionAgent.IsOnShelter
+            else if (_shelterRepositionAgent.IsShelterPossible && !_shelterRepositionAgent.IsOnShelter
                      || !_combatAgent.CanAttackTarget)
             {
                 fsmContext.RequestedState = EnemyFsmStateId.Reposition;

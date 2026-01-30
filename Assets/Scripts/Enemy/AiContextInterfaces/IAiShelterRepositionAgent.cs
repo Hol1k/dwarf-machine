@@ -2,7 +2,7 @@
 
 namespace Enemy.AiContextInterfaces
 {
-    public interface IAiRepositionAgent
+    public interface IAiShelterRepositionAgent
     {
         public bool IsOnShelter { get; }
         public bool IsShelterPossible { get; }

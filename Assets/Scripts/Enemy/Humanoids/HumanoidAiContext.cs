@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Enemy.Humanoids
 {
-    public class HumanoidAiContext : IAiTransformAgent, IAiLookAgent, IAiPatrolAgent, IAiMoveAgent, IAiCombatAgent, IAiRepositionAgent
+    public class HumanoidAiContext : IAiTransformAgent, IAiLookAgent, IAiPatrolAgent, IAiMoveAgent, IAiCombatAgent, IAiShelterRepositionAgent
     {
         public HumanoidAiContext(
             Transform enemyTransform,
@@ -12,14 +12,14 @@ namespace Enemy.Humanoids
             EnemyMoveController moveController,
             EnemyLookComponent lookComponent,
             EnemyCombatComponent combatComponent,
-            EnemyRepositionComponent repositionComponent)
+            EnemyShelterRepositionComponent shelterRepositionComponent)
         {
             _enemyTransform = enemyTransform;
             _patrolComponent = patrolComponent;
             _moveController = moveController;
             _lookComponent = lookComponent;
             _combatComponent = combatComponent;
-            _repositionComponent = repositionComponent;
+            _shelterRepositionComponent = shelterRepositionComponent;
         }
         
         public Vector3 EnemyPosition => _enemyTransform.position;
@@ -46,9 +46,9 @@ namespace Enemy.Humanoids
         public void AttackTarget(CharacterStatsComponent target) => _combatComponent.AttackTarget(target);
         private readonly EnemyCombatComponent _combatComponent;
 
-        public bool IsOnShelter => _repositionComponent.IsOnShelter(this);
-        public bool IsShelterPossible => _repositionComponent.IsShelterPossible(this);
-        public Vector3? FarthestValidShelterPoint => _repositionComponent.GetFarthestValidShelter(this);
-        private readonly EnemyRepositionComponent _repositionComponent;
+        public bool IsOnShelter => _shelterRepositionComponent.IsOnShelter(this);
+        public bool IsShelterPossible => _shelterRepositionComponent.IsShelterPossible(this);
+        public Vector3? FarthestValidShelterPoint => _shelterRepositionComponent.GetFarthestValidShelter(this);
+        private readonly EnemyShelterRepositionComponent _shelterRepositionComponent;
     }
 }

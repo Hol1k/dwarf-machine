@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Enemy
 {
-    public class EnemyRepositionComponent : MonoBehaviour
+    public class EnemyShelterRepositionComponent : MonoBehaviour
     {
         [SerializeField] private EnemyRepositionPointsCollection repositionPoints;
 
