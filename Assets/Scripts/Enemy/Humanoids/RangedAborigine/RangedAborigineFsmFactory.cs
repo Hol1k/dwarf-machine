@@ -7,10 +7,10 @@ namespace Enemy.Humanoids.RangedAborigine
         public override EnemyFsm Create(HumanoidAiContext aiContext)
         {
             return new RangedAborigineFsm(
+                new HumanoidIdleState(aiContext),
+                new HumanoidPatrolState(aiContext),
                 null,
-                null,
-                null,
-                null,
+                new HumanoidAlertState(aiContext),
                 null);
         }
     }
