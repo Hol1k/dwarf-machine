@@ -1,4 +1,5 @@
 ﻿using Enemy;
+using Enemy.Ai;
 using Entities;
 using UnityEngine;
 using UnityEngine.AI;

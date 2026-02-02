@@ -1,4 +1,6 @@
 ﻿using Enemy;
+using Enemy.Ai;
+using Enemy.Ai.Humanoids;
 using Enemy.Humanoids;
 using Enemy.Humanoids.Soldier;
 
