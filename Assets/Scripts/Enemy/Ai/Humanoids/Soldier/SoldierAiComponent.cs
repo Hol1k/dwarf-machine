@@ -1,9 +1,7 @@
-﻿using Enemy.Ai;
-using Enemy.Ai.Humanoids;
-using UnityEngine;
+﻿using UnityEngine;
 using Zenject;
 
-namespace Enemy.Humanoids.Soldier
+namespace Enemy.Ai.Humanoids.Soldier
 {
     public class SoldierAiComponent : MonoBehaviour
     {

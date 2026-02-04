@@ -1,5 +1,4 @@
-﻿using Enemy.Humanoids;
-using Zenject;
+﻿using Zenject;
 
 namespace Enemy.Ai.Humanoids.MeleeAborigine
 {

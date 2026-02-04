@@ -1,8 +1,7 @@
 ﻿using Character;
-using Enemy.Ai;
 using UnityEngine;
 
-namespace Enemy.Humanoids.Soldier
+namespace Enemy.Ai.Humanoids.Soldier
 {
     public class SoldierCombatComponent : EnemyCombatComponent
     {

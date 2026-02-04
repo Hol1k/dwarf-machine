@@ -1,8 +1,6 @@
-﻿using Enemy.Ai;
-using Enemy.Ai.AiContextInterfaces;
-using Enemy.Ai.Humanoids;
+﻿using Enemy.Ai.AiContextInterfaces;
 
-namespace Enemy.Humanoids.Soldier
+namespace Enemy.Ai.Humanoids.Soldier
 {
     public class SoldierCombatState : EnemyFsmState
     {

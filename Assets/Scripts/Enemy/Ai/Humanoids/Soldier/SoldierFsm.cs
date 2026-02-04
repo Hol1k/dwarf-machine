@@ -1,6 +1,4 @@
-﻿using Enemy.Ai;
-
-namespace Enemy.Humanoids.Soldier
+﻿namespace Enemy.Ai.Humanoids.Soldier
 {
     public class SoldierFsm : EnemyFsm
     {

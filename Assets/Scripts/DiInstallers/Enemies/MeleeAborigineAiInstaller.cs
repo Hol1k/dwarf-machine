@@ -1,8 +1,6 @@
-﻿using Enemy;
-using Enemy.Ai;
+﻿using Enemy.Ai;
 using Enemy.Ai.Humanoids;
 using Enemy.Ai.Humanoids.MeleeAborigine;
-using Enemy.Humanoids;
 
 namespace DiInstallers.Enemies
 {

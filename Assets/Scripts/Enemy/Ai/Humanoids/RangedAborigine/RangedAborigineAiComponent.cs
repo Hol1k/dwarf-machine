@@ -1,5 +1,4 @@
-﻿using Enemy.Humanoids;
-using UnityEngine;
+﻿using UnityEngine;
 using Zenject;
 
 namespace Enemy.Ai.Humanoids.RangedAborigine

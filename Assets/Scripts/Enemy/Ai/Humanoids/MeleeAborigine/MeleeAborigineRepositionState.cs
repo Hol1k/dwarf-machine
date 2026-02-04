@@ -1,5 +1,4 @@
 ﻿using Enemy.Ai.AiContextInterfaces;
-using Enemy.Humanoids;
 
 namespace Enemy.Ai.Humanoids.MeleeAborigine
 {
