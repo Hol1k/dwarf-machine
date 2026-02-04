@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using Level;
+using System.Linq;
 using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
@@ -11,7 +11,6 @@ namespace Enemy.Ai
     public class EnemyMoveController : MonoBehaviour
     {
         private NavMeshAgent _agent;
-        private NavMeshSurface _surface;
         
         private MoveControllerAction? _lastActionRequested = null;
         private enum MoveControllerAction
@@ -22,12 +21,10 @@ namespace Enemy.Ai
         private Vector3 _requestedPos;
         
         [Inject]
-        private void Init(NavMeshAgent agent, NavMeshSurfaceController surfaceController)
+        private void Init(NavMeshAgent agent)
         {
             _agent = agent;
             _agent.enabled = false;
-            
-            _surface = surfaceController.Surface;
         }
 
         private void Awake()
@@ -107,7 +104,7 @@ namespace Enemy.Ai
 
         private IEnumerator EnableAgent()
         {
-            while (!_surface.navMeshData)
+            while (!NavMeshSurface.activeSurfaces.FirstOrDefault()?.navMeshData)
             {
                 yield return null;
             }

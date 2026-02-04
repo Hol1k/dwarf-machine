@@ -13,10 +13,6 @@ namespace Level
         private void Init(NavMeshSurface surface)
         {
             Surface = surface;
-        }
-
-        private void Awake()
-        {
             Surface.BuildNavMesh();
         }
     }

@@ -1,5 +1,4 @@
-﻿using Level;
-using Unity.AI.Navigation;
+﻿using Unity.AI.Navigation;
 using Zenject;
 
 namespace DiInstallers.Level
@@ -8,7 +7,6 @@ namespace DiInstallers.Level
     {
         public override void InstallBindings()
         {
-            Container.Bind<NavMeshSurfaceController>().FromComponentInHierarchy().AsSingle();
             Container.Bind<NavMeshSurface>().FromComponentInHierarchy().AsSingle();
         }
     }
