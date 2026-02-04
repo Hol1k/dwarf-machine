@@ -1,5 +1,4 @@
-﻿using Enemy.Humanoids;
-using Zenject;
+﻿using Zenject;
 
 namespace Enemy.Ai.Humanoids.RangedAborigine
 {
@@ -10,7 +9,7 @@ namespace Enemy.Ai.Humanoids.RangedAborigine
             return new RangedAborigineFsm(
                 new HumanoidIdleState(aiContext),
                 new HumanoidPatrolState(aiContext),
-                null,
+                new RangedAborigineCombatState(aiContext),
                 new HumanoidAlertState(aiContext),
                 null);
         }
