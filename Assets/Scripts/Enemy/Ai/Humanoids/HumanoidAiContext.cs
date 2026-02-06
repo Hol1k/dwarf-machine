@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Enemy.Ai.Humanoids
 {
-    public class HumanoidAiContext : IAiTransformAgent, IAiLookAgent, IAiPatrolAgent, IAiMoveAgent, IAiCombatAgent, IAiShelterRepositionAgent
+    public class HumanoidAiContext : EnemyAiContext, IAiTransformAgent, IAiLookAgent, IAiPatrolAgent, IAiMoveAgent, IAiCombatAgent, IAiShelterRepositionAgent
     {
         public HumanoidAiContext(
             Transform enemyTransform,

@@ -8,7 +8,7 @@ namespace Enemy.Ai.Humanoids.MeleeAborigine
         private EnemyFsm _fsm;
 
         [Inject]
-        private void Init(MeleeAborigineFsmFactory fsmFactory, HumanoidAiContext aiContext)
+        private void Init(MeleeAborigineFsmFactory fsmFactory, EnemyAiContext aiContext)
         {
             _fsm = fsmFactory.Create(aiContext);
         }

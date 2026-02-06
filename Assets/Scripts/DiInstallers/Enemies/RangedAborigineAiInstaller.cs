@@ -9,9 +9,9 @@ namespace DiInstallers.Enemies
         protected override void InstallAi()
         {
             Container.BindInterfacesAndSelfTo<RangedAborigineAiContext>().AsSingle();
-            Container.Bind<HumanoidAiContext>().To<RangedAborigineAiContext>().FromResolve();
+            Container.Bind<EnemyAiContext>().To<RangedAborigineAiContext>().FromResolve();
             
-            Container.BindFactory<HumanoidAiContext, EnemyFsm, RangedAborigineFsmFactory>().AsSingle();
+            Container.BindFactory<EnemyAiContext, EnemyFsm, RangedAborigineFsmFactory>().AsSingle();
         }
     }
 }
