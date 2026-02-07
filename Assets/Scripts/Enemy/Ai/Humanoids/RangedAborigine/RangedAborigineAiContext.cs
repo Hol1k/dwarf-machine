@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using Enemy.Ai.AiContextInterfaces;
+using UnityEngine;
 
 namespace Enemy.Ai.Humanoids.RangedAborigine
 {
-    public class RangedAborigineAiContext : HumanoidAiContext
+    public class RangedAborigineAiContext : HumanoidAiContext, IAiAborigineTeamAgent
     {
         public RangedAborigineAiContext(
             Transform enemyTransform, 
@@ -17,5 +18,7 @@ namespace Enemy.Ai.Humanoids.RangedAborigine
 
         public override bool CanAttackTarget => throw new System.NotImplementedException();
         public override bool CanAttackTargetFrom(Vector3 position) => throw new System.NotImplementedException();
+        
+        public bool IsAnyMeleeAlive => throw new System.NotImplementedException();
     }
 }

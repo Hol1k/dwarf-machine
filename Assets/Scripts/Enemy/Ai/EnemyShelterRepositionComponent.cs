@@ -11,7 +11,7 @@ namespace Enemy.Ai
         public bool IsOnShelter(IAiTransformAgent transformAgent)
         {
             return repositionPoints.Points
-                .Any(p => Vector3.Distance(p, transformAgent.EnemyPosition) <= 0.5f);
+                .Any(p => Vector3.Distance(p, transformAgent.SelfPosition) <= 0.5f);
         }
 
         public bool IsShelterPossible(IAiLookAgent lookAgent) => GetFarthestValidShelter(lookAgent) != null;

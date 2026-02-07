@@ -22,7 +22,7 @@ namespace Enemy.Ai.Humanoids
             ShelterRepositionComponent = shelterRepositionComponent;
         }
         
-        public virtual Vector3 EnemyPosition => EnemyTransform.position;
+        public virtual Vector3 SelfPosition => EnemyTransform.position;
         protected readonly Transform EnemyTransform;
         
         public virtual bool IsSeeTarget => LookComponent.IsSeeTarget;
