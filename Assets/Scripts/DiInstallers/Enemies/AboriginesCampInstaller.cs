@@ -9,12 +9,29 @@ namespace DiInstallers.Enemies
     public class AboriginesCampInstaller : MonoInstaller
     {
         [SerializeField] private EnemyAiComponent rangedAboriginePrefab;
+        
+        [Space]
+        [SerializeField] private EnemyPatrolPointsCollection patrolPoints;
+        [SerializeField] private EnemyRepositionPointsCollection repositionPoints;
 
         public override void InstallBindings()
         {
             Container
+                .Bind<EnemyPatrolPointsCollection>()
+                .FromInstance(patrolPoints)
+                .AsSingle()
+                .MoveIntoAllSubContainers();
+
+            Container
+                .Bind<EnemyRepositionPointsCollection>()
+                .FromInstance(repositionPoints)
+                .AsSingle()
+                .MoveIntoAllSubContainers();
+            
+            Container
                 .BindFactory<EnemyAiComponent, RangedAborigineFactory>()
-                .FromComponentInNewPrefab(rangedAboriginePrefab);
+                .FromSubContainerResolve()
+                .ByNewContextPrefab(rangedAboriginePrefab);
 
             Container
                 .Bind<IEnemyTeamController>()

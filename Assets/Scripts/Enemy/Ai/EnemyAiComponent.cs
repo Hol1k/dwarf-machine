@@ -2,7 +2,7 @@
 
 namespace Enemy.Ai
 {
-    public abstract class EnemyAiComponent : MonoBehaviour
+    public class EnemyAiComponent : MonoBehaviour
     {
         protected EnemyFsm Fsm;
     }

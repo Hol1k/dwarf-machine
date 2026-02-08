@@ -3,7 +3,7 @@ using Zenject;
 
 namespace Enemy.SpawnManagers
 {
-    public class RangedAborigineFactory : PlaceholderFactory<EnemyAiComponent>
+    public class RangedAborigineFactory : PlaceholderFactory< EnemyAiComponent>
     {
     }
 }

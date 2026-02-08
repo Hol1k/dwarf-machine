@@ -1,12 +1,13 @@
 ﻿using System.Linq;
 using Enemy.Ai.AiContextInterfaces;
 using UnityEngine;
+using Zenject;
 
 namespace Enemy.Ai
 {
     public class EnemyShelterRepositionComponent : MonoBehaviour
     {
-        [SerializeField] private EnemyRepositionPointsCollection repositionPoints;
+        [Inject] private EnemyRepositionPointsCollection repositionPoints;
 
         public bool IsOnShelter(IAiTransformAgent transformAgent)
         {

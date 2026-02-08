@@ -1,5 +1,4 @@
-﻿using Enemy;
-using Enemy.Ai;
+﻿using Enemy.Ai;
 using Entities;
 using UnityEngine;
 using UnityEngine.AI;
@@ -19,6 +18,8 @@ namespace DiInstallers.Enemies
 
         private void InstallCommon()
         {
+            Container.Bind<EnemyAiComponent>().FromComponentOnRoot().AsSingle();
+            
             Container.Bind<EnemyMoveController>().FromComponentInHierarchy().AsSingle();
             Container.Bind<NavMeshAgent>().FromComponentInHierarchy().AsSingle();
             
@@ -34,6 +35,9 @@ namespace DiInstallers.Enemies
             
             Container.Bind<NavMeshAgentForceDamageReactingComponent>().FromComponentOnRoot().AsSingle();
             Container.Bind<Rigidbody>().FromComponentOnRoot().AsSingle();
+            
+            //Container.Bind<EnemyPatrolPointsCollection>().FromResolve();
+            //Container.Bind<EnemyRepositionPointsCollection>().FromResolve();
         }
     }
 }

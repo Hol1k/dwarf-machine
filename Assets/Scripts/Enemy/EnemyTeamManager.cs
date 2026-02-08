@@ -8,10 +8,6 @@ namespace Enemy
         private readonly List<EnemyAiComponent> _teamCollection = new();
         
         public EnemyTeamManager() {}
-        public EnemyTeamManager(List<EnemyAiComponent> teamCollection)
-        {
-            _teamCollection = teamCollection;
-        }
         
         public List<EnemyAiComponent> TeamCollection => _teamCollection;
 

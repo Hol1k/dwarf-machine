@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
+using Zenject;
 
 namespace Enemy.Ai
 {
     public class EnemyPatrolComponent : MonoBehaviour
     {
-        [SerializeField] private EnemyPatrolPointsCollection patrolPoints;
+        [Inject] private EnemyPatrolPointsCollection patrolPoints;
         
         private int _currentPatrolPointIndex = int.MaxValue;
 
