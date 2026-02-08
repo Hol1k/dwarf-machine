@@ -3,7 +3,7 @@ using Zenject;
 
 namespace Enemy.Ai.Humanoids.RangedAborigine
 {
-    public class RangedAborigineAiComponent : MonoBehaviour
+    public class RangedAborigineAiComponent : EnemyAiComponent
     {
         private EnemyFsm _fsm;
 

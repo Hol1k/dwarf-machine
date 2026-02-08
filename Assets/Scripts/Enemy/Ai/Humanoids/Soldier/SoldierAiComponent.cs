@@ -3,7 +3,7 @@ using Zenject;
 
 namespace Enemy.Ai.Humanoids.Soldier
 {
-    public class SoldierAiComponent : MonoBehaviour
+    public class SoldierAiComponent : EnemyAiComponent
     {
         private EnemyFsm _fsm;
 
