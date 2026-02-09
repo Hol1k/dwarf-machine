@@ -35,9 +35,6 @@ namespace DiInstallers.Enemies
             
             Container.Bind<NavMeshAgentForceDamageReactingComponent>().FromComponentOnRoot().AsSingle();
             Container.Bind<Rigidbody>().FromComponentOnRoot().AsSingle();
-            
-            //Container.Bind<EnemyPatrolPointsCollection>().FromResolve();
-            //Container.Bind<EnemyRepositionPointsCollection>().FromResolve();
         }
     }
 }
