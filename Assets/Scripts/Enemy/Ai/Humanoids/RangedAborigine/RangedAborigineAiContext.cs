@@ -11,14 +11,14 @@ namespace Enemy.Ai.Humanoids.RangedAborigine
             EnemyMoveController moveController, 
             EnemyLookComponent lookComponent, 
             EnemyCombatComponent combatComponent, 
-            EnemyShelterRepositionComponent shelterRepositionComponent) 
+            EnemyShelterRepositionComponent shelterRepositionComponent,
+            IAborigineTeamData teamManager) 
             : base(enemyTransform, patrolComponent, moveController, lookComponent, combatComponent, shelterRepositionComponent)
         {
+            TeamManager = teamManager;
         }
 
-        public override bool CanAttackTarget => throw new System.NotImplementedException();
-        public override bool CanAttackTargetFrom(Vector3 position) => throw new System.NotImplementedException();
-        
-        public bool IsAnyMeleeAlive => throw new System.NotImplementedException();
+        public virtual bool IsAnyMeleeAlive => TeamManager.MeleeCount > 0;
+        protected readonly IAborigineTeamData TeamManager;
     }
 }

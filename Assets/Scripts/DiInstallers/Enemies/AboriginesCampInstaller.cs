@@ -33,10 +33,21 @@ namespace DiInstallers.Enemies
                 .FromSubContainerResolve()
                 .ByNewContextPrefab(rangedAboriginePrefab);
 
+            BindAborigineTeamManager();
+        }
+
+        private void BindAborigineTeamManager()
+        {
+            AborigineTeamManager teamManagerInstance = new();
+            
             Container
                 .Bind<IEnemyTeamController>()
-                .To<AborigineTeamManager>()
-                .AsSingle();
+                .FromInstance(teamManagerInstance);
+
+            Container
+                .Bind<IAborigineTeamData>()
+                .FromInstance(teamManagerInstance)
+                .MoveIntoAllSubContainers();
         }
     }
 }

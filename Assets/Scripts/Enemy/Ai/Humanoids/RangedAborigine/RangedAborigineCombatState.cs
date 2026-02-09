@@ -13,12 +13,13 @@ namespace Enemy.Ai.Humanoids.RangedAborigine
 
         private const float RepositionRange = 3f;
 
-        public RangedAborigineCombatState(HumanoidAiContext aiContext)
+        public RangedAborigineCombatState(RangedAborigineAiContext aiContext)
         {
             _transformAgent = aiContext;
             _lookAgent = aiContext;
             _moveAgent = aiContext;
             _combatAgent = aiContext;
+            _aborigineTeamAgent = aiContext;
         }
         
         public override void Enter(EnemyFsmContext fsmContext)
