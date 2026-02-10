@@ -7,7 +7,7 @@ namespace Enemy.Ai
 {
     public class EnemyLookComponent : MonoBehaviour
     {
-        public bool IsSeeTarget { get; private set; }
+        public bool IsSeeTarget => _visibleObjects.Count > 0;
         public Vector3? LastSeePosition { get; private set; }
         
         public float LookRange => _lookSphereCollider.radius;
@@ -65,8 +65,6 @@ namespace Enemy.Ai
 
         private void DetectTarget()
         {
-            IsSeeTarget = false;
-
             if (_visibleObjects.Count > 0)
             {
                 foreach (var obj in _visibleObjects)
@@ -76,7 +74,6 @@ namespace Enemy.Ai
                     
                     if (obstacles.Length == 0)
                     {
-                        IsSeeTarget = true;
                         LastSeePosition = obj.transform.position;
                     }
                 }

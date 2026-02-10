@@ -14,7 +14,7 @@ namespace Enemy.Ai.Humanoids.RangedAborigine
                 new HumanoidPatrolState(rangedAborigineContext),
                 new RangedAborigineCombatState(rangedAborigineContext),
                 new HumanoidAlertState(rangedAborigineContext),
-                null);
+                new RangedAborigineRepositionState(rangedAborigineContext));
         }
 
         private RangedAborigineAiContext ValidateContext(EnemyAiContext aiContext)
