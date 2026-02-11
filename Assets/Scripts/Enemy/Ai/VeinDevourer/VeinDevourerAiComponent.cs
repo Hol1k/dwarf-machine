@@ -1,13 +1,13 @@
 ﻿using Zenject;
 
-namespace Enemy.Ai.Humanoids.Soldier
+namespace Enemy.Ai.VeinDevourer
 {
-    public class SoldierAiComponent : EnemyAiComponent
+    public class VeinDevourerAiComponent : EnemyAiComponent
     {
         private EnemyFsm _fsm;
 
         [Inject]
-        private void Init(SoldierFsmFactory fsmFactory, EnemyAiContext aiContext)
+        private void Init(VeinDevourerFsmFactory fsmFactory, EnemyAiContext aiContext)
         {
             _fsm = fsmFactory.Create(aiContext);
         }
