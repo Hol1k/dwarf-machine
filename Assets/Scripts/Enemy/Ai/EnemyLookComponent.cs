@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Character;
+using Entities;
+using Mech;
 using UnityEngine;
 using Zenject;
 
@@ -9,11 +12,15 @@ namespace Enemy.Ai
     {
         public bool IsSeeTarget => _visibleObjects.Count > 0;
         public Vector3? LastSeePosition { get; private set; }
-        
+
+        public float ClosestTargetInventoryValue => GetClosestTarget() is IMechInventoryData inventoryData
+            ? inventoryData.FillingPercentage
+            : 0f;
         public float LookRange => _lookSphereCollider.radius;
+
         private SphereCollider _lookSphereCollider;
 
-        private readonly List<CharacterStatsComponent> _visibleObjects = new();
+        private readonly List<StatsComponent> _visibleObjects = new();
         [SerializeField] private LayerMask obstaclesLayerMask;
 
         [Inject]
@@ -46,9 +53,9 @@ namespace Enemy.Ai
             return false;
         }
 
-        public CharacterStatsComponent GetClosestTarget()
+        public StatsComponent GetClosestTarget()
         {
-            CharacterStatsComponent closestTarget = null;
+            StatsComponent closestTarget = null;
             var closestDistance = float.MaxValue;
             
             foreach (var target in _visibleObjects)
@@ -82,20 +89,20 @@ namespace Enemy.Ai
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent(out CharacterStatsComponent characterStats) && !characterStats.IsDied)
+            if (other.TryGetComponent(out StatsComponent targetStats) && !targetStats.IsDied)
             {
-                _visibleObjects.Add(characterStats);
-                characterStats.OnDeath += () => _visibleObjects.Remove(characterStats);
+                _visibleObjects.Add(targetStats);
+                targetStats.OnDeath += () => _visibleObjects.Remove(targetStats);
             }
         }
 
         private void OnTriggerExit(Collider other)
         {
-            if (!other.TryGetComponent(out CharacterStatsComponent characterStats)) return;
+            if (!other.TryGetComponent(out StatsComponent targetStats)) return;
             
-            if (_visibleObjects.Contains(characterStats))
+            if (_visibleObjects.Contains(targetStats))
             {
-                _visibleObjects.Remove(characterStats);
+                _visibleObjects.Remove(targetStats);
             }
         }
     }
