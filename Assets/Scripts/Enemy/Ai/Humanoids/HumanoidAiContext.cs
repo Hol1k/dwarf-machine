@@ -1,5 +1,6 @@
 ﻿using Character;
 using Enemy.Ai.AiContextInterfaces;
+using Entities;
 using UnityEngine;
 
 namespace Enemy.Ai.Humanoids
@@ -32,7 +33,8 @@ namespace Enemy.Ai.Humanoids
         public virtual Vector3? LastSeePosition => LookComponent.LastSeePosition;
         public virtual float LookRange => LookComponent.LookRange;
         public virtual void ForgetLastSeePosition() => LookComponent.ForgetLastSeePosition();
-        public virtual CharacterStatsComponent ClosestTarget => LookComponent.GetClosestTarget();
+        public virtual StatsComponent ClosestTarget => LookComponent.GetClosestTarget();
+        public float ClosestTargetInventoryValue => 0f;
         protected readonly EnemyLookComponent LookComponent;
 
         public virtual Vector3 NextPatrolPoint => PatrolComponent.GetNextPoint();
@@ -48,7 +50,7 @@ namespace Enemy.Ai.Humanoids
         public virtual bool CanAttackTargetFrom(Vector3 position) =>
             CombatComponent.CanAttackTargetFrom(position);
         public virtual bool IsTargetEliminated => CombatComponent.IsTargetEliminated;
-        public virtual void AttackTarget(CharacterStatsComponent target) => CombatComponent.AttackTarget(target);
+        public virtual void AttackTarget(StatsComponent target) => CombatComponent.AttackTarget(target);
         protected readonly EnemyCombatComponent CombatComponent;
 
         public virtual bool IsOnShelter => ShelterRepositionComponent.IsOnShelter(this);

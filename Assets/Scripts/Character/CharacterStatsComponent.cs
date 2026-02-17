@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Character
 {
     [RequireComponent(typeof(CharacterMovementController))]
-    public class CharacterStatsComponent : MonoBehaviour, IDamageable
+    public class CharacterStatsComponent : StatsComponent, IDamageable
     {
         [SerializeField] CharacterStatsConfig characterStatsConfig;
         
@@ -30,10 +30,10 @@ namespace Character
             set => _health = Mathf.Clamp(value, 0, _maxHealth);
         }
 
-        public bool IsDied { get; private set; } = false;
+        public override bool IsDied { get; protected set; } = false;
 
         public event Action<float> OnTakeDamage;
-        public event Action OnDeath;
+        public override event Action OnDeath;
 
         private void Awake()
         {

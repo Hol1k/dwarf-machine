@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Enemy
 {
-    public class EnemyComponent : MonoBehaviour, IDamageable
+    public class EnemyStatsComponent : StatsComponent, IDamageable
     {
         [SerializeField] EnemyStatsConfig enemyStatsConfig;
         
@@ -28,8 +28,11 @@ namespace Enemy
             set => _health = Mathf.Clamp(value, 0, _maxHealth);
         }
 
-        [CanBeNull] public event Action<float> OnTakeDamage;
+        public override bool IsDied { get; protected set; }
 
+        [CanBeNull] public event Action<float> OnTakeDamage;
+        public override event Action OnDeath;
+        
         private void Start()
         {
             InitializeStatsConfig();
@@ -50,7 +53,16 @@ namespace Enemy
         {
             Health -= damage;
             OnTakeDamage?.Invoke(damage);
+            
+            if (Health <= 0)
+                Death();
             Debug.Log($"{gameObject.name} damaged by {damage} damage\r\nCurrent health: {Health}");
+        }
+
+        private void Death()
+        {
+            IsDied = true;
+            OnDeath?.Invoke();
         }
     }
 }

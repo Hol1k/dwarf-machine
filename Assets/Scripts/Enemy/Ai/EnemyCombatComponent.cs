@@ -1,5 +1,5 @@
-﻿using Character;
-using Enemy.Ai.AiContextInterfaces;
+﻿using Enemy.Ai.AiContextInterfaces;
+using Entities;
 using UnityEngine;
 using Zenject;
 
@@ -34,6 +34,6 @@ namespace Enemy.Ai
 
         public abstract bool CanAttackTargetFrom(Vector3 position);
 
-        public abstract void AttackTarget(CharacterStatsComponent target);
+        public abstract void AttackTarget(StatsComponent target);
     }
 }

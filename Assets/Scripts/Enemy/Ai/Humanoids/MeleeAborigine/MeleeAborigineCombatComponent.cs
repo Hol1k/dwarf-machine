@@ -1,4 +1,5 @@
 ﻿using Character;
+using Entities;
 using UnityEngine;
 
 namespace Enemy.Ai.Humanoids.MeleeAborigine
@@ -26,7 +27,7 @@ namespace Enemy.Ai.Humanoids.MeleeAborigine
             Vector3.Distance(position + attackPositionOffset, LookAgent.ClosestTarget.transform.position) <
             attackRange;
 
-        public override void AttackTarget(CharacterStatsComponent target)
+        public override void AttackTarget(StatsComponent target)
         {
             if (Time.time - _lastAttackTime < 60f / attackSpeed)
                 return;
@@ -37,10 +38,10 @@ namespace Enemy.Ai.Humanoids.MeleeAborigine
             if (Physics.SphereCast(startPointAttack, raycastWidth, attackDirection,
                     out RaycastHit raycastInfo, attackRange, hitObjectsMask))
             {
-                if (raycastInfo.collider.TryGetComponent(out CharacterStatsComponent characterStats))
+                if (raycastInfo.collider.TryGetComponent(out StatsComponent targetStats))
                 {
-                    characterStats.TakeDamage(damage);
-                    if (characterStats.IsDied)
+                    (targetStats as IDamageable)?.TakeDamage(damage);
+                    if (targetStats.IsDied)
                     {
                         IsTargetEliminated = true;
                     }

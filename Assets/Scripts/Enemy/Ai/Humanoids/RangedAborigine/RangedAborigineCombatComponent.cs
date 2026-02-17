@@ -1,4 +1,5 @@
 ﻿using Character;
+using Entities;
 using UnityEngine;
 
 namespace Enemy.Ai.Humanoids.RangedAborigine
@@ -23,7 +24,7 @@ namespace Enemy.Ai.Humanoids.RangedAborigine
         public override bool CanAttackTargetFrom(Vector3 position) =>
             LookAgent.IsSeeTargetFrom(position);
 
-        public override void AttackTarget(CharacterStatsComponent target)
+        public override void AttackTarget(StatsComponent target)
         {
             if (Time.time - _lastAttackTime < 60f / attackSpeed)
                 return;
@@ -44,9 +45,9 @@ namespace Enemy.Ai.Humanoids.RangedAborigine
             if (Physics.SphereCast(transform.position, raycastWidth, rotatedDirection,
                     out RaycastHit hitInfo, maxShootDistance, hitObjectsMask))
             {
-                if (hitInfo.collider.TryGetComponent(out CharacterStatsComponent characterStats))
+                if (hitInfo.collider.TryGetComponent(out StatsComponent characterStats))
                 {
-                    characterStats.TakeDamage(damage);
+                    (characterStats as IDamageable)?.TakeDamage(damage);
                     if (characterStats.IsDied)
                     {
                         IsTargetEliminated = true;
