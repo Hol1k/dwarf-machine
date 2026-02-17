@@ -50,6 +50,7 @@ GameObject:
   - component: {fileID: 1218313944981827751}
   - component: {fileID: 1706160618005839381}
   - component: {fileID: 2336763797710476704}
+  - component: {fileID: 6257919939557656781}
   m_Layer: 9
   m_Name: DefaultMech
   m_TagString: Untagged
@@ -265,6 +266,20 @@ MonoBehaviour:
   knockbackHeight: 0.5
   knockbackForce: 2
   attackRequestStatus: 0
+--- !u!114 &6257919939557656781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3996640884506013948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8018fab9ec2e42f7ad54457c5ec632f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxResourcesWeight: 100
+  _currentResourcesWeight: 0
 --- !u!1 &8290585181583142380
 GameObject:
   m_ObjectHideFlags: 0
