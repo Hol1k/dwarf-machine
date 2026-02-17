@@ -11,7 +11,6 @@ namespace Enemy.Ai.VeinDevourer
 
             return new VeinDevourerFsm(
                 new VeinDevourerIdleState(veinDevourerContext),
-                new VeinDevourerPatrolState(veinDevourerContext),
                 new VeinDevourerCombatState(veinDevourerContext),
                 new VeinDevourerRepositionState(veinDevourerContext));
         }
