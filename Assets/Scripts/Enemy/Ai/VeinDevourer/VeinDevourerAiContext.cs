@@ -6,6 +6,11 @@ namespace Enemy.Ai.VeinDevourer
 {
     public class VeinDevourerAiContext : EnemyAiContext, IAiLookAgent
     {
+        public VeinDevourerAiContext(EnemyLookComponent lookComponent)
+        {
+            _lookComponent = lookComponent;
+        }
+        
         public bool IsSeeTarget => _lookComponent.IsSeeTarget;
         public bool IsSeeTargetFrom(Vector3 position) => _lookComponent.IsSeeTargetFrom(position);
         public Vector3? LastSeePosition => _lookComponent.LastSeePosition;
