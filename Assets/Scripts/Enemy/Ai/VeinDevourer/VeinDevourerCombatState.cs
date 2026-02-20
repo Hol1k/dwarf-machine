@@ -1,27 +1,39 @@
-﻿using System;
+﻿using Enemy.Ai.AiContextInterfaces;
 
 namespace Enemy.Ai.VeinDevourer
 {
     public class VeinDevourerCombatState : EnemyFsmState
     {
+        private readonly IAiCombatAgent _combatAgent;
+        private readonly IAiLookAgent _lookAgent;
+        
         public VeinDevourerCombatState(VeinDevourerAiContext aiContext)
         {
-            
+            _combatAgent = aiContext;
         }
 
         public override void Enter(EnemyFsmContext fsmContext)
         {
-            throw new NotImplementedException();
         }
 
         public override void Update(EnemyFsmContext fsmContext)
         {
-            throw new NotImplementedException();
+            if (_combatAgent.IsTargetEliminated)
+            {
+                fsmContext.RequestedState = EnemyFsmStateId.Idle;
+            }
+            else if (_combatAgent.CanAttackTarget)
+            {
+                _combatAgent.AttackTarget(_lookAgent.ClosestTarget);
+            }
+            else
+            {
+                fsmContext.RequestedState = EnemyFsmStateId.Reposition;
+            }
         }
 
         public override void Exit(EnemyFsmContext fsmContext)
         {
-            throw new NotImplementedException();
         }
     }
 }

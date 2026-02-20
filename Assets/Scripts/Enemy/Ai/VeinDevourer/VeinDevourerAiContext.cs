@@ -4,11 +4,13 @@ using UnityEngine;
 
 namespace Enemy.Ai.VeinDevourer
 {
-    public class VeinDevourerAiContext : EnemyAiContext, IAiLookAgent
+    public class VeinDevourerAiContext : EnemyAiContext, IAiLookAgent, IAiCombatAgent
     {
-        public VeinDevourerAiContext(EnemyLookComponent lookComponent)
+        public VeinDevourerAiContext(EnemyLookComponent lookComponent,
+            EnemyCombatComponent combatComponent)
         {
             _lookComponent = lookComponent;
+            _combatComponent = combatComponent;
         }
         
         public bool IsSeeTarget => _lookComponent.IsSeeTarget;
@@ -19,5 +21,11 @@ namespace Enemy.Ai.VeinDevourer
         public StatsComponent ClosestTarget => _lookComponent.GetClosestTarget();
         public float ClosestTargetInventoryValue => _lookComponent.ClosestTargetInventoryValue;
         private readonly EnemyLookComponent _lookComponent;
+
+        public bool CanAttackTarget => _combatComponent.CanAttackTarget;
+        public bool CanAttackTargetFrom(Vector3 position) => _combatComponent.CanAttackTargetFrom(position);
+        public bool IsTargetEliminated => _combatComponent.IsTargetEliminated;
+        public void AttackTarget(StatsComponent target) => _combatComponent.AttackTarget(target);
+        private readonly EnemyCombatComponent _combatComponent;
     }
 }
