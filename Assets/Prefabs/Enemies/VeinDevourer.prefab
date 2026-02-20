@@ -91,7 +91,6 @@ GameObject:
   - component: {fileID: 3282121602390103479}
   - component: {fileID: 515392833598524079}
   - component: {fileID: -656372187440077869}
-  - component: {fileID: 3111918571049492427}
   m_Layer: 7
   m_Name: VeinDevourer
   m_TagString: Untagged
@@ -363,18 +362,6 @@ MonoBehaviour:
   attackPositionOffset: {x: 0, y: 0, z: 0}
   damage: 1
   attackSpeed: 20
---- !u!114 &3111918571049492427
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2554400087572737036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2d94b18ddd0435a9f87e5a1fbcc2c01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4951117249020862333
 GameObject:
   m_ObjectHideFlags: 0
