@@ -28,7 +28,7 @@ namespace Enemy.Ai.VeinDevourer
             }
             else
             {
-                fsmContext.IdleTimer = 5f;
+                fsmContext.IdleTimer = 1f;
             }
         }
 
