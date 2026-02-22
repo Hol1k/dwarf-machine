@@ -10,6 +10,7 @@ namespace Enemy.Ai.VeinDevourer
         public VeinDevourerCombatState(VeinDevourerAiContext aiContext)
         {
             _combatAgent = aiContext;
+            _lookAgent = aiContext;
         }
 
         public override void Enter(EnemyFsmContext fsmContext)
