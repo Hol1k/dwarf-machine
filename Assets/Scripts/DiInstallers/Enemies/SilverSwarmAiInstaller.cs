@@ -1,5 +1,6 @@
 ﻿using Enemy.Ai;
 using Enemy.Ai.SilverSwarm;
+using Enemy.Ai.SilverSwarm.SilverEnemy;
 
 namespace DiInstallers.Enemies
 {
@@ -11,6 +12,7 @@ namespace DiInstallers.Enemies
             Container.Bind<EnemyAiContext>().To<SilverSwarmAiContext>().FromResolve();
             
             Container.BindFactory<EnemyAiContext, EnemyFsm, SilverSwarmFsmFactory>().AsSingle();
+            Container.BindFactory<EnemyAiContext, EnemyFsm, SilverEnemyFsmFactory>().AsSingle();
         }
     }
 }
