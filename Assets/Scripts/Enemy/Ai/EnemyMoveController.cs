@@ -41,6 +41,9 @@ namespace Enemy.Ai
                 return;
             }
             
+            if (Vector3.Distance(_agent.destination, position) < 0.05f)
+                return;
+            
             _agent.isStopped = false;
             _agent.SetDestination(position);
         }
