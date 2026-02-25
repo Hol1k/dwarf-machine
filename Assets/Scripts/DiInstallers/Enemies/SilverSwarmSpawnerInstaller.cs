@@ -8,6 +8,7 @@ namespace DiInstallers.Enemies
     public class SilverSwarmSpawnerInstaller : MonoInstaller
     {
         [SerializeField] private EnemyAiComponent silverSwarmPrefab;
+        [SerializeField] private EnemyAiComponent silverEnemyPrefab;
 
         public override void InstallBindings()
         {
@@ -15,6 +16,10 @@ namespace DiInstallers.Enemies
                 .BindFactory<EnemyAiComponent, SilverSwarmFactory>()
                 .FromSubContainerResolve()
                 .ByNewContextPrefab(silverSwarmPrefab);
+            Container
+                .BindFactory<EnemyAiComponent, SilverEnemyFactory>()
+                .FromSubContainerResolve()
+                .ByNewContextPrefab(silverEnemyPrefab);
         }
     }
 }
