@@ -764,11 +764,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.1
-  far clip plane: 5000
-  field of view: 40
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 70
   orthographic: 0
-  orthographic size: 10
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -792,8 +792,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.20500423, y: 0, z: 0, w: 0.9787611}
+  m_LocalPosition: {x: 2.11, y: 7.88494, z: -2.3260188}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2684,6 +2684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   silverSwarmPrefab: {fileID: -4651279515605358042, guid: 1755a87a4d650f449b0c3a751043753f, type: 3}
+  silverEnemyPrefab: {fileID: -8504861464232077358, guid: 82865e6a5ac02f348a4e434cadaeea67, type: 3}
 --- !u!114 &1390374707
 MonoBehaviour:
   m_ObjectHideFlags: 0
