@@ -1,26 +1,43 @@
-﻿using System;
+﻿using Enemy.Ai.AiContextInterfaces;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Enemy.Ai.SilverSwarm
 {
     public class SilverSwarmIdleState : EnemyFsmState
     {
+        private readonly IAiLookAgent _lookAgent;
+        
         public SilverSwarmIdleState(SilverSwarmAiContext aiContext)
         {
+            _lookAgent = aiContext;
         }
 
         public override void Enter(EnemyFsmContext fsmContext)
         {
-            throw new NotImplementedException();
+            _lookAgent.ForgetLastSeePosition();
+            fsmContext.IdleTimer = Random.Range(3f, 5f);
         }
 
         public override void Update(EnemyFsmContext fsmContext)
         {
-            throw new NotImplementedException();
+            if (_lookAgent.IsSeeTarget)
+            {
+                fsmContext.RequestedState = EnemyFsmStateId.Combat;
+            }
+            else if (fsmContext.IdleTimer > 0f)
+            {
+                fsmContext.IdleTimer -= Time.deltaTime;
+            }
+            else
+            {
+                fsmContext.RequestedState = EnemyFsmStateId.Patrol;
+            }
         }
 
         public override void Exit(EnemyFsmContext fsmContext)
         {
-            throw new NotImplementedException();
+            fsmContext.IdleTimer = 0f;
         }
     }
 }
