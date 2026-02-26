@@ -1,19 +1,18 @@
-﻿using System;
-using Enemy.Ai.AiContextInterfaces;
+﻿using Enemy.Ai.AiContextInterfaces;
 
 namespace Enemy.Ai.SilverSwarm
 {
     public class SilverSwarmRepositionState : EnemyFsmState
     {
-        private readonly IAiCombatAgent _combatAgent;
-        private readonly IAiShelterRepositionAgent _repositionAgent;
         private readonly IAiMoveAgent _moveAgent;
+        private readonly IAiCombatAgent _combatAgent;
+        private readonly IAiLookAgent _lookAgent;
         
         public SilverSwarmRepositionState(SilverSwarmAiContext aiContext)
         {
-            _combatAgent = aiContext;
-            _repositionAgent = aiContext;
             _moveAgent = aiContext;
+            _combatAgent = aiContext;
+            _lookAgent = aiContext;
         }
 
         public override void Enter(EnemyFsmContext fsmContext)
@@ -26,15 +25,19 @@ namespace Enemy.Ai.SilverSwarm
             {
                 fsmContext.RequestedState = EnemyFsmStateId.Patrol;
             }
-            else if (!fsmContext.RepositionPoint.HasValue ||
+            else if (!_lookAgent.IsSeeTarget)
+            {
+                fsmContext.RequestedState = EnemyFsmStateId.Alert;
+            }
+            else if (fsmContext.RepositionPoint == null ||
                      !_combatAgent.CanAttackTargetFrom(fsmContext.RepositionPoint.Value))
             {
-                fsmContext.RepositionPoint = _repositionAgent.FarthestValidShelterPoint;
+                fsmContext.RepositionPoint = _lookAgent.ClosestTarget.transform.position;
             }
             else
             {
                 _moveAgent.MoveTo(fsmContext.RepositionPoint.Value);
-                if (!_moveAgent.IsAgentArrivedToDestination)
+                if (!_combatAgent.CanAttackTarget)
                 {
                     _moveAgent.MoveTo(fsmContext.RepositionPoint.Value);
                 }
@@ -47,6 +50,7 @@ namespace Enemy.Ai.SilverSwarm
 
         public override void Exit(EnemyFsmContext fsmContext)
         {
+            fsmContext.RepositionPoint = null;
             _moveAgent.StopMove();
         }
     }

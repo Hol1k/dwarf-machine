@@ -52,7 +52,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 10
+  m_Radius: 5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &9149827744181732709
 MonoBehaviour:
@@ -69,6 +69,9 @@ MonoBehaviour:
   obstaclesLayerMask:
     serializedVersion: 2
     m_Bits: 64
+  targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &2554400087572737036
 GameObject:
   m_ObjectHideFlags: 0
@@ -87,9 +90,8 @@ GameObject:
   - component: {fileID: 3282121602390103479}
   - component: {fileID: 515392833598524079}
   - component: {fileID: -4973450343374346006}
-  - component: {fileID: 583518375223823016}
   - component: {fileID: 8788969605692028793}
-  - component: {fileID: -3164692507273221523}
+  - component: {fileID: 583518375223823016}
   m_Layer: 7
   m_Name: SilverSwarm
   m_TagString: Untagged
@@ -268,19 +270,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7849f4c9c20e4c5ebd26d58589ea756a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &583518375223823016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2554400087572737036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09e3a40acc7d48e1a49340b01fc3cdfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  silversCount: 5
 --- !u!114 &8788969605692028793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,18 +283,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextPointRadius: 4
---- !u!114 &-3164692507273221523
+--- !u!114 &583518375223823016
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2554400087572737036}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 495207615b4e44e8a6f2cd42347cc2b7, type: 3}
+  m_Script: {fileID: 11500000, guid: 09e3a40acc7d48e1a49340b01fc3cdfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  silversCount: 5
 --- !u!1 &5494662749754350650
 GameObject:
   m_ObjectHideFlags: 0

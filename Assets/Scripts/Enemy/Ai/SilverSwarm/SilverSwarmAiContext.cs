@@ -4,22 +4,20 @@ using UnityEngine;
 
 namespace Enemy.Ai.SilverSwarm
 {
-    public class SilverSwarmAiContext : EnemyAiContext, IAiTransformAgent, IAiLookAgent, IAiCombatAgent, IAiMoveAgent, IAiPatrolAgent, IAiSwarmControllerAgent, IAiShelterRepositionAgent
+    public class SilverSwarmAiContext : EnemyAiContext, IAiTransformAgent, IAiLookAgent, IAiCombatAgent, IAiMoveAgent, IAiPatrolAgent, IAiSwarmControllerAgent
     {
         public SilverSwarmAiContext(
             Transform selfTransform,
             EnemyLookComponent lookComponent, 
             EnemyCombatComponent combatComponent, 
             EnemyMoveController moveController,
-            EnemyPatrolComponent patrolComponent, 
-            EnemyShelterRepositionComponent shelterRepositionComponent)
+            EnemyPatrolComponent patrolComponent)
         {
             _selfTransform = selfTransform;
             _lookComponent = lookComponent;
             _combatComponent = combatComponent;
             _moveController = moveController;
             _patrolComponent = patrolComponent;
-            _shelterRepositionComponent = shelterRepositionComponent;
         }
         public Vector3 SelfPosition => _selfTransform.position;
         private readonly Transform _selfTransform;
@@ -49,10 +47,5 @@ namespace Enemy.Ai.SilverSwarm
         private readonly EnemyPatrolComponent _patrolComponent;
         
         public bool AttackFlag { get; set; }
-
-        public bool IsOnShelter => _shelterRepositionComponent.IsOnShelter(this);
-        public bool IsShelterPossible => _shelterRepositionComponent.IsShelterPossible(this);
-        public Vector3? FarthestValidShelterPoint => _shelterRepositionComponent.GetFarthestValidShelter(this);
-        private readonly EnemyShelterRepositionComponent _shelterRepositionComponent;
     }
 }
