@@ -45,7 +45,7 @@ namespace Enemy.Ai.SilverSwarm
         public bool IsAgentArrivedToDestination => _moveController.IsAgentArrivedToDestination();
         private readonly EnemyMoveController _moveController;
         
-        public Vector3 NextPatrolPoint => _patrolComponent.GetNextPoint();
+        public Vector3 NextPatrolPoint => _patrolComponent.GetNextPoint(SelfPosition);
         private readonly EnemyPatrolComponent _patrolComponent;
         
         public bool AttackFlag { get; set; }

@@ -37,7 +37,7 @@ namespace Enemy.Ai.Humanoids
         public float ClosestTargetInventoryValue => 0f;
         protected readonly EnemyLookComponent LookComponent;
 
-        public virtual Vector3 NextPatrolPoint => PatrolComponent.GetNextPoint();
+        public virtual Vector3 NextPatrolPoint => PatrolComponent.GetNextPoint(SelfPosition);
         protected readonly EnemyPatrolComponent PatrolComponent;
 
         public virtual void MoveTo(Vector3 position) => MoveController.MoveTo(position);
