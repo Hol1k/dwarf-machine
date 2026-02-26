@@ -22,6 +22,7 @@ namespace Enemy.Ai
 
         private readonly List<StatsComponent> _visibleObjects = new();
         [SerializeField] private LayerMask obstaclesLayerMask;
+        [SerializeField] private LayerMask targetLayerMask;
 
         [Inject]
         private void Init(SphereCollider lookSphereCollider)
@@ -89,7 +90,8 @@ namespace Enemy.Ai
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent(out StatsComponent targetStats) && !targetStats.IsDied)
+            if (other.TryGetComponent(out StatsComponent targetStats) && !targetStats.IsDied &&
+                (targetLayerMask >> targetStats.gameObject.layer) % 2 == 1)
             {
                 _visibleObjects.Add(targetStats);
                 targetStats.OnDeath += () => _visibleObjects.Remove(targetStats);
