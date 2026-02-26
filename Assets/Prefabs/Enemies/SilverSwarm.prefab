@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 515392833598524079}
   - component: {fileID: -4973450343374346006}
   - component: {fileID: 583518375223823016}
-  - component: {fileID: -6706174061231797568}
+  - component: {fileID: 8788969605692028793}
   - component: {fileID: -3164692507273221523}
   m_Layer: 7
   m_Name: SilverSwarm
@@ -281,7 +281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   silversCount: 5
---- !u!114 &-6706174061231797568
+--- !u!114 &8788969605692028793
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -290,9 +290,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2554400087572737036}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2d94b18ddd0435a9f87e5a1fbcc2c01, type: 3}
+  m_Script: {fileID: 11500000, guid: c341ff44fa9445df89fb17211c5dcffb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextPointRadius: 4
 --- !u!114 &-3164692507273221523
 MonoBehaviour:
   m_ObjectHideFlags: 0
