@@ -307,7 +307,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2d94b18ddd0435a9f87e5a1fbcc2c01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolPoints: {fileID: 0}
 --- !u!114 &4001524510103818558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,7 +319,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 495207615b4e44e8a6f2cd42347cc2b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  repositionPoints: {fileID: 0}
 --- !u!1 &3593072150415156332
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,6 +388,9 @@ MonoBehaviour:
   obstaclesLayerMask:
     serializedVersion: 2
     m_Bits: 64
+  targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 768
 --- !u!1 &7220195246982673382
 GameObject:
   m_ObjectHideFlags: 0
