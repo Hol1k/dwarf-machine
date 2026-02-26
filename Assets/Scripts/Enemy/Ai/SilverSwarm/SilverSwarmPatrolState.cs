@@ -26,16 +26,16 @@ namespace Enemy.Ai.SilverSwarm
             {
                 fsmContext.RequestedState = EnemyFsmStateId.Combat;
             }
-            else if (!fsmContext.RepositionPoint.HasValue)
+            else if (!fsmContext.PatrolPoint.HasValue)
             {
-                fsmContext.RepositionPoint = _patrolAgent.NextPatrolPoint;
+                fsmContext.PatrolPoint = _patrolAgent.NextPatrolPoint;
             }
             else
             {
-                _moveAgent.MoveTo(fsmContext.RepositionPoint.Value);
+                _moveAgent.MoveTo(fsmContext.PatrolPoint.Value);
                 if (!_moveAgent.IsAgentArrivedToDestination)
                 {
-                    _moveAgent.MoveTo(fsmContext.RepositionPoint.Value);
+                    _moveAgent.MoveTo(fsmContext.PatrolPoint.Value);
                 }
                 else
                 {
