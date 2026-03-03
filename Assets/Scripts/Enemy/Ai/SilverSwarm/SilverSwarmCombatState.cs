@@ -38,6 +38,7 @@ namespace Enemy.Ai.SilverSwarm
             }
             else
             {
+                _combatAgent.AttackTarget(_lookAgent.ClosestTarget);
                 _moveAgent.MoveTo(_lookAgent.ClosestTarget.transform.position);
             }
         }
