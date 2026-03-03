@@ -1,10 +1,11 @@
 ﻿using Enemy.Ai.AiContextInterfaces;
+using Enemy.Ai.SilverSwarm.SilverEnemy;
 using Entities;
 using UnityEngine;
 
 namespace Enemy.Ai.SilverSwarm
 {
-    public class SilverSwarmAiContext : EnemyAiContext, IAiTransformAgent, IAiLookAgent, IAiCombatAgent, IAiMoveAgent, IAiPatrolAgent, IAiSwarmControllerAgent
+    public class SilverSwarmAiContext : EnemyAiContext, IAiTransformAgent, IAiLookAgent, IAiCombatAgent, IAiMoveAgent, IAiPatrolAgent, IAiSwarmControllerAgent, IAiSwarmDataAgent
     {
         public SilverSwarmAiContext(
             Transform selfTransform,

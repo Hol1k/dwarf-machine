@@ -19,7 +19,8 @@ namespace DiInstallers.Enemies
             Container
                 .BindFactory<EnemyAiComponent, SilverEnemyFactory>()
                 .FromSubContainerResolve()
-                .ByNewContextPrefab(silverEnemyPrefab);
+                .ByNewContextPrefab(silverEnemyPrefab)
+                .CopyIntoAllSubContainers();
         }
     }
 }
