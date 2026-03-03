@@ -36,7 +36,6 @@ namespace Enemy.Ai.SilverSwarm.SilverEnemy
 
         public override void Exit(EnemyFsmContext fsmContext)
         {
-            Debug.Log("Exit SilverSwarm");
             fsmContext.IdleTimer = 0f;
         }
     }
