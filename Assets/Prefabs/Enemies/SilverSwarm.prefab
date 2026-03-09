@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 3282121602390103479}
   - component: {fileID: 515392833598524079}
   - component: {fileID: -4973450343374346006}
+  - component: {fileID: 3132929861168306661}
   - component: {fileID: 8788969605692028793}
   - component: {fileID: 583518375223823016}
   m_Layer: 7
@@ -246,7 +247,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 0
 --- !u!114 &515392833598524079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,6 +276,19 @@ MonoBehaviour:
   attackRange: 5
   damagePerSilver: 1
   attackSpeed: 20
+--- !u!114 &3132929861168306661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2554400087572737036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b11b1a0dc564ee39f99b18697973ca0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swarmRadius: 2
 --- !u!114 &8788969605692028793
 MonoBehaviour:
   m_ObjectHideFlags: 0

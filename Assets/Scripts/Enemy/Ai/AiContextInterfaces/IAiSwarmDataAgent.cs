@@ -1,7 +1,11 @@
-﻿namespace Enemy.Ai.AiContextInterfaces
+﻿using UnityEngine;
+
+namespace Enemy.Ai.AiContextInterfaces
 {
     public interface IAiSwarmDataAgent
     {
         bool AttackFlag { get; }
+        bool IsPointInsideSwarm(Vector3 fsmContextPatrolPoint);
+        Vector3 GetPointInsideSwarm { get; }
     }
 }

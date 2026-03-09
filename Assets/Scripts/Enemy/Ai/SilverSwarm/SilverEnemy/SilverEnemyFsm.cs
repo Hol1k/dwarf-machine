@@ -7,9 +7,9 @@
             EnemyFsmState silverEnemyPatrolState,
             EnemyFsmState silverEnemyCombatState)
         {
-            States.Add(EnemyFsmStateId.Idle,  silverEnemyIdleState);
-            States.Add(EnemyFsmStateId.Patrol,  silverEnemyPatrolState);
-            States.Add(EnemyFsmStateId.Combat,  silverEnemyCombatState);
+            States.Add(EnemyFsmStateId.Idle, silverEnemyIdleState);
+            States.Add(EnemyFsmStateId.Patrol, silverEnemyPatrolState);
+            States.Add(EnemyFsmStateId.Combat, silverEnemyCombatState);
             
             CurrentState = EnemyFsmStateId.Idle;
             States[CurrentState].Enter(FsmContext);

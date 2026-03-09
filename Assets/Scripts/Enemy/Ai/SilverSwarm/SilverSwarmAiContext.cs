@@ -1,5 +1,4 @@
 ﻿using Enemy.Ai.AiContextInterfaces;
-using Enemy.Ai.SilverSwarm.SilverEnemy;
 using Entities;
 using UnityEngine;
 
@@ -12,13 +11,15 @@ namespace Enemy.Ai.SilverSwarm
             EnemyLookComponent lookComponent, 
             EnemyCombatComponent combatComponent, 
             EnemyMoveController moveController,
-            EnemyPatrolComponent patrolComponent)
+            EnemyPatrolComponent patrolComponent,
+            SwarmController swarmController)
         {
             _selfTransform = selfTransform;
             _lookComponent = lookComponent;
             _combatComponent = combatComponent;
             _moveController = moveController;
             _patrolComponent = patrolComponent;
+            _swarmController = swarmController;
         }
         public Vector3 SelfPosition => _selfTransform.position;
         private readonly Transform _selfTransform;
@@ -46,7 +47,16 @@ namespace Enemy.Ai.SilverSwarm
         
         public Vector3 NextPatrolPoint => _patrolComponent.GetNextPoint(SelfPosition);
         private readonly EnemyPatrolComponent _patrolComponent;
-        
-        public bool AttackFlag { get; set; }
+
+        bool IAiSwarmControllerAgent.AttackFlag
+        {
+            get => _attackFlag;
+            set => _attackFlag = value;
+        }
+        bool IAiSwarmDataAgent.AttackFlag => _attackFlag;
+        private bool _attackFlag;
+        public bool IsPointInsideSwarm(Vector3 point) => _swarmController.IsPointInsideSwarm(point);
+        public Vector3 GetPointInsideSwarm => _swarmController.GetPointInsideSwarm();
+        private readonly SwarmController _swarmController;
     }
 }

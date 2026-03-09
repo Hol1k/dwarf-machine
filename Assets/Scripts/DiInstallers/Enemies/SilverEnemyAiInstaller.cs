@@ -1,6 +1,5 @@
 ﻿using Enemy.Ai;
-using Enemy.Ai.SilverSwarm;
-using Enemy.Ai.SilverSwarm.SilverEnemy;
+using UnityEngine.AI;
 using Zenject;
 
 namespace DiInstallers.Enemies
@@ -10,6 +9,9 @@ namespace DiInstallers.Enemies
         public override void InstallBindings()
         {
             Container.Bind<EnemyAiComponent>().FromComponentsOnRoot().AsSingle();
+            
+            Container.Bind<NavMeshAgent>().FromComponentInHierarchy().AsSingle();
+            Container.Bind<EnemyMoveController>().FromComponentOnRoot().AsSingle();
         }
     }
 }
