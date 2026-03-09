@@ -15,10 +15,10 @@ namespace Enemy.Ai.SilverSwarm.SilverEnemy
                 new SilverEnemyCombatState(silverSwarmContext));
         }
 
-        private SilverSwarmAiContext ValidateContext(EnemyAiContext aiContext)
+        private SilverEnemyAiContext ValidateContext(EnemyAiContext aiContext)
         {
-            return aiContext as SilverSwarmAiContext ?? throw new InvalidOperationException(
-                $"SilverEnemyFsm requires SilverSwarmAiContext, not {aiContext.GetType()}");
+            return aiContext as SilverEnemyAiContext ?? throw new InvalidOperationException(
+                $"SilverEnemyFsm requires SilverEnemyAiContext, not {aiContext.GetType()}");
         }
     }
 }

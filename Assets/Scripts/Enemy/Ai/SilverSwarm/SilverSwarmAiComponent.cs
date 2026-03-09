@@ -7,7 +7,7 @@ namespace Enemy.Ai.SilverSwarm
         private EnemyFsm _fsm;
 
         [Inject]
-        private void Init(SilverSwarmFsmFactory fsmFactory, EnemyAiContext aiContext)
+        private void Init(SilverSwarmFsmFactory fsmFactory, SilverSwarmAiContext aiContext)
         {
             _fsm = fsmFactory.Create(aiContext);
         }

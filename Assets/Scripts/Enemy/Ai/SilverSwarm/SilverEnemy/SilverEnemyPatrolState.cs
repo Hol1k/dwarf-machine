@@ -4,7 +4,7 @@ namespace Enemy.Ai.SilverSwarm.SilverEnemy
 {
     public class SilverEnemyPatrolState : EnemyFsmState
     {
-        public SilverEnemyPatrolState(SilverSwarmAiContext aiContext)
+        public SilverEnemyPatrolState(SilverEnemyAiContext aiContext)
         {
         }
 

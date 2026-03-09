@@ -8,7 +8,7 @@ namespace Enemy.Ai.SilverSwarm.SilverEnemy
     {
         private readonly IAiSwarmDataAgent _swarmDataAgent;
         
-        public SilverEnemyIdleState(SilverSwarmAiContext aiContext)
+        public SilverEnemyIdleState(SilverEnemyAiContext aiContext)
         {
             _swarmDataAgent = aiContext;
         }

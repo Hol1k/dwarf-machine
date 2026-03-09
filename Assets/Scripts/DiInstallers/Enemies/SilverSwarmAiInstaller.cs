@@ -9,7 +9,7 @@ namespace DiInstallers.Enemies
         protected override void InstallAi()
         {
             Container.BindInterfacesAndSelfTo<SilverSwarmAiContext>().AsSingle().CopyIntoAllSubContainers();
-            Container.Bind<EnemyAiContext>().To<SilverSwarmAiContext>().FromResolve().CopyIntoAllSubContainers();
+            Container.BindInterfacesAndSelfTo<SilverEnemyAiContext>().AsSingle().CopyIntoAllSubContainers();
             
             Container.BindFactory<EnemyAiContext, EnemyFsm, SilverSwarmFsmFactory>().AsSingle();
             Container.BindFactory<EnemyAiContext, EnemyFsm, SilverEnemyFsmFactory>().AsSingle().MoveIntoAllSubContainers();
