@@ -57,6 +57,8 @@ namespace Enemy.Ai.SilverSwarm
         private bool _attackFlag;
         public bool IsPointInsideSwarm(Vector3 point) => _swarmController.IsPointInsideSwarm(point);
         public Vector3 GetPointInsideSwarm => _swarmController.GetPointInsideSwarm();
+        public Vector3? TargetPosition => _lookComponent.GetClosestTarget().transform.position;
+        public Vector3? GetPointBehindTarget => _lookComponent.GetClosestTarget().transform.position + Random.insideUnitSphere;
         private readonly SwarmController _swarmController;
     }
 }

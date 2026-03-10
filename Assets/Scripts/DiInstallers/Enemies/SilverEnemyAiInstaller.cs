@@ -1,4 +1,5 @@
 ﻿using Enemy.Ai;
+using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
 
@@ -12,6 +13,8 @@ namespace DiInstallers.Enemies
             
             Container.Bind<NavMeshAgent>().FromComponentInHierarchy().AsSingle();
             Container.Bind<EnemyMoveController>().FromComponentOnRoot().AsSingle();
+            
+            Container.Bind<Transform>().FromComponentOnRoot().AsSingle();
         }
     }
 }
