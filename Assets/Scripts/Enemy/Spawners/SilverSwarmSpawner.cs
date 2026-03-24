@@ -21,12 +21,7 @@ namespace Enemy.Spawners
             }
         }
 
-        private void Start()
-        {
-            SpawnAll();
-        }
-
-        private void SpawnAll()
+        public void SpawnAll()
         {
             foreach (var spawnPoint in SpawnPointsCollection)
             {

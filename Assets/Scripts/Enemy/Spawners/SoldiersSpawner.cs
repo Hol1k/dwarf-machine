@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Enemy.Ai;
 using UnityEngine;
 using Zenject;
 
@@ -21,16 +22,11 @@ namespace Enemy.Spawners
             }
         }
 
-        private void Start()
-        {
-            SpawnAll();
-        }
-
-        private void SpawnAll()
+        public void SpawnAll(EnemyPatrolPointsCollection patrolPointsCollection, EnemyRepositionPointsCollection repositionPointsCollection)
         {
             foreach (var spawnPoint in SpawnPointsCollection)
             {
-                var enemy = soldierFactory.Create();
+                var enemy = soldierFactory.Create(patrolPointsCollection, repositionPointsCollection);
                 enemy.transform.position = spawnPoint.position;
             }
         }

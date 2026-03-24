@@ -8,8 +8,8 @@ namespace DiInstallers.Enemies
     {
         [SerializeField] private SoldiersSpawner soldiersSpawnerPrefab;
         [SerializeField] private AboriginesSpawner aboriginesSpawnerPrefab;
-        [SerializeField] private SilverSwarmSpawner silverSwarmSpawnerPrefab;
         [SerializeField] private VeinDevourerSpawner veinDevourerSpawnerPrefab;
+        [SerializeField] private SilverSwarmSpawner silverSwarmSpawnerPrefab;
 
         public override void InstallBindings()
         {
@@ -20,14 +20,14 @@ namespace DiInstallers.Enemies
             Container.BindFactory<AboriginesSpawner, AboriginesSpawner.Factory>()
                 .FromSubContainerResolve()
                 .ByNewContextPrefab(aboriginesSpawnerPrefab);
-            
-            Container.BindFactory<SilverSwarmSpawner, SilverSwarmSpawner.Factory>()
-                .FromSubContainerResolve()
-                .ByNewContextPrefab(silverSwarmSpawnerPrefab);
-            
+
             Container.BindFactory<VeinDevourerSpawner, VeinDevourerSpawner.Factory>()
                 .FromSubContainerResolve()
                 .ByNewContextPrefab(veinDevourerSpawnerPrefab);
+
+            Container.BindFactory<SilverSwarmSpawner, SilverSwarmSpawner.Factory>()
+                .FromSubContainerResolve()
+                .ByNewContextPrefab(silverSwarmSpawnerPrefab);
         }
     }
 }
