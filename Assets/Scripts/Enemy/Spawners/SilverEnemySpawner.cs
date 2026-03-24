@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using Zenject;
 
-namespace Enemy.SpawnManagers
+namespace Enemy.Spawners
 {
-    public class SilverEnemySpawnManager : MonoBehaviour
+    public class SilverEnemySpawner : MonoBehaviour
     {
         [SerializeField] private Transform silversCollection;
         

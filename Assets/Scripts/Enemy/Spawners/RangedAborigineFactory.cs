@@ -1,7 +1,7 @@
 ﻿using Enemy.Ai;
 using Zenject;
 
-namespace Enemy.SpawnManagers
+namespace Enemy.Spawners
 {
     public class RangedAborigineFactory : PlaceholderFactory< EnemyAiComponent>
     {

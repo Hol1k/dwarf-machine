@@ -2,7 +2,7 @@
 using UnityEngine;
 using Zenject;
 
-namespace Enemy.SpawnManagers
+namespace Enemy.Spawners
 {
     public class SilverEnemyFactory : PlaceholderFactory<EnemyAiComponent>
     {

@@ -2,16 +2,17 @@
 using UnityEngine;
 using Zenject;
 
-namespace Enemy.SpawnManagers
+namespace Enemy.Spawners
 {
-    public class SilverSwarmSpawnManager : MonoBehaviour
+    public class AboriginesSpawner : MonoBehaviour
     {
         [SerializeField] private Transform spawnPointsCollectionParent;
 
         private Transform[] SpawnPointsCollection => spawnPointsCollectionParent.GetComponentsInChildren<Transform>()
             .Where(point => point != spawnPointsCollectionParent).ToArray();
         
-        [Inject] private SilverSwarmFactory silverSwarmFactoryFactory;
+        [Inject] private IEnemyTeamController teamController;
+        [Inject] private RangedAborigineFactory rangedAborigineFactory;
 
         private void OnDrawGizmosSelected()
         {
@@ -30,8 +31,9 @@ namespace Enemy.SpawnManagers
         {
             foreach (var spawnPoint in SpawnPointsCollection)
             {
-                var enemy = silverSwarmFactoryFactory.Create();
+                var enemy = rangedAborigineFactory.Create();
                 enemy.transform.position = spawnPoint.position;
+                teamController.TeamCollection.Add(enemy);
             }
         }
     }

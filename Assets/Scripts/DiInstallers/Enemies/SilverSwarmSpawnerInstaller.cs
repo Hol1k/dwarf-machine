@@ -1,5 +1,5 @@
 ﻿using Enemy.Ai;
-using Enemy.SpawnManagers;
+using Enemy.Spawners;
 using UnityEngine;
 using Zenject;
 

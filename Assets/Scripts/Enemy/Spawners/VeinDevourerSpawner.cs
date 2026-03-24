@@ -1,20 +1,17 @@
-﻿using System;
-using System.Linq;
-using Enemy.Ai;
+﻿using System.Linq;
 using UnityEngine;
 using Zenject;
 
-namespace Enemy.SpawnManagers
+namespace Enemy.Spawners
 {
-    public class AboriginesSpawnManager : MonoBehaviour
+    public class VeinDevourerSpawner : MonoBehaviour
     {
         [SerializeField] private Transform spawnPointsCollectionParent;
 
         private Transform[] SpawnPointsCollection => spawnPointsCollectionParent.GetComponentsInChildren<Transform>()
             .Where(point => point != spawnPointsCollectionParent).ToArray();
         
-        [Inject] private IEnemyTeamController teamController;
-        [Inject] private RangedAborigineFactory rangedAborigineFactory;
+        [Inject] private VeinDevourerFactory veinDevourerFactory;
 
         private void OnDrawGizmosSelected()
         {
@@ -33,9 +30,8 @@ namespace Enemy.SpawnManagers
         {
             foreach (var spawnPoint in SpawnPointsCollection)
             {
-                var enemy = rangedAborigineFactory.Create();
+                var enemy = veinDevourerFactory.Create();
                 enemy.transform.position = spawnPoint.position;
-                teamController.TeamCollection.Add(enemy);
             }
         }
     }

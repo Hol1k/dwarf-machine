@@ -2,16 +2,16 @@
 using UnityEngine;
 using Zenject;
 
-namespace Enemy.SpawnManagers
+namespace Enemy.Spawners
 {
-    public class VeinDevourerSpawnManager : MonoBehaviour
+    public class SilverSwarmSpawner : MonoBehaviour
     {
         [SerializeField] private Transform spawnPointsCollectionParent;
 
         private Transform[] SpawnPointsCollection => spawnPointsCollectionParent.GetComponentsInChildren<Transform>()
             .Where(point => point != spawnPointsCollectionParent).ToArray();
         
-        [Inject] private VeinDevourerFactory veinDevourerFactory;
+        [Inject] private SilverSwarmFactory silverSwarmFactoryFactory;
 
         private void OnDrawGizmosSelected()
         {
@@ -30,7 +30,7 @@ namespace Enemy.SpawnManagers
         {
             foreach (var spawnPoint in SpawnPointsCollection)
             {
-                var enemy = veinDevourerFactory.Create();
+                var enemy = silverSwarmFactoryFactory.Create();
                 enemy.transform.position = spawnPoint.position;
             }
         }
