@@ -4,7 +4,7 @@ using Zenject;
 
 namespace Enemy.Spawners
 {
-    public class VeinDevourerSpawner : MonoBehaviour
+    public partial class VeinDevourerSpawner : MonoBehaviour
     {
         [SerializeField] private Transform spawnPointsCollectionParent;
 

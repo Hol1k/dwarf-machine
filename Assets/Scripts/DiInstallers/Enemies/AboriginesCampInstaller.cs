@@ -16,6 +16,8 @@ namespace DiInstallers.Enemies
 
         public override void InstallBindings()
         {
+            Container.Bind<AboriginesSpawner>().FromComponentOnRoot().AsSingle();
+            
             Container
                 .Bind<EnemyPatrolPointsCollection>()
                 .FromInstance(patrolPoints)

@@ -12,6 +12,7 @@ namespace DiInstallers.Enemies
 
         public override void InstallBindings()
         {
+            Container.Bind<SilverSwarmSpawner>().FromComponentOnRoot().AsSingle();
             Container
                 .BindFactory<EnemyAiComponent, SilverSwarmFactory>()
                 .FromSubContainerResolve()

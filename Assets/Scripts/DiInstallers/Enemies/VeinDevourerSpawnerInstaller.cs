@@ -1,5 +1,4 @@
-﻿using Enemy;
-using Enemy.Ai;
+﻿using Enemy.Ai;
 using Enemy.Spawners;
 using UnityEngine;
 using Zenject;
@@ -12,6 +11,7 @@ namespace DiInstallers.Enemies
 
         public override void InstallBindings()
         {
+            Container.Bind<VeinDevourerSpawner>().FromComponentOnRoot().AsSingle();
             Container
                 .BindFactory<EnemyAiComponent, VeinDevourerFactory>()
                 .FromSubContainerResolve()

@@ -4,7 +4,7 @@ using Zenject;
 
 namespace Enemy.Spawners
 {
-    public class AboriginesSpawner : MonoBehaviour
+    public partial class AboriginesSpawner : MonoBehaviour
     {
         [SerializeField] private Transform spawnPointsCollectionParent;
 

@@ -4,7 +4,7 @@ using Zenject;
 
 namespace Enemy.Spawners
 {
-    public class SilverSwarmSpawner : MonoBehaviour
+    public partial class SilverSwarmSpawner : MonoBehaviour
     {
         [SerializeField] private Transform spawnPointsCollectionParent;
 
