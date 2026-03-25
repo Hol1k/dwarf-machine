@@ -5,27 +5,22 @@ using UnityEngine;
 
 namespace Enemy.Ai
 {
-    public class EnemyRepositionPointsCollection : MonoBehaviour
+    public struct EnemyRepositionPointsCollection
     {
-        [SerializeField] private Transform[] repositionPoints;
-        public IReadOnlyList<Vector3> Points => repositionPoints.Select(p => p.position).ToList();
+        private Transform[] _repositionPoints;
 
-        [SerializeField] private LayerMask obstaclesLayerMask;
-
-        private void OnDrawGizmosSelected()
+        public EnemyRepositionPointsCollection(Transform[] repositionPoints)
         {
-            if (repositionPoints != null)
-                foreach (var p in repositionPoints)
-                {
-                    Gizmos.DrawSphere(p.position, 0.5f);
-                }
+            _repositionPoints = repositionPoints;
         }
 
-        public IReadOnlyList<Vector3> GetValidPoints(IAiLookAgent lookAgent)
+        public IReadOnlyList<Vector3> Points => _repositionPoints.Select(p => p.position).ToList();
+
+        public IReadOnlyList<Vector3> GetValidPoints(IAiLookAgent lookAgent, LayerMask obstaclesLayerMask)
         {
             var target = lookAgent.ClosestTarget.transform.position;
 
-            return repositionPoints
+            return _repositionPoints
                 .Where(p =>
                     Vector3.Distance(p.position, target) <= lookAgent.LookRange &&
                     Physics.OverlapCapsule(p.position, target, 0.05f, obstaclesLayerMask).Length == 0)

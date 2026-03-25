@@ -2,19 +2,15 @@
 
 namespace Enemy.Ai
 {
-    public class EnemyPatrolPointsCollection : MonoBehaviour
+    public readonly struct EnemyPatrolPointsCollection
     {
-        [SerializeField] private Transform[] patrolPoints;
-        public int Length => patrolPoints.Length;
-        public Vector3 this[int index] => patrolPoints[index].position;
-
-        private void OnDrawGizmosSelected()
+        private readonly Transform[] _patrolPoints;
+        
+        public EnemyPatrolPointsCollection(Transform[] patrolPoints)
         {
-            if (patrolPoints != null)
-                foreach (var p in patrolPoints)
-                {
-                    Gizmos.DrawSphere(p.position, 0.5f);
-                }
+            _patrolPoints = patrolPoints;
         }
+        public int Length => _patrolPoints.Length;
+        public Vector3 this[int index] => _patrolPoints[index].position;
     }
 }

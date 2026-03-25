@@ -8,6 +8,7 @@ namespace Enemy.Ai
     public class EnemyShelterRepositionComponent : MonoBehaviour
     {
         [Inject] private EnemyRepositionPointsCollection repositionPoints;
+        [SerializeField] private LayerMask obstaclesLayerMask;
 
         public bool IsOnShelter(IAiTransformAgent transformAgent)
         {
@@ -19,7 +20,7 @@ namespace Enemy.Ai
 
         public Vector3? GetFarthestValidShelter(IAiLookAgent lookAgent)
         {
-            var validPoints = repositionPoints.GetValidPoints(lookAgent);
+            var validPoints = repositionPoints.GetValidPoints(lookAgent, obstaclesLayerMask);
             
             if (validPoints.Count == 0)
                 return null;
