@@ -405,6 +405,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 495207615b4e44e8a6f2cd42347cc2b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  obstaclesLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &8190733808092750217
 GameObject:
   m_ObjectHideFlags: 0
