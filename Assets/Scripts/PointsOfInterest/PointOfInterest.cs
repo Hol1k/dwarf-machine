@@ -19,6 +19,8 @@ namespace PointsOfInterest
                 .GetComponentsInChildren<Transform>()
                 .Where(point => point != patrolPointsCollectionParent).ToArray());
 
+        public bool isOccupied;
+        
         public EnemyRepositionPointsCollection ShelterRepositionPointsCollection => new(
             shelterRepositionPointsCollectionParent.GetComponentsInChildren<Transform>()
                 .Where(point => point != shelterRepositionPointsCollectionParent).ToArray());

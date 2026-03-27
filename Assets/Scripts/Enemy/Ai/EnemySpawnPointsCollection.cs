@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Enemy.Ai
 {
@@ -12,5 +13,6 @@ namespace Enemy.Ai
         }
         public int Length => _spawnPoints.Length;
         public Vector3 this[int index] => _spawnPoints[index].position;
+        public IReadOnlyCollection<Transform> SpawnPoints => _spawnPoints;
     }
 }

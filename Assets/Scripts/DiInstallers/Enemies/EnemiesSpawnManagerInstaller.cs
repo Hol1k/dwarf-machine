@@ -1,4 +1,5 @@
 ﻿using Enemy.Spawners;
+using PointsOfInterest;
 using UnityEngine;
 using Zenject;
 
@@ -28,6 +29,10 @@ namespace DiInstallers.Enemies
             Container.BindFactory<SilverSwarmSpawner, SilverSwarmSpawner.Factory>()
                 .FromSubContainerResolve()
                 .ByNewContextPrefab(silverSwarmSpawnerPrefab);
+
+            Container.Bind<PointOfInterest>()
+                .FromComponentsInHierarchy()
+                .AsSingle();
         }
     }
 }
