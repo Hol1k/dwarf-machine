@@ -1,32 +1,31 @@
 ﻿using System.Linq;
 using Enemy.Ai;
+using PointsOfInterest;
 using UnityEngine;
 using Zenject;
 
 namespace Enemy.Spawners
 {
-    public partial class SoldiersSpawner : MonoBehaviour
+    public partial class SoldiersSpawner : MonoBehaviour, IEnemySpawner
     {
-        [SerializeField] private Transform spawnPointsCollectionParent;
-
-        private Transform[] SpawnPointsCollection => spawnPointsCollectionParent.GetComponentsInChildren<Transform>()
-            .Where(point => point != spawnPointsCollectionParent).ToArray();
-        
         [Inject] private SoldierFactory soldierFactory;
 
-        private void OnDrawGizmosSelected()
+        private EnemyPatrolPointsCollection _patrolPointsCollection;
+        private EnemyRepositionPointsCollection _repositionPointsCollection;
+        private Transform[] _spawnPointsCollection;
+
+        public void Init(PointOfInterest pointOfInterest)
         {
-            foreach (var spawnPoint in SpawnPointsCollection)
-            {
-                Gizmos.DrawSphere(spawnPoint.position, 0.5f);
-            }
+            _patrolPointsCollection = pointOfInterest.PatrolPointsCollection;
+            _repositionPointsCollection = pointOfInterest.ShelterRepositionPointsCollection;
+            _spawnPointsCollection = pointOfInterest.SpawnPointsCollection.SpawnPoints.ToArray();
         }
 
-        public void SpawnAll(EnemyPatrolPointsCollection patrolPointsCollection, EnemyRepositionPointsCollection repositionPointsCollection)
+        public void SpawnAll()
         {
-            foreach (var spawnPoint in SpawnPointsCollection)
+            foreach (var spawnPoint in _spawnPointsCollection)
             {
-                var enemy = soldierFactory.Create(patrolPointsCollection, repositionPointsCollection);
+                var enemy = soldierFactory.Create(_patrolPointsCollection, _repositionPointsCollection);
                 enemy.transform.position = spawnPoint.position;
             }
         }
