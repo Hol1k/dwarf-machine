@@ -22,12 +22,23 @@ namespace Level
         [SerializeField] [Min(0)] private int maxOfAboriginesCamps;
         private int _countOfAboriginesCamps;
 
+        [Space]
         [SerializeField] [Min(0)] private int minOfSoldiersCamps;
         [SerializeField] [Min(0)] private int maxOfSoldiersCamps;
         private int _countOfSoldiersCamps;
         
+        [Space]
+        [SerializeField] private bool drawVeinDevourerSpawnRadius;
+        [SerializeField] [Min(3)] private int countOfVeinDevourerSpawnRadiusLines;
+        [SerializeField] private Vector2 centerOfVeinDevourerSpawn;
+        [SerializeField] private float radiusOfVeinDevourerSpawn;
+        [SerializeField] [Min(0)] private int minOfVeinDevourers;
+        [SerializeField] [Min(0)] private int maxOfVeinDevourers;
+        private int _countOfVeinDevourers;
+        
         [Inject] private AboriginesSpawner.Factory aboriginesSpawnerFactory;
         [Inject] private SoldiersSpawner.Factory soldiersSpawnerFactory;
+        [Inject] private VeinDevourerSpawner.Factory veinDevourerSpawnerFactory;
 
         private void Start()
         {
@@ -44,6 +55,7 @@ namespace Level
             {
                 _countOfAboriginesCamps = Random.Range(minOfAboriginesCamps, maxOfAboriginesCamps + 1);
                 _countOfSoldiersCamps = Random.Range(minOfSoldiersCamps, maxOfSoldiersCamps + 1);
+                _countOfVeinDevourers = Random.Range(minOfVeinDevourers, maxOfVeinDevourers + 1);
 
                 await CreateSpawners();
                 await SpawnAllEnemies();
@@ -56,13 +68,36 @@ namespace Level
             }
         }
 
+        private void OnDrawGizmos()
+        {
+            if (drawVeinDevourerSpawnRadius)
+            {
+                var middleOfRadius = new Vector3(centerOfVeinDevourerSpawn.x, 500f, centerOfVeinDevourerSpawn.y);
+                List<Vector3> linesPositions = new();
+
+                for (int i = 0; i < countOfVeinDevourerSpawnRadiusLines; i++)
+                {
+                    var linePos =
+                        middleOfRadius +
+                        Quaternion.Euler(0, 360 / countOfVeinDevourerSpawnRadiusLines * i, 0) * Vector3.forward *
+                        radiusOfVeinDevourerSpawn;
+
+                    linesPositions.Add(linePos);
+                    linesPositions.Add(new Vector3(linePos.x, -100f, linePos.z));
+                }
+
+                Gizmos.DrawLineList(new ReadOnlySpan<Vector3>(linesPositions.ToArray()));
+            }
+        }
+
         private async UniTask CreateSpawners()
         {
             List<IEnemySpawner> enemySpawners = new();
 
             var aborigineSpawnersTask = CreateAborigineSpawners(enemySpawners);
             var soldierSpawnersTask = CreateSoldierSpawners(enemySpawners);
-            await UniTask.WhenAll(aborigineSpawnersTask, soldierSpawnersTask);
+            var veinDevourerSpawnersTask = CreateVeinDevourerSpawners(enemySpawners);
+            await UniTask.WhenAll(aborigineSpawnersTask, soldierSpawnersTask, veinDevourerSpawnersTask);
 
             spawners = enemySpawners.ToArray();
         }
@@ -119,6 +154,25 @@ namespace Level
             if (spawnedCamps < _countOfAboriginesCamps)
                 Debug.LogWarning(
                     $"All POI already occupied. Not all of Soldiers had spawned. Spawned camps count: {spawnedCamps}");
+        }
+
+        private async UniTask CreateVeinDevourerSpawners(List<IEnemySpawner> enemySpawners)
+        {
+            for (int i = 0; i < _countOfVeinDevourers; i++)
+            {
+                var spawner = veinDevourerSpawnerFactory.Create();
+                
+                var rayCastPosVector2 = Random.insideUnitCircle * radiusOfVeinDevourerSpawn;
+                var rayCastPos = new Vector3(centerOfVeinDevourerSpawn.x + rayCastPosVector2.x, 500f, centerOfVeinDevourerSpawn.y + rayCastPosVector2.y);
+                RaycastHit hitInfo;
+                while (!Physics.Raycast(rayCastPos, Vector3.down, out hitInfo, float.PositiveInfinity,
+                        LayerMask.GetMask("Ground"))) {}
+                spawner.transform.position = hitInfo.point;
+                
+                enemySpawners.Add(spawner);
+                
+                await UniTask.Yield();
+            }
         }
 
         private async UniTask SpawnAllEnemies()
