@@ -36,9 +36,19 @@ namespace Level
         [SerializeField] [Min(0)] private int maxOfVeinDevourers;
         private int _countOfVeinDevourers;
         
+        [Space]
+        [SerializeField] private bool drawSilverSwarmSpawnRadius;
+        [SerializeField] [Min(3)] private int countOfSilverSwarmSpawnRadiusLines;
+        [SerializeField] private Vector2 centerOfSilverSwarmSpawn;
+        [SerializeField] private float radiusOfSilverSwarmSpawn;
+        [SerializeField] [Min(0)] private int minOfSilverSwarms;
+        [SerializeField] [Min(0)] private int maxOfSilverSwarms;
+        private int _countOfSilverSwarms;
+        
         [Inject] private AboriginesSpawner.Factory aboriginesSpawnerFactory;
         [Inject] private SoldiersSpawner.Factory soldiersSpawnerFactory;
         [Inject] private VeinDevourerSpawner.Factory veinDevourerSpawnerFactory;
+        [Inject] private SilverSwarmSpawner.Factory silverSwarmSpawnerFactory;
 
         private void Start()
         {
@@ -56,6 +66,7 @@ namespace Level
                 _countOfAboriginesCamps = Random.Range(minOfAboriginesCamps, maxOfAboriginesCamps + 1);
                 _countOfSoldiersCamps = Random.Range(minOfSoldiersCamps, maxOfSoldiersCamps + 1);
                 _countOfVeinDevourers = Random.Range(minOfVeinDevourers, maxOfVeinDevourers + 1);
+                _countOfSilverSwarms = Random.Range(minOfSilverSwarms, maxOfSilverSwarms + 1);
 
                 await CreateSpawners();
                 await SpawnAllEnemies();
@@ -88,6 +99,25 @@ namespace Level
 
                 Gizmos.DrawLineList(new ReadOnlySpan<Vector3>(linesPositions.ToArray()));
             }
+            
+            if (drawSilverSwarmSpawnRadius)
+            {
+                var middleOfRadius = new Vector3(centerOfSilverSwarmSpawn.x, 500f, centerOfSilverSwarmSpawn.y);
+                List<Vector3> linesPositions = new();
+
+                for (int i = 0; i < countOfSilverSwarmSpawnRadiusLines; i++)
+                {
+                    var linePos =
+                        middleOfRadius +
+                        Quaternion.Euler(0, 360 / countOfSilverSwarmSpawnRadiusLines * i, 0) * Vector3.forward *
+                        radiusOfSilverSwarmSpawn;
+
+                    linesPositions.Add(linePos);
+                    linesPositions.Add(new Vector3(linePos.x, -100f, linePos.z));
+                }
+
+                Gizmos.DrawLineList(new ReadOnlySpan<Vector3>(linesPositions.ToArray()));
+            }
         }
 
         private async UniTask CreateSpawners()
@@ -97,7 +127,12 @@ namespace Level
             var aborigineSpawnersTask = CreateAborigineSpawners(enemySpawners);
             var soldierSpawnersTask = CreateSoldierSpawners(enemySpawners);
             var veinDevourerSpawnersTask = CreateVeinDevourerSpawners(enemySpawners);
-            await UniTask.WhenAll(aborigineSpawnersTask, soldierSpawnersTask, veinDevourerSpawnersTask);
+            var silverSwarmSpawnersTask = CreateSilverSwarmSpawners(enemySpawners);
+            await UniTask.WhenAll(
+                aborigineSpawnersTask, 
+                soldierSpawnersTask, 
+                veinDevourerSpawnersTask,
+                silverSwarmSpawnersTask);
 
             spawners = enemySpawners.ToArray();
         }
@@ -167,6 +202,25 @@ namespace Level
                 RaycastHit hitInfo;
                 while (!Physics.Raycast(rayCastPos, Vector3.down, out hitInfo, float.PositiveInfinity,
                         LayerMask.GetMask("Ground"))) {}
+                spawner.transform.position = hitInfo.point;
+                
+                enemySpawners.Add(spawner);
+                
+                await UniTask.Yield();
+            }
+        }
+
+        private async UniTask CreateSilverSwarmSpawners(List<IEnemySpawner> enemySpawners)
+        {
+            for (int i = 0; i < _countOfSilverSwarms; i++)
+            {
+                var spawner = silverSwarmSpawnerFactory.Create();
+                
+                var rayCastPosVector2 = Random.insideUnitCircle * radiusOfSilverSwarmSpawn;
+                var rayCastPos = new Vector3(centerOfSilverSwarmSpawn.x + rayCastPosVector2.x, 500f, centerOfSilverSwarmSpawn.y + rayCastPosVector2.y);
+                RaycastHit hitInfo;
+                while (!Physics.Raycast(rayCastPos, Vector3.down, out hitInfo, float.PositiveInfinity,
+                           LayerMask.GetMask("Ground"))) {}
                 spawner.transform.position = hitInfo.point;
                 
                 enemySpawners.Add(spawner);
