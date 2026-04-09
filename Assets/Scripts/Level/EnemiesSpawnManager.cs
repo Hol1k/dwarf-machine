@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Cysharp.Threading.Tasks;
 using Enemy.Spawners;
 using PointsOfInterest;
@@ -141,7 +142,7 @@ namespace Level
         {
             int spawnedCamps = 0;
 
-            foreach (var pointOfInterest in pointsOfInterest)
+            foreach (var pointOfInterest in pointsOfInterest.OrderBy(poi => poi.poiType != PoiType.AboriginesCamp))
             {
                 if (spawnedCamps >= _countOfAboriginesCamps)
                     break;
@@ -168,7 +169,7 @@ namespace Level
         {
             int spawnedCamps = 0;
 
-            foreach (var pointOfInterest in pointsOfInterest)
+            foreach (var pointOfInterest in pointsOfInterest.Where(poi => poi.poiType != PoiType.AboriginesCamp))
             {
                 if (spawnedCamps >= _countOfSoldiersCamps)
                     break;
@@ -186,7 +187,7 @@ namespace Level
                 }
             }
 
-            if (spawnedCamps < _countOfAboriginesCamps)
+            if (spawnedCamps < _countOfSoldiersCamps)
                 Debug.LogWarning(
                     $"All POI already occupied. Not all of Soldiers had spawned. Spawned camps count: {spawnedCamps}");
         }

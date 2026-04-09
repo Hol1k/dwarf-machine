@@ -6,6 +6,8 @@ namespace PointsOfInterest
 {
     public class PointOfInterest : MonoBehaviour
     {
+        public PoiType poiType;
+        
         [SerializeField] private Transform patrolPointsCollectionParent;
         [SerializeField] private Transform shelterRepositionPointsCollectionParent;
         [SerializeField] private Transform spawnPointsCollectionParent;
@@ -57,5 +59,11 @@ namespace PointsOfInterest
                 Gizmos.DrawSphere(point.position, 0.3f);
             }
         }
+    }
+
+    public enum PoiType
+    {
+        OreVein,
+        AboriginesCamp
     }
 }
