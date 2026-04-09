@@ -14,7 +14,14 @@ The main goal is to design clean, extensible gameplay systems that can be easily
 - Separate movement logic for player and mech
 - Basic melee combat
 - Configurable mech stats
-- Enemy AI foundation: FSM-based behaviour system (WIP)
+- Enemy AI foundation: FSM-based behaviour system
+- Multiple enemy types with unique behaviours:
+  - Silver Swarms - swarm intelligence with coordination
+  - Vein Devourers - solitary aggressive hunters
+  - Soldiers - tactical enemy units
+  - Aborigines (Melee & Ranged variants) - tribal faction with team mechanics
+- Points of Interest (POI) system with faction control
+- Async enemy spawning system with dynamic factories
 
 ---
 
@@ -55,11 +62,39 @@ Key principles:
 - Core systems are wired through DI
 - Reduces tight coupling and improves maintainability
 
-### Enemy AI (FSM)
-- Finite State Machine foundation for enemy behaviour
-- Context object stores runtime data for AI decisions
-- State IDs and factory approach to support multiple enemy types
-- Wired through Zenject installer for clean dependencies
+### Enemy AI System (FSM)
+- **Multiple Enemy Types:**
+  - Silver Swarms: Swarm behavior with collective intelligence
+  - Soldiers: Basic tactical units
+  - Vein Devourers: Solitary hunters with extended patrol behavior
+  - Aborigines: Tribal enemies with team coordination
+    - Melee variant: Close-range combat specialists
+    - Ranged variant: Support units with conditional attack logic
+  
+- **AI Architecture:**
+  - Finite State Machine (FSM) using EnemyFsmState pattern
+  - Context-based decision making (HumanoidAiContext, etc.)
+  - Shared states through inheritance (Idle, Patrol, Alert, Combat, Reposition)
+  - Type-specific overrides for unique behavior
+  - Wired through Zenject for clean dependency injection
+
+### Spawning & World System
+- **Dynamic Enemy Spawning:**
+  - Async spawning with UniTask integration
+  - Enemy spawner factories for factory pattern implementation
+  - Configurable spawner instances per enemy type
+  
+- **Points of Interest (POI):**
+  - Configurable spawn, patrol, and reposition points
+  - Type-based location control (e.g., AboriginesCamp - only occupied by aborigines)
+  - Support for multiple faction interactions
+  - Struct-based point collections for performance
+
+### Enemy Combat System
+- **Type-specific combat components** (abstract base with implementations)
+- **Layer mask filtering** for attack detection
+- **Inventory integration** for mech/player damage calculations
+- **Movement controller** with request queuing when agent is disabled
 
 ---
 
@@ -67,6 +102,8 @@ Key principles:
 
 - **Unity**
 - **C#**
+- **UniTask**
+- **Zenject**
 - Scriptable configurations
 - Production-oriented Git workflow (feature-driven commits, versioning)
 
@@ -116,31 +153,19 @@ core gameplay → mechanics → meta systems → presentation.
 
   Experimental multiplayer implementation.
 
-- [ ] **v0.6 - Hub**  
-
-  Central hub for navigation and progression.
-
-- [ ] **v0.7 - Upgrading Mechanics**  
-
-  Progression systems and upgrade logic.
-
-- [ ] **v0.8 - Meta Balance**  
-
-  Global balance tuning and meta-level systems.
-
-- [ ] **v0.9 - Dungeon Balance**  
+- [ ] **v0.6 - Dungeon Balance**  
 
   Difficulty curves and gameplay pacing.
 
-- [ ] **v0.10 - Art Design**  
+- [ ] **v0.7 - Art Design**  
 
   Visual pass and stylistic consistency.
 
-- [ ] **v0.11 - Sound Design**  
+- [ ] **v0.8 - Sound Design**  
 
   Sound effects and audio feedback.
 
-- [ ] **v0.12 - UX / UI**  
+- [ ] **v0.9 - UX / UI**  
 
   User interface and overall usability improvements.
 
