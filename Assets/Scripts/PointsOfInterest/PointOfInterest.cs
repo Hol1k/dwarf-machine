@@ -7,6 +7,8 @@ namespace PointsOfInterest
     public class PointOfInterest : MonoBehaviour
     {
         public PoiType poiType;
+
+        [Min(0)] public int poiValue;
         
         [SerializeField] private Transform patrolPointsCollectionParent;
         [SerializeField] private Transform shelterRepositionPointsCollectionParent;
