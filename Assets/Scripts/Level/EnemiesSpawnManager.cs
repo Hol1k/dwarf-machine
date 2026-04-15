@@ -169,7 +169,8 @@ namespace Level
         {
             int spawnedCamps = 0;
 
-            foreach (var pointOfInterest in pointsOfInterest.Where(poi => poi.poiType != PoiType.AboriginesCamp))
+            foreach (var pointOfInterest in pointsOfInterest.Where(poi => poi.poiType != PoiType.AboriginesCamp)
+                         .OrderByDescending(poi => poi.poiValue))
             {
                 if (spawnedCamps >= _countOfSoldiersCamps)
                     break;
