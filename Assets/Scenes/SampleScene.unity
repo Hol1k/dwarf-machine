@@ -158,7 +158,7 @@ Transform:
   m_GameObject: {fileID: 6792767}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2334,12 +2334,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1387796814}
-  - component: {fileID: 1387796818}
-  - component: {fileID: 1387796817}
   - component: {fileID: 1387796813}
   - component: {fileID: 1387796812}
   - component: {fileID: 1387796811}
-  - component: {fileID: 1387796816}
   - component: {fileID: 1387796815}
   m_Layer: 6
   m_Name: Floor
@@ -2347,7 +2344,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &1387796811
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2477,48 +2474,6 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 0}
   m_BuildHeightMesh: 0
---- !u!114 &1387796816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1387796810}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46ae35d90b09400ab13968baa11c2789, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1387796817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1387796810}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf52dab18228446bbb174564fbb642e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1387796818
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1387796810}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08eca9f7688a0a24685b89133b020c8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _scriptableObjectInstallers: []
-  _monoInstallers:
-  - {fileID: 1387796817}
-  _installerPrefabs: []
-  _autoRun: 1
-  _kernel: {fileID: 0}
 --- !u!1 &1402896009
 GameObject:
   m_ObjectHideFlags: 0
@@ -2718,6 +2673,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad9c5eef2994454fb8ec749fe68a83fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  poiType: 0
+  poiValue: 0
   patrolPointsCollectionParent: {fileID: 520400947}
   shelterRepositionPointsCollectionParent: {fileID: 982486720}
   spawnPointsCollectionParent: {fileID: 371875129}
@@ -3442,6 +3399,10 @@ PrefabInstance:
     - target: {fileID: 3996640884506013948, guid: 81fb55248291c4443b19cf99f6e116f0, type: 3}
       propertyPath: m_Name
       value: DefaultMech
+      objectReference: {fileID: 0}
+    - target: {fileID: 3996640884506013948, guid: 81fb55248291c4443b19cf99f6e116f0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
