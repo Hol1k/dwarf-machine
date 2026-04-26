@@ -2753,7 +2753,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1911950876}
   - component: {fileID: 1911950875}
-  - component: {fileID: 1911950878}
   - component: {fileID: 1911950874}
   - component: {fileID: 1911950877}
   m_Layer: 0
@@ -2791,7 +2790,6 @@ MonoBehaviour:
   _monoInstallers:
   - {fileID: 1911950874}
   - {fileID: 1911950877}
-  - {fileID: 1911950878}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -2836,22 +2834,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 223f1dee71b6435f953ab3b74512168d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1911950878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1911950873}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b52b2eec2f448a099cd8fd85cff8782, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soldiersSpawnerPrefab: {fileID: 8986156225685023795, guid: 841ba283fdf4ef94ea013c24be9f3df5, type: 3}
-  aboriginesSpawnerPrefab: {fileID: 2452607634141457927, guid: 00d0528fa91b65d43a48eafe104a4745, type: 3}
-  veinDevourerSpawnerPrefab: {fileID: 6125619820590517632, guid: 6b5d405868d046e4d8e6846d5f21aa23, type: 3}
-  silverSwarmSpawnerPrefab: {fileID: 6162431970271470396, guid: 08b5e8e1fad05dc43a5a9c0e3bddab28, type: 3}
 --- !u!1 &1943605790
 GameObject:
   m_ObjectHideFlags: 0
@@ -2893,7 +2875,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2307874957303954494, guid: 81fb55248291c4443b19cf99f6e116f0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.11
+      value: 4.3
       objectReference: {fileID: 0}
     - target: {fileID: 2307874957303954494, guid: 81fb55248291c4443b19cf99f6e116f0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2901,7 +2883,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2307874957303954494, guid: 81fb55248291c4443b19cf99f6e116f0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.35
+      value: -13.08
       objectReference: {fileID: 0}
     - target: {fileID: 2307874957303954494, guid: 81fb55248291c4443b19cf99f6e116f0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2937,7 +2919,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3996640884506013948, guid: 81fb55248291c4443b19cf99f6e116f0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
