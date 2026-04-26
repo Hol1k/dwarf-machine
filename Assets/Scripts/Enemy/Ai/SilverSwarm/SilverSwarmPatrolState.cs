@@ -17,6 +17,9 @@ namespace Enemy.Ai.SilverSwarm
 
         public override void Enter(EnemyFsmContext fsmContext)
         {
+            fsmContext.PatrolPoint ??= _patrolAgent.NextPatrolPoint;
+            _moveAgent.MoveTo(fsmContext.PatrolPoint.Value);
+            
             _lookAgent.ForgetLastSeePosition();
         }
 
@@ -30,18 +33,14 @@ namespace Enemy.Ai.SilverSwarm
             {
                 fsmContext.PatrolPoint = _patrolAgent.NextPatrolPoint;
             }
-            else
+            else if (!_moveAgent.IsAgentArrivedToDestination)
             {
                 _moveAgent.MoveTo(fsmContext.PatrolPoint.Value);
-                if (!_moveAgent.IsAgentArrivedToDestination)
-                {
-                    _moveAgent.MoveTo(fsmContext.PatrolPoint.Value);
-                }
-                else
-                {
-                    fsmContext.PatrolPoint = null;
-                    fsmContext.RequestedState = EnemyFsmStateId.Idle;
-                }
+            }
+            else
+            {
+                fsmContext.PatrolPoint = null;
+                fsmContext.RequestedState = EnemyFsmStateId.Idle;
             }
         }
 

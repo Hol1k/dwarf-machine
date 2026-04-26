@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Linq;
 using Unity.AI.Navigation;
 using UnityEngine;
@@ -41,7 +42,9 @@ namespace Enemy.Ai
                 return;
             }
             
-            if (Vector3.Distance(_agent.destination, position) < 0.05f)
+            var destinationVector2 = new Vector2(_agent.destination.x, _agent.destination.z);
+            var positionVector2 = new Vector2(position.x, position.z);
+            if (Vector2.Distance(destinationVector2, positionVector2) < 0.05f)
                 return;
             
             _agent.isStopped = false;
@@ -89,13 +92,10 @@ namespace Enemy.Ai
 
         public bool IsAgentArrivedToDestination()
         {
-            if (!_agent.enabled)
-                return false;
-
-            if (_agent.pathPending)
+            if (!_agent.enabled || _agent.pathPending)
                 return false;
             
-            if (_agent.pathStatus == NavMeshPathStatus.PathInvalid)
+            if (_agent.pathStatus is NavMeshPathStatus.PathInvalid or NavMeshPathStatus.PathPartial)
                 return true;
 
             var agentPos = new Vector2(_agent.nextPosition.x, _agent.nextPosition.z);

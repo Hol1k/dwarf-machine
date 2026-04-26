@@ -1,5 +1,4 @@
 ﻿using Enemy.Ai.AiContextInterfaces;
-using UnityEngine;
 
 namespace Enemy.Ai.SilverSwarm.SilverEnemy
 {
@@ -16,6 +15,13 @@ namespace Enemy.Ai.SilverSwarm.SilverEnemy
 
         public override void Enter(EnemyFsmContext fsmContext)
         {
+            if (fsmContext.PatrolPoint == null ||
+                !_swarmDataAgent.IsPointInsideSwarm(fsmContext.PatrolPoint.Value))
+            {
+                fsmContext.PatrolPoint = _swarmDataAgent.GetPointInsideSwarm;
+            }
+            
+            _moveAgent.MoveTo(fsmContext.PatrolPoint.Value);
         }
 
         public override void Update(EnemyFsmContext fsmContext)
@@ -29,17 +35,13 @@ namespace Enemy.Ai.SilverSwarm.SilverEnemy
             {
                 fsmContext.PatrolPoint = _swarmDataAgent.GetPointInsideSwarm;
             }
-            else
+            else if (!_moveAgent.IsAgentArrivedToDestination)
             {
                 _moveAgent.MoveTo(fsmContext.PatrolPoint.Value);
-                if (!_moveAgent.IsAgentArrivedToDestination)
-                {
-                    _moveAgent.MoveTo(fsmContext.PatrolPoint.Value);
-                }
-                else
-                {
-                    fsmContext.RequestedState = EnemyFsmStateId.Idle;
-                }
+            }
+            else
+            {
+                fsmContext.RequestedState = EnemyFsmStateId.Idle;
             }
         }
 

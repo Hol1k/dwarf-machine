@@ -16,6 +16,13 @@ namespace Enemy.Ai.SilverSwarm
 
         public override void Enter(EnemyFsmContext fsmContext)
         {
+            if (_lookAgent.LastSeePosition == null)
+            {
+                fsmContext.RequestedState = EnemyFsmStateId.Patrol;
+                return;
+            }
+            
+            _moveAgent.MoveTo(_lookAgent.LastSeePosition.Value);
             fsmContext.LookingTimer = 5f;
         }
 
@@ -29,21 +36,17 @@ namespace Enemy.Ai.SilverSwarm
             {
                 fsmContext.RequestedState = EnemyFsmStateId.Patrol;
             }
-            else
+            else if (!_moveAgent.IsAgentArrivedToDestination)
             {
                 _moveAgent.MoveTo(_lookAgent.LastSeePosition.Value);
-                if (!_moveAgent.IsAgentArrivedToDestination)
-                {
-                    _moveAgent.MoveTo(_lookAgent.LastSeePosition.Value);
-                }
-                else if (fsmContext.LookingTimer > 0f)
-                {
-                    fsmContext.LookingTimer -= Time.deltaTime;
-                }
-                else
-                {
-                    fsmContext.RequestedState = EnemyFsmStateId.Patrol;
-                }
+            }
+            else if (fsmContext.LookingTimer >= 0f)
+            {
+                fsmContext.LookingTimer -= Time.deltaTime;
+            }
+            else
+            {
+                fsmContext.RequestedState = EnemyFsmStateId.Patrol;
             }
         }
 
