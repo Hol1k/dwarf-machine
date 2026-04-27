@@ -11,6 +11,7 @@ namespace DiInstallers.Enemies
         {
             Container.Bind<EnemyAiComponent>().FromComponentsOnRoot().AsSingle();
             
+            Container.Bind<Rigidbody>().FromComponentInHierarchy().AsSingle();
             Container.Bind<NavMeshAgent>().FromComponentInHierarchy().AsSingle();
             Container.Bind<EnemyMoveController>().FromComponentOnRoot().AsSingle();
             

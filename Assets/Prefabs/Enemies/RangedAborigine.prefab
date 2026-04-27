@@ -289,7 +289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitObjectsMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 768
   scutterValue: 1
   raycastWidth: 0.13
   maxShootDistance: 2000

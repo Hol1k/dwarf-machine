@@ -71,7 +71,7 @@ MonoBehaviour:
     m_Bits: 64
   targetLayerMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 768
 --- !u!1 &2554400087572737036
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,7 +361,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitObjectsMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 768
   scutterValue: 1
   raycastWidth: 0.13
   maxShootDistance: 2000

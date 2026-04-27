@@ -359,7 +359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitObjectsMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 512
   attackRange: 6
   raycastWidth: 0.13
   attackPositionOffset: {x: 0, y: 0, z: 0}
