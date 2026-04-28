@@ -136,12 +136,12 @@ core gameplay → mechanics → meta systems → presentation.
   Core input handling and control schemes.
   <sub>[Task tracking](https://yougile.com/board/bx0d6ibecvi1)</sub>
 
-- [ ] **v0.2 - Enemies AI & Behaviour** *(in progress)*
+- [x] **[v0.2 - Enemies AI & Behaviour](https://github.com/Hol1k/dwarf-machine/releases/tag/v0.2.0)**
 
   Basic enemy logic, states, and interactions.
   <sub>[Task tracking](https://yougile.com/board/t2oo1aab3rr1)</sub>
 
-- [ ] **v0.3 - Level Objects & First Game Level**  
+- [ ] **v0.3 - Level Objects & First Game Level** *(in progress)*
 
   Environmental objects and the first playable level.
 
