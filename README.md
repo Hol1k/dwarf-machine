@@ -144,6 +144,7 @@ core gameplay → mechanics → meta systems → presentation.
 - [ ] **v0.3 - Level Objects & First Game Level** *(in progress)*
 
   Environmental objects and the first playable level.
+  <sub>[Task tracking](https://yougile.com/board/r7np9dz81o4s)</sub>
 
 - [ ] **v0.4 - All Character Mechanics**  
 
