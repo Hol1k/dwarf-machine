@@ -9,14 +9,16 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5301899665262696370}
+  - component: {fileID: 8967205703508212315}
+  - component: {fileID: -6795542769621205704}
   - component: {fileID: 2854062659239009110}
   - component: {fileID: 1356784963106046483}
   - component: {fileID: 4084912043778082551}
   - component: {fileID: 6654875957628225646}
   - component: {fileID: 1879451305459132042}
   - component: {fileID: 2317722172447423706}
-  m_Layer: 0
-  m_Name: ArtifactLoot
+  m_Layer: 10
+  m_Name: Loot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,6 +39,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8967205703508212315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8831388949543184110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08eca9f7688a0a24685b89133b020c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scriptableObjectInstallers: []
+  _monoInstallers:
+  - {fileID: -6795542769621205704}
+  _installerPrefabs: []
+  _autoRun: 1
+  _kernel: {fileID: 0}
+--- !u!114 &-6795542769621205704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8831388949543184110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb1068e2467145c2a0ec32db29d6086e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!33 &2854062659239009110
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -120,7 +152,7 @@ Rigidbody:
   m_GameObject: {fileID: 8831388949543184110}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 1
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
