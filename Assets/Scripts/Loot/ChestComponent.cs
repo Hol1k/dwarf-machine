@@ -37,6 +37,7 @@ namespace Loot
                     }
                 }
             }
+            Destroy(this);
         }
     }
 }
