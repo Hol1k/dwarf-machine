@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace Loot
 {
-    public class LootableItemComponent : MonoBehaviour
+    public partial class LootableItemComponent : MonoBehaviour
     {
-        [SerializeField] private LootType type;
-        [SerializeField] private float amount;
+        public LootType type;
+        public float amount;
 
         private void OnTriggerEnter(Collider other)
         {
