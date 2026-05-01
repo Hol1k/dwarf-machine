@@ -8,10 +8,11 @@ namespace Character
     public class CharacterInventoryComponent : MonoBehaviour
     {
         private Dictionary<LootType, float> _loot;
-        [Min(0)] public float maxOreLootCount;
-        [Min(0)] public float maxRareOreLootCount;
-        [Min(0)] public float maxWoodLootCount;
-        [Min(0)] public float maxArtifactLootCount;
+        
+        [SerializeField] [Min(0)] private float maxOreLootCount;
+        [SerializeField] [Min(0)] private float maxRareOreLootCount;
+        [SerializeField] [Min(0)] private float maxWoodLootCount;
+        [SerializeField] [Min(0)] private float maxArtifactLootCount;
 
         private void Awake()
         {
@@ -25,7 +26,29 @@ namespace Character
 
         public void AddLoot(LootType type, float amount)
         {
-            _loot.Add(type, amount);
+            _loot[type] += amount;
+        }
+
+        public float GetMaxLootCount(LootType type)
+        {
+            switch (type)
+            {
+                case LootType.Ore:
+                    return maxOreLootCount;
+                case LootType.RareOre:
+                    return maxRareOreLootCount;
+                case LootType.Wood:
+                    return maxWoodLootCount;
+                case LootType.Artifact:
+                    return maxArtifactLootCount;
+                default:
+                    return 0;
+            }
+        }
+
+        public float GetRemainingCapacity(LootType type)
+        {
+            return GetMaxLootCount(type) - _loot[type];
         }
     }
 }
