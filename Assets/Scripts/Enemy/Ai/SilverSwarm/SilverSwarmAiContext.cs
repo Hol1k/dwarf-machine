@@ -1,5 +1,7 @@
-﻿using Enemy.Ai.AiContextInterfaces;
+﻿using System.Collections.Generic;
+using Enemy.Ai.AiContextInterfaces;
 using Entities;
+using Loot;
 using UnityEngine;
 
 namespace Enemy.Ai.SilverSwarm
@@ -30,7 +32,7 @@ namespace Enemy.Ai.SilverSwarm
         public float LookRange => _lookComponent.LookRange;
         public void ForgetLastSeePosition() => _lookComponent.ForgetLastSeePosition();
         public StatsComponent ClosestTarget => _lookComponent.GetClosestTarget();
-        public float ClosestTargetInventoryValue => _lookComponent.ClosestTargetInventoryValue;
+        public IReadOnlyDictionary<LootType, float> ClosestTargetInventoryValue => _lookComponent.ClosestTargetInventoryValue;
         private readonly EnemyLookComponent _lookComponent;
 
         public bool CanAttackTarget => _combatComponent.CanAttackTarget;

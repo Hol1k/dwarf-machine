@@ -1,6 +1,8 @@
-﻿using Character;
+﻿using System.Collections.Generic;
+using Character;
 using Enemy.Ai.AiContextInterfaces;
 using Entities;
+using Loot;
 using UnityEngine;
 
 namespace Enemy.Ai.Humanoids
@@ -34,7 +36,7 @@ namespace Enemy.Ai.Humanoids
         public virtual float LookRange => LookComponent.LookRange;
         public virtual void ForgetLastSeePosition() => LookComponent.ForgetLastSeePosition();
         public virtual StatsComponent ClosestTarget => LookComponent.GetClosestTarget();
-        public float ClosestTargetInventoryValue => 0f;
+        public IReadOnlyDictionary<LootType, float> ClosestTargetInventoryValue => new Dictionary<LootType, float>();
         protected readonly EnemyLookComponent LookComponent;
 
         public virtual Vector3 NextPatrolPoint => PatrolComponent.GetNextPoint(SelfPosition);

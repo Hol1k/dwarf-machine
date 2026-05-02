@@ -1,4 +1,6 @@
-﻿using Entities;
+﻿using System.Collections.Generic;
+using Entities;
+using Loot;
 using UnityEngine;
 
 namespace Enemy.Ai.AiContextInterfaces
@@ -11,6 +13,6 @@ namespace Enemy.Ai.AiContextInterfaces
         public float LookRange { get; }
         public void ForgetLastSeePosition();
         public StatsComponent ClosestTarget { get; }
-        float ClosestTargetInventoryValue { get; }
+        IReadOnlyDictionary<LootType, float> ClosestTargetInventoryValue { get; }
     }
 }

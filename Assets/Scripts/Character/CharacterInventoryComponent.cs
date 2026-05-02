@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using Loot;
+using Mech;
 using UnityEngine;
 
 namespace Character
 {
-    public class CharacterInventoryComponent : MonoBehaviour
+    public class CharacterInventoryComponent : MonoBehaviour, IInventoryData
     {
+        public IReadOnlyDictionary<LootType, float> Loot { get; }
+        
         private Dictionary<LootType, float> _loot;
         
         [SerializeField] [Min(0)] private float maxOreLootCount;

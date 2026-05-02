@@ -1,4 +1,5 @@
-﻿using Enemy.Ai.AiContextInterfaces;
+﻿using System.Linq;
+using Enemy.Ai.AiContextInterfaces;
 using UnityEngine;
 
 namespace Enemy.Ai.VeinDevourer
@@ -22,7 +23,8 @@ namespace Enemy.Ai.VeinDevourer
             {
                 fsmContext.IdleTimer -= Time.deltaTime;
             }
-            else if (_lookAgent.IsSeeTarget && _lookAgent.ClosestTargetInventoryValue > 0.2f)
+            else if (_lookAgent.IsSeeTarget &&
+                     (_lookAgent.ClosestTargetInventoryValue?.Values.Sum() ?? 0f) > 100f)
             {
                 fsmContext.RequestedState = EnemyFsmStateId.Reposition;
             }

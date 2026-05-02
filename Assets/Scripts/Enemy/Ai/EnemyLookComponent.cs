@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using Character;
 using Entities;
+using Loot;
 using Mech;
 using UnityEngine;
 using Zenject;
@@ -13,9 +12,9 @@ namespace Enemy.Ai
         public bool IsSeeTarget => _visibleObjects.Count > 0;
         public Vector3? LastSeePosition { get; private set; }
 
-        public float ClosestTargetInventoryValue => GetClosestTarget() is IMechInventoryData inventoryData
-            ? inventoryData.FillingPercentage
-            : 0f;
+        public IReadOnlyDictionary<LootType, float> ClosestTargetInventoryValue => GetClosestTarget() is IInventoryData inventoryData
+            ? inventoryData.Loot
+            : new Dictionary<LootType, float>();
         public float LookRange => _lookSphereCollider.radius;
 
         private SphereCollider _lookSphereCollider;

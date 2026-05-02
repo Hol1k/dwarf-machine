@@ -1,11 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using Entities;
+using Loot;
 using UnityEngine;
 
 namespace Mech
 {
     [RequireComponent(typeof(MechMovementController))]
-    public class MechStatsComponent : StatsComponent, IDamageable, IMechInventoryData
+    public class MechStatsComponent : StatsComponent, IDamageable, IInventoryData
     {
         [SerializeField] MechStatsConfig mechStatsConfig;
         
@@ -33,7 +35,7 @@ namespace Mech
         public event Action<float> OnTakeDamage;
         public override event Action OnDeath;
 
-        public float FillingPercentage => _inventory.FillingPercentage;
+        public IReadOnlyDictionary<LootType, float> Loot => _inventory.Loot;
         private MechInventoryComponent _inventory;
 
         private void Awake()

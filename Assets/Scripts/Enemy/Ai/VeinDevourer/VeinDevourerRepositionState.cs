@@ -1,4 +1,5 @@
-﻿using Enemy.Ai.AiContextInterfaces;
+﻿using System.Linq;
+using Enemy.Ai.AiContextInterfaces;
 using UnityEngine;
 
 namespace Enemy.Ai.VeinDevourer
@@ -30,15 +31,17 @@ namespace Enemy.Ai.VeinDevourer
             {
                 fsmContext.RequestedState = EnemyFsmStateId.Idle;
             }
-            else if (_lookAgent.ClosestTargetInventoryValue > 0.6f && _combatAgent.CanAttackTarget)
+            else if ((_lookAgent.ClosestTargetInventoryValue?.Values.Sum() ?? 0f) > 200f 
+                     && _combatAgent.CanAttackTarget)
             {
                 fsmContext.RequestedState = EnemyFsmStateId.Combat;
             }
-            else if (_lookAgent.ClosestTargetInventoryValue > 0.6f && !_combatAgent.CanAttackTarget)
+            else if ((_lookAgent.ClosestTargetInventoryValue?.Values.Sum() ?? 0f) > 200f 
+                     && !_combatAgent.CanAttackTarget)
             {
                 _moveAgent.MoveTo(_lookAgent.ClosestTarget.transform.position);
             }
-            else if (_lookAgent.ClosestTargetInventoryValue > 0.3f &&
+            else if ((_lookAgent.ClosestTargetInventoryValue?.Values.Sum() ?? 0f) > 100f &&
                      Vector2.Distance(targetPos, selfPos) > 5f)
             {
                 _moveAgent.MoveTo(_lookAgent.ClosestTarget.transform.position);
