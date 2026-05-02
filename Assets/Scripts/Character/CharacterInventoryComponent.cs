@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Loot;
 using Mech;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Character
 {
     public class CharacterInventoryComponent : MonoBehaviour, IInventoryData
     {
-        public IReadOnlyDictionary<LootType, float> Loot { get; }
+        public IReadOnlyDictionary<LootType, float> Loot => _loot;
         
         private Dictionary<LootType, float> _loot;
         
@@ -30,6 +32,17 @@ namespace Character
         public void AddLoot(LootType type, float amount)
         {
             _loot[type] += amount;
+        }
+
+        public IReadOnlyDictionary<LootType, float> TakeAllLoot()
+        {
+            var loot = new Dictionary<LootType, float>();
+            foreach (var slot in _loot)
+            {
+                loot.Add(slot.Key, slot.Value);
+            }
+            _loot.Clear();
+            return loot;
         }
 
         public float GetMaxLootCount(LootType type)

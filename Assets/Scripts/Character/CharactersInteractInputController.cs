@@ -1,4 +1,5 @@
 ﻿using InteractiveObjects;
+using Mech;
 using UnityEngine;
 
 namespace Character
@@ -27,10 +28,25 @@ namespace Character
             if (_interactorComponent)
             {
                 if (_interactableTarget)
+                {
+                    TryMoveInventoryItems(_interactableTarget);
                     _interactorComponent.Interact(_interactableTarget);
+                }
             }
             else
                 Debug.Log($"Interactor component not found on {gameObject.name} object");
+        }
+
+        private void TryMoveInventoryItems(InteractableObject interactableObject)
+        {
+            if (interactableObject.TryGetComponent(out MechInventoryComponent mechInventoryComponent)
+                && TryGetComponent(out CharacterInventoryComponent charInventoryComponent))
+            {
+                foreach (var slot in charInventoryComponent.TakeAllLoot())
+                {
+                    mechInventoryComponent.AddLoot(slot.Key, slot.Value);
+                }
+            }
         }
         
         public void CalculateTargetObject()
