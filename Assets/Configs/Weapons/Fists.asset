@@ -15,7 +15,7 @@ MonoBehaviour:
   gizmosColor: {r: 1, g: 0, b: 0, a: 1}
   hitObjectsMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 1152
   attackRange: 2
   raycastWidth: 0.13
   attackPositionOffset: {x: 0, y: 0.5, z: 0}
