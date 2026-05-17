@@ -35,7 +35,7 @@ namespace Loot
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawSphere(transform.position + lootSpawnPosition, 0.2f);
+            Gizmos.DrawSphere(transform.position + transform.rotation * lootSpawnPosition, 0.2f);
         }
         
         public void TakeDamage(float damage)
@@ -56,7 +56,7 @@ namespace Loot
             {
                 for (int i = 0; i < slot.amount; i++)
                 {
-                    var item = _itemFactory.Create(transform.position + lootSpawnPosition, slot.type, 1);
+                    var item = _itemFactory.Create(transform.position + transform.rotation * lootSpawnPosition, slot.type, 1);
                     if (item.TryGetComponent(out Rigidbody itemRb))
                     {
                         itemRb.AddForce(Random.insideUnitSphere * maxLootSpawnForce, ForceMode.Impulse);
