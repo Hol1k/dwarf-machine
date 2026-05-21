@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: POIs
+  m_EditorClassIdentifier: 
+  m_GroupName: POIs
+  m_GUID: eeaba22a6c2cb194b99edd8040716ecb
+  m_SerializeEntries:
+  - m_GUID: 10eec1edf1ccfa64da1ae6bda57231dc
+    m_Address: POIs/AboriginesCamp_Empty
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1c160ff0a990c0c47b5258bf1769d5c3
+    m_Address: POIs/VeinCluster_Empty
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1f04b3a2752083c4c98d66a5b0a7d356
+    m_Address: POIs/AboriginesCamp_AboriginesOccupied
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 2b7d69123ce649042bc180227574592a, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 94fffed43c3c5684f86d61dfd621e7f1, type: 2}
+    - {fileID: 11400000, guid: 7962eb28319889e4abb18a8a0db8f07d, type: 2}
