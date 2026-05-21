@@ -1,6 +1,11 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using Cysharp.Threading.Tasks;
+using Enemy;
 using Enemy.Ai;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using Random = UnityEngine.Random;
 
 namespace PointsOfInterest
 {
@@ -10,30 +15,85 @@ namespace PointsOfInterest
 
         [Min(0)] public int poiValue;
         
-        [SerializeField] private Transform patrolPointsCollectionParent;
-        [SerializeField] private Transform shelterRepositionPointsCollectionParent;
-        [SerializeField] private Transform spawnPointsCollectionParent;
+        private GameObject _poiPrefab;
+        
+        private Transform _patrolPointsCollectionParent;
+        private Transform _shelterRepositionPointsCollectionParent;
+        private Transform _spawnPointsCollectionParent;
 
         public EnemyPatrolPointsCollection PatrolPointsCollection => new(
-            patrolPointsCollectionParent
+            _patrolPointsCollectionParent
                 .GetComponentsInChildren<Transform>()
-                .Where(point => point != patrolPointsCollectionParent).ToArray());
+                .Where(point => point != _patrolPointsCollectionParent).ToArray());
 
-        public bool isOccupied;
-        
         public EnemyRepositionPointsCollection ShelterRepositionPointsCollection => new(
-            shelterRepositionPointsCollectionParent.GetComponentsInChildren<Transform>()
-                .Where(point => point != shelterRepositionPointsCollectionParent).ToArray());
+            _shelterRepositionPointsCollectionParent.GetComponentsInChildren<Transform>()
+                .Where(point => point != _shelterRepositionPointsCollectionParent).ToArray());
 
         public EnemySpawnPointsCollection SpawnPointsCollection => new(
-            spawnPointsCollectionParent
+            _spawnPointsCollectionParent
                 .GetComponentsInChildren<Transform>()
-                .Where(point => point != spawnPointsCollectionParent).ToArray());
+                .Where(point => point != _spawnPointsCollectionParent).ToArray());
+
+        public bool IsOccupied { get; private set; }
+
+        public async UniTask Occupy(EnemyType enemyType = EnemyType.None)
+        {
+            IsOccupied = true;
+
+            switch (poiType)
+            {
+                case PoiType.AboriginesCamp:
+                    if (enemyType == EnemyType.Aborigine)
+                    {
+                        _poiPrefab =
+                            await Addressables.InstantiateAsync("POIs/AboriginesCamp_AboriginesOccupied").Task;
+                    }
+                    else
+                    {
+                        _poiPrefab =
+                            await Addressables.InstantiateAsync("POIs/AboriginesCamp_Empty").Task;
+                    }
+                    break;
+                case PoiType.VeinCluster:
+                    if (enemyType == EnemyType.Soldier)
+                    {
+                    }
+                    else
+                    {
+                        _poiPrefab =
+                            await Addressables.InstantiateAsync("POIs/VeinCluster_Empty").Task;
+                    }
+                    break;
+            }
+            
+            _poiPrefab.transform.SetParent(transform);
+
+            ApplyPrefabParams();
+        }
+
+        private void ApplyPrefabParams()
+        {
+            if (_poiPrefab.TryGetComponent(out PointOfInterestPrefabComponent poiPrefabComponent))
+            {
+                _poiPrefab.transform.position = _poiPrefab.transform.position + transform.position - poiPrefabComponent.prefabPivot.position;
+                _poiPrefab.transform.Rotate(Vector3.up, Random.Range(0f, 360f));
+                    
+                _patrolPointsCollectionParent = poiPrefabComponent.patrolPointsCollectionParent;
+                _shelterRepositionPointsCollectionParent =  poiPrefabComponent.shelterRepositionPointsCollectionParent;
+                _spawnPointsCollectionParent = poiPrefabComponent.spawnPointsCollectionParent;
+            }
+        }
+
+        private void OnDestroy()
+        {
+            Addressables.ReleaseInstance(_poiPrefab);
+        }
     }
 
     public enum PoiType
     {
-        OreVein,
+        VeinCluster,
         AboriginesCamp
     }
 }

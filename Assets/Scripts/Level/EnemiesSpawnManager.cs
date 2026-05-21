@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Cysharp.Threading.Tasks;
+using Enemy;
 using Enemy.Spawners;
 using PointsOfInterest;
 using UnityEngine;
@@ -134,6 +135,12 @@ namespace Level
                 soldierSpawnersTask, 
                 veinDevourerSpawnersTask,
                 silverSwarmSpawnersTask);
+            
+            // Create prefabs on empty POIs
+            foreach (var pointOfInterest in pointsOfInterest.Where(poi => !poi.IsOccupied))
+            {
+                await pointOfInterest.Occupy();
+            }
 
             spawners = enemySpawners.ToArray();
         }
@@ -147,16 +154,14 @@ namespace Level
                 if (spawnedCamps >= _countOfAboriginesCamps)
                     break;
 
-                if (!pointOfInterest.isOccupied)
+                if (!pointOfInterest.IsOccupied)
                 {
-                    pointOfInterest.isOccupied = true;
+                    await pointOfInterest.Occupy(EnemyType.Aborigine);
                     var spawner = aboriginesSpawnerFactory.Create();
                     spawner.transform.position = pointOfInterest.transform.position;
                     spawner.Init(pointOfInterest);
                     enemySpawners.Add(spawner);
                     spawnedCamps++;
-                    
-                    await UniTask.Yield();
                 }
             }
 
@@ -175,16 +180,14 @@ namespace Level
                 if (spawnedCamps >= _countOfSoldiersCamps)
                     break;
 
-                if (!pointOfInterest.isOccupied)
+                if (!pointOfInterest.IsOccupied)
                 {
-                    pointOfInterest.isOccupied = true;
+                    await pointOfInterest.Occupy(EnemyType.Soldier);
                     var spawner = soldiersSpawnerFactory.Create();
                     spawner.transform.position = pointOfInterest.transform.position;
                     spawner.Init(pointOfInterest);
                     enemySpawners.Add(spawner);
                     spawnedCamps++;
-                    
-                    await UniTask.Yield();
                 }
             }
 
