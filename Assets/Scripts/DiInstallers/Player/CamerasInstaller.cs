@@ -1,4 +1,4 @@
-using Camera;
+using MixingCameraControl;
 using Zenject;
 
 namespace DIInstallers
