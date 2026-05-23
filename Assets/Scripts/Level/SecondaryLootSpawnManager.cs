@@ -1,0 +1,111 @@
+﻿using System;
+using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
+using UnityEngine;
+using UnityEngine.AddressableAssets;
+using Random = UnityEngine.Random;
+
+namespace Level
+{
+    public class SecondaryLootSpawnManager : MonoBehaviour
+    {
+        [SerializeField] private int oreVeinCount;
+        [SerializeField] private int rareWoodCount;
+        
+        [Space]
+        [SerializeField] private AssetReference oreVeinPrefab;
+        [SerializeField] private AssetReference rareWoodPrefab;
+        
+        [Space]
+        [SerializeField] private bool drawLootSpawnRadius;
+        [SerializeField] [Min(3)] private int countOfLootSpawnRadiusLines;
+        [SerializeField] private Vector2 centerOfLootSpawn;
+        [SerializeField] private float radiusOfLootSpawn;
+
+        private void Start()
+        {
+            SpawnLoot().Forget();
+        }
+
+        private async UniTask SpawnLoot()
+        {
+            try
+            {
+                var oreVeinSpawnTask = SpawnOreVein();
+                var rareWoodSpawnTask = SpawnRareWood();
+                await UniTask.WhenAll(
+                    oreVeinSpawnTask,
+                    rareWoodSpawnTask);
+            }
+            catch (Exception e)
+            {
+                Debug.LogException(e);
+            }
+        }
+        
+        private async UniTask SpawnOreVein()
+        {
+            var groundLayer = LayerMask.NameToLayer("Ground");
+            
+            for (int i = 0; i < oreVeinCount; i++)
+            {
+                var spawnTask = Addressables.InstantiateAsync(oreVeinPrefab, parent: transform).ToUniTask();
+                
+                var rayCastPosVector2 = Random.insideUnitCircle * radiusOfLootSpawn;
+                var rayCastPos = new Vector3(centerOfLootSpawn.x + rayCastPosVector2.x, 500f, centerOfLootSpawn.y + rayCastPosVector2.y);
+                RaycastHit hitInfo;
+                while (!Physics.Raycast(rayCastPos, Vector3.down, out hitInfo, float.PositiveInfinity) &&
+                       hitInfo.transform.gameObject.layer == groundLayer) {}
+                
+                var oreVeinObject = await spawnTask;
+                oreVeinObject.transform.position = new Vector3(hitInfo.point.x, hitInfo.point.y-0.03f, hitInfo.point.z);
+                oreVeinObject.transform.rotation = Quaternion.Euler(hitInfo.normal);
+                oreVeinObject.transform.Rotate(Vector3.right, Random.Range(-20f, 20f));
+                oreVeinObject.transform.Rotate(Vector3.forward, Random.Range(-20f, 20f));
+                oreVeinObject.transform.Rotate(Vector3.up, Random.Range(0f, 360f));
+            }
+        }
+        
+        private async UniTask SpawnRareWood()
+        {
+            var groundLayer = LayerMask.NameToLayer("Ground");
+            
+            for (int i = 0; i < rareWoodCount; i++)
+            {
+                var spawnTask = Addressables.InstantiateAsync(rareWoodPrefab, parent: transform).ToUniTask();
+                
+                var rayCastPosVector2 = Random.insideUnitCircle * radiusOfLootSpawn;
+                var rayCastPos = new Vector3(centerOfLootSpawn.x + rayCastPosVector2.x, 500f, centerOfLootSpawn.y + rayCastPosVector2.y);
+                RaycastHit hitInfo;
+                while (!Physics.Raycast(rayCastPos, Vector3.down, out hitInfo, float.PositiveInfinity) &&
+                       hitInfo.transform.gameObject.layer == groundLayer) {}
+                
+                var oreVeinObject = await spawnTask;
+                oreVeinObject.transform.position = new Vector3(hitInfo.point.x, hitInfo.point.y-0.1f, hitInfo.point.z);
+                oreVeinObject.transform.Rotate(Vector3.up, Random.Range(0f, 360f));
+            }
+        }
+        
+        private void OnDrawGizmos()
+        {
+            if (drawLootSpawnRadius)
+            {
+                var middleOfRadius = new Vector3(centerOfLootSpawn.x, 500f, centerOfLootSpawn.y);
+                List<Vector3> linesPositions = new();
+
+                for (int i = 0; i < countOfLootSpawnRadiusLines; i++)
+                {
+                    var linePos =
+                        middleOfRadius +
+                        Quaternion.Euler(0, 360 / countOfLootSpawnRadiusLines * i, 0) * Vector3.forward *
+                        radiusOfLootSpawn;
+
+                    linesPositions.Add(linePos);
+                    linesPositions.Add(new Vector3(linePos.x, -100f, linePos.z));
+                }
+
+                Gizmos.DrawLineList(new ReadOnlySpan<Vector3>(linesPositions.ToArray()));
+            }
+        }
+    }
+}
