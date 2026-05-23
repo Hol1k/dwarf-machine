@@ -18851,7 +18851,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabPivot: {fileID: 4723281383792950842}
-  patrolPointsCollectionParent: {fileID: 6175504208602961836}
+  patrolPointsCollectionParent: {fileID: 3079839640026741781}
   shelterRepositionPointsCollectionParent: {fileID: 6175504208602961836}
   spawnPointsCollectionParent: {fileID: 1961190117747290168}
 --- !u!1 &5539973794917296775

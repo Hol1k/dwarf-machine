@@ -58,6 +58,8 @@ namespace PointsOfInterest
                 case PoiType.VeinCluster:
                     if (enemyType == EnemyType.Soldier)
                     {
+                        _poiPrefab =
+                            await Addressables.InstantiateAsync("POIs/VeinCluster_SoldiersOccupied").Task;
                     }
                     else
                     {

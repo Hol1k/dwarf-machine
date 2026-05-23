@@ -30,6 +30,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8afe289cbe2dd724dac2fd7e9f57d9d4
+    m_Address: POIs/VeinCluster_SoldiersOccupied
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 2b7d69123ce649042bc180227574592a, type: 2}
   m_SchemaSet:
