@@ -76,8 +76,8 @@ namespace PointsOfInterest
         {
             if (_poiPrefab.TryGetComponent(out PointOfInterestPrefabComponent poiPrefabComponent))
             {
-                _poiPrefab.transform.position = _poiPrefab.transform.position + transform.position - poiPrefabComponent.prefabPivot.position;
                 _poiPrefab.transform.Rotate(Vector3.up, Random.Range(0f, 360f));
+                _poiPrefab.transform.position = _poiPrefab.transform.position + transform.position - poiPrefabComponent.prefabPivot.position;
                     
                 _patrolPointsCollectionParent = poiPrefabComponent.patrolPointsCollectionParent;
                 _shelterRepositionPointsCollectionParent =  poiPrefabComponent.shelterRepositionPointsCollectionParent;
