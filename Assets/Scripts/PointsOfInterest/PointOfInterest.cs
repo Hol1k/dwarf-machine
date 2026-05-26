@@ -67,6 +67,17 @@ namespace PointsOfInterest
                             await Addressables.InstantiateAsync("POIs/VeinCluster_Empty").Task;
                     }
                     break;
+                case PoiType.Oasis:
+                    if (false)
+                    {
+                        
+                    }
+                    else
+                    {
+                        _poiPrefab =
+                            await Addressables.InstantiateAsync("POIs/Oasis_Empty").Task;
+                    }
+                    break;
             }
             
             _poiPrefab.transform.SetParent(transform);
@@ -96,6 +107,7 @@ namespace PointsOfInterest
     public enum PoiType
     {
         VeinCluster,
-        AboriginesCamp
+        AboriginesCamp,
+        Oasis
     }
 }
