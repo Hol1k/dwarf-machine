@@ -9,6 +9,7 @@ namespace MainMenu
     {
         private const string GameplayScenePath = "Scenes/Gameplay";
         private const string TestLevelScenePath = "Scenes/TestLevel";
+        private const string TestMvpScenePath = "Scenes/MVPLevel";
         
         public void OnStartButton()
         {
@@ -20,7 +21,7 @@ namespace MainMenu
             DontDestroyOnLoad(this);
 
             await Addressables.LoadSceneAsync(GameplayScenePath);
-            await Addressables.LoadSceneAsync(TestLevelScenePath, LoadSceneMode.Additive);
+            await Addressables.LoadSceneAsync(TestMvpScenePath, LoadSceneMode.Additive);
             
             Destroy(gameObject);
         }
