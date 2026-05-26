@@ -57,28 +57,6 @@ namespace Level
             if (minOfAboriginesCamps > maxOfAboriginesCamps)
                 throw new ArgumentException(
                     $"Minimum count of aborigines camps more then maximum. Change the configuration!");
-            
-            StartManager().Forget();
-        }
-
-        private async UniTaskVoid StartManager()
-        {
-            try
-            {
-                _countOfAboriginesCamps = Random.Range(minOfAboriginesCamps, maxOfAboriginesCamps + 1);
-                _countOfSoldiersCamps = Random.Range(minOfSoldiersCamps, maxOfSoldiersCamps + 1);
-                _countOfVeinDevourers = Random.Range(minOfVeinDevourers, maxOfVeinDevourers + 1);
-                _countOfSilverSwarms = Random.Range(minOfSilverSwarms, maxOfSilverSwarms + 1);
-
-                await CreateSpawners();
-                await SpawnAllEnemies();
-
-                _managerState = ManagerState.Done;
-            }
-            catch (Exception e)
-            {
-                Debug.LogException(e);
-            }
         }
 
         private void OnDrawGizmos()
@@ -122,8 +100,13 @@ namespace Level
             }
         }
 
-        private async UniTask CreateSpawners()
+        public async UniTask CreateSpawners()
         {
+            _countOfAboriginesCamps = Random.Range(minOfAboriginesCamps, maxOfAboriginesCamps + 1);
+            _countOfSoldiersCamps = Random.Range(minOfSoldiersCamps, maxOfSoldiersCamps + 1);
+            _countOfVeinDevourers = Random.Range(minOfVeinDevourers, maxOfVeinDevourers + 1);
+            _countOfSilverSwarms = Random.Range(minOfSilverSwarms, maxOfSilverSwarms + 1);
+            
             List<IEnemySpawner> enemySpawners = new();
 
             var aborigineSpawnersTask = CreateAborigineSpawners(enemySpawners);
@@ -234,7 +217,7 @@ namespace Level
             }
         }
 
-        private async UniTask SpawnAllEnemies()
+        public async UniTask SpawnAllEnemies()
         {
             foreach (var enemySpawner in spawners)
             {

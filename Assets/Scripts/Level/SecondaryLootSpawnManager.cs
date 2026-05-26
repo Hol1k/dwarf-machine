@@ -29,24 +29,21 @@ namespace Level
         [SerializeField] [Min(3)] private int countOfLootSpawnRadiusLines;
         [SerializeField] private Vector2 centerOfLootSpawn;
         [SerializeField] private float radiusOfLootSpawn;
-
-        private void Start()
-        {
-            SpawnLoot().Forget();
-        }
         
         public Transform ClosestOreVeinTransform(Transform target) => 
             OreVeinsCollection.OrderBy(ore => Vector3.Distance(target.position, ore.position)).First();
 
         public void DestroyClosestOreVein(Transform target)
         {
-            Destroy(ClosestOreVeinTransform(target).gameObject);
+            var oreVein = ClosestOreVeinTransform(target);
+            _oreVeins.Remove(oreVein);
+            Destroy(oreVein.gameObject);
         }
         
         public Transform ClosestWoodTransform(Transform target) => 
             WoodCollection.OrderBy(ore => Vector3.Distance(target.position, ore.position)).First();
 
-        private async UniTask SpawnLoot()
+        public async UniTask SpawnLoot()
         {
             try
             {

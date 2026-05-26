@@ -1,4 +1,5 @@
-﻿using Unity.AI.Navigation;
+﻿using Cysharp.Threading.Tasks;
+using Unity.AI.Navigation;
 using UnityEngine;
 using Zenject;
 
@@ -13,7 +14,12 @@ namespace Level
         private void Init(NavMeshSurface surface)
         {
             Surface = surface;
+        }
+
+        public async UniTask BuildNavMesh()
+        {
             Surface.BuildNavMesh();
+            await UniTask.WaitUntil(() => Surface.navMeshData);
         }
     }
 }
