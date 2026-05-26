@@ -408,9 +408,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minOfAboriginesCamps: 1
-  maxOfAboriginesCamps: 2
+  maxOfAboriginesCamps: 3
   minOfSoldiersCamps: 1
-  maxOfSoldiersCamps: 2
+  maxOfSoldiersCamps: 3
   drawVeinDevourerSpawnRadius: 0
   countOfVeinDevourerSpawnRadiusLines: 12
   centerOfVeinDevourerSpawn: {x: 27.12, y: 84.5}
