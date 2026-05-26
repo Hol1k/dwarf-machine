@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Cysharp.Threading.Tasks;
+using Loot;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using Random = UnityEngine.Random;
@@ -9,6 +11,12 @@ namespace Level
 {
     public class SecondaryLootSpawnManager : MonoBehaviour
     {
+        public IReadOnlyList<Transform> OreVeinsCollection => _oreVeins;
+        private List<Transform> _oreVeins;
+        
+        public IReadOnlyList<Transform> WoodCollection => _woods;
+        private List<Transform> _woods;
+        
         [SerializeField] private int oreVeinCount;
         [SerializeField] private int rareWoodCount;
         
@@ -26,6 +34,17 @@ namespace Level
         {
             SpawnLoot().Forget();
         }
+        
+        public Transform ClosestOreVeinTransform(Transform target) => 
+            OreVeinsCollection.OrderBy(ore => Vector3.Distance(target.position, ore.position)).First();
+
+        public void DestroyClosestOreVein(Transform target)
+        {
+            Destroy(ClosestOreVeinTransform(target).gameObject);
+        }
+        
+        public Transform ClosestWoodTransform(Transform target) => 
+            WoodCollection.OrderBy(ore => Vector3.Distance(target.position, ore.position)).First();
 
         private async UniTask SpawnLoot()
         {
@@ -46,6 +65,7 @@ namespace Level
         private async UniTask SpawnOreVein()
         {
             var groundLayer = LayerMask.NameToLayer("Ground");
+            _oreVeins = new List<Transform>();
             
             for (int i = 0; i < oreVeinCount; i++)
             {
@@ -63,12 +83,15 @@ namespace Level
                 oreVeinObject.transform.Rotate(Vector3.right, Random.Range(-20f, 20f));
                 oreVeinObject.transform.Rotate(Vector3.forward, Random.Range(-20f, 20f));
                 oreVeinObject.transform.Rotate(Vector3.up, Random.Range(0f, 360f));
+                
+                _oreVeins.Add(oreVeinObject.transform);
             }
         }
         
         private async UniTask SpawnRareWood()
         {
             var groundLayer = LayerMask.NameToLayer("Ground");
+            _woods = new List<Transform>();
             
             for (int i = 0; i < rareWoodCount; i++)
             {
@@ -83,6 +106,8 @@ namespace Level
                 var oreVeinObject = await spawnTask;
                 oreVeinObject.transform.position = new Vector3(hitInfo.point.x, hitInfo.point.y-0.1f, hitInfo.point.z);
                 oreVeinObject.transform.Rotate(Vector3.up, Random.Range(0f, 360f));
+                
+                _woods.Add(oreVeinObject.transform);
             }
         }
         

@@ -6,6 +6,7 @@
         Patrol,
         Combat,
         Alert,
-        Reposition
+        Reposition,
+        Eating
     }
 }

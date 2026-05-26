@@ -1,4 +1,5 @@
-﻿using Loot;
+﻿using Level;
+using Loot;
 using UnityEngine;
 using Zenject;
 
@@ -10,6 +11,8 @@ namespace DiInstallers.Level
         
         public override void InstallBindings()
         {
+            Container.Bind<SecondaryLootSpawnManager>().FromComponentInHierarchy().AsSingle();
+            
             Container.BindFactory<LootableItemComponent, LootableItemComponent.Factory>()
                 .FromSubContainerResolve()
                 .ByNewContextPrefab(itemPrefab);

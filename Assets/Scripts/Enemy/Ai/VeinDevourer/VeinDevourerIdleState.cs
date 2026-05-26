@@ -15,27 +15,29 @@ namespace Enemy.Ai.VeinDevourer
         
         public override void Enter(EnemyFsmContext fsmContext)
         {
+            fsmContext.IdleTimer = Random.Range(60f, 90f);
         }
 
         public override void Update(EnemyFsmContext fsmContext)
         {
-            if (fsmContext.IdleTimer > 0f)
-            {
-                fsmContext.IdleTimer -= Time.deltaTime;
-            }
-            else if (_lookAgent.IsSeeTarget &&
+            if (_lookAgent.IsSeeTarget &&
                      (_lookAgent.ClosestTargetInventoryValue?.Values.Sum() ?? 0f) > 100f)
             {
                 fsmContext.RequestedState = EnemyFsmStateId.Reposition;
             }
+            else if (fsmContext.IdleTimer >= 0f)
+            {
+                fsmContext.IdleTimer -= Time.deltaTime;
+            }
             else
             {
-                fsmContext.IdleTimer = 1f;
+                fsmContext.RequestedState = EnemyFsmStateId.Patrol;
             }
         }
 
         public override void Exit(EnemyFsmContext fsmContext)
         {
+            fsmContext.IdleTimer = 0f;
         }
     }
 }

@@ -1,24 +1,33 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Enemy.Ai.AiContextInterfaces;
 using Entities;
+using Level;
 using Loot;
 using UnityEngine;
 
 namespace Enemy.Ai.VeinDevourer
 {
-    public class VeinDevourerAiContext : EnemyAiContext, IAiLookAgent, IAiCombatAgent, IAiMoveAgent, IAiTransformAgent
+    public class VeinDevourerAiContext : EnemyAiContext, IAiLootCollectionAgent, IAiLookAgent, IAiCombatAgent, IAiMoveAgent, IAiTransformAgent
     {
         public VeinDevourerAiContext(
+            SecondaryLootSpawnManager secondaryLootManager,
             EnemyLookComponent lookComponent,
             EnemyCombatComponent combatComponent,
             EnemyMoveController moveController,
             Transform transform)
         {
+            _secondaryLootManager = secondaryLootManager;
             _lookComponent = lookComponent;
             _combatComponent = combatComponent;
             _moveController = moveController;
             _transform = transform;
         }
+
+        public Transform ClosestOreVeinTransform => _secondaryLootManager.ClosestOreVeinTransform(_transform);
+        public void DestroyClosestOreVein() => _secondaryLootManager.DestroyClosestOreVein(_transform);
+        public Transform ClosestWoodTransform => _secondaryLootManager.ClosestWoodTransform(_transform);
+        private readonly SecondaryLootSpawnManager _secondaryLootManager;
         
         public bool IsSeeTarget => _lookComponent.IsSeeTarget;
         public bool IsSeeTargetFrom(Vector3 position) => _lookComponent.IsSeeTargetFrom(position);
