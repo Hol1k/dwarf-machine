@@ -68,9 +68,10 @@ namespace PointsOfInterest
                     }
                     break;
                 case PoiType.Oasis:
-                    if (false)
+                    if (enemyType == EnemyType.Aborigine)
                     {
-                        
+                        _poiPrefab =
+                            await Addressables.InstantiateAsync("POIs/Oasis_AboriginesOccupied").Task;
                     }
                     else
                     {

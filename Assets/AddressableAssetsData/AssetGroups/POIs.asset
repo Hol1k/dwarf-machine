@@ -40,6 +40,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a0b556de1efca52458466e133860b62d
+    m_Address: POIs/Oasis_AboriginesOccupied
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 2b7d69123ce649042bc180227574592a, type: 2}
   m_SchemaSet:
