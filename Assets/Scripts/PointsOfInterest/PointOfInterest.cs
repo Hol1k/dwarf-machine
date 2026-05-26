@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Cysharp.Threading.Tasks;
 using Enemy;
 using Enemy.Ai;
@@ -47,36 +46,41 @@ namespace PointsOfInterest
                     if (enemyType == EnemyType.Aborigine)
                     {
                         _poiPrefab =
-                            await Addressables.InstantiateAsync("POIs/AboriginesCamp_AboriginesOccupied").Task;
+                            await Addressables.InstantiateAsync("POIs/AboriginesCamp_AboriginesOccupied").ToUniTask();
                     }
                     else
                     {
                         _poiPrefab =
-                            await Addressables.InstantiateAsync("POIs/AboriginesCamp_Empty").Task;
+                            await Addressables.InstantiateAsync("POIs/AboriginesCamp_Empty").ToUniTask();
                     }
                     break;
                 case PoiType.VeinCluster:
                     if (enemyType == EnemyType.Soldier)
                     {
                         _poiPrefab =
-                            await Addressables.InstantiateAsync("POIs/VeinCluster_SoldiersOccupied").Task;
+                            await Addressables.InstantiateAsync("POIs/VeinCluster_SoldiersOccupied").ToUniTask();
                     }
                     else
                     {
                         _poiPrefab =
-                            await Addressables.InstantiateAsync("POIs/VeinCluster_Empty").Task;
+                            await Addressables.InstantiateAsync("POIs/VeinCluster_Empty").ToUniTask();
                     }
                     break;
                 case PoiType.Oasis:
                     if (enemyType == EnemyType.Aborigine)
                     {
                         _poiPrefab =
-                            await Addressables.InstantiateAsync("POIs/Oasis_AboriginesOccupied").Task;
+                            await Addressables.InstantiateAsync("POIs/Oasis_AboriginesOccupied").ToUniTask();
+                    }
+                    else if (enemyType == EnemyType.Soldier)
+                    {
+                        _poiPrefab =
+                            await Addressables.InstantiateAsync("POIs/Oasis_SoldiersOccupied").ToUniTask();
                     }
                     else
                     {
                         _poiPrefab =
-                            await Addressables.InstantiateAsync("POIs/Oasis_Empty").Task;
+                            await Addressables.InstantiateAsync("POIs/Oasis_Empty").ToUniTask();
                     }
                     break;
             }
