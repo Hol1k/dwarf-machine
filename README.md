@@ -176,7 +176,7 @@ core gameplay → mechanics → meta systems → presentation.
   Basic enemy logic, states, and interactions.
   <sub>[Task tracking](https://yougile.com/board/t2oo1aab3rr1)</sub>
 
-- [x] **[v0.3 - Level Objects & First Game Level](https://github.com/Hol1k/dwarf-machine/releases/tag/v0.3.0)**
+- [x] **[v0.3 - Level Objects & First Game Level](https://github.com/Hol1k/dwarf-machine/releases/tag/v0.3.1)**
 
   Environmental objects and the first playable level.
   <sub>[Task tracking](https://yougile.com/board/r7np9dz81o4s)</sub>
