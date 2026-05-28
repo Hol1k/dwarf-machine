@@ -4,6 +4,7 @@ using Enemy;
 using Enemy.Ai;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using Zenject;
 using Random = UnityEngine.Random;
 
 namespace PointsOfInterest
@@ -15,6 +16,8 @@ namespace PointsOfInterest
         [Min(0)] public int poiValue;
         
         private GameObject _poiPrefab;
+
+        [Inject] private DiContainer _container;
         
         private Transform _patrolPointsCollectionParent;
         private Transform _shelterRepositionPointsCollectionParent;
@@ -86,6 +89,7 @@ namespace PointsOfInterest
             }
             
             _poiPrefab.transform.SetParent(transform);
+            _container.InjectGameObject(gameObject);
 
             ApplyPrefabParams();
         }
