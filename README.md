@@ -78,6 +78,28 @@ Key principles:
   - Type-specific overrides for unique behavior
   - Wired through Zenject for clean dependency injection
 
+### Level Objects & Environmental Systems
+- **Loot System:**
+  - Breakable ore vein and wood prefabs with interactive destruction
+  - Secondary loot spawning system
+  - Unified inventory management for mech and character (item transfer)
+  
+- **Points of Interest (POI) Prefabs:**
+  - Empty oasis and vein cluster locations
+  - Faction-specific occupied locations:
+    - Aborigines Camp (empty and occupied variants)
+    - Soldiers-occupied oasis and vein clusters
+  - Type-based POI prefab selection based on faction occupiers
+  
+- **Level Construction:**
+  - MVP level landscape and terrain with proper layer configuration
+  - Navigation mesh surface integration for pathfinding
+  - Platform layout for POI placement
+  
+- **World Integration:**
+  - Level bootstrap system for ordered manager execution
+  - Proper terrain collider setup and rendering
+
 ### Spawning & World System
 - **Dynamic Enemy Spawning:**
   - Async spawning with UniTask integration
@@ -95,6 +117,19 @@ Key principles:
 - **Layer mask filtering** for attack detection
 - **Inventory integration** for mech/player damage calculations
 - **Movement controller** with request queuing when agent is disabled
+
+### Gameplay Features
+- **Enemy Mechanics:**
+  - Vein Devourer ore consumption logic - enemies consume ore veins as part of their AI
+  - Fixed humanoid collisions to prevent visual glitches
+  
+- **Asset Management:**
+  - Addressable asset system with dedicated groups for:
+    - Loot assets (ore vein, wood)
+    - POI prefabs (7 different POI configurations)
+    - Scene management (MVP level scene)
+  - Updated with ProBuilder support for terrain and environmental assets
+  - Nature Starter Kit 2 integration for landscape visuals
 
 ---
 
@@ -141,14 +176,15 @@ core gameplay → mechanics → meta systems → presentation.
   Basic enemy logic, states, and interactions.
   <sub>[Task tracking](https://yougile.com/board/t2oo1aab3rr1)</sub>
 
-- [ ] **v0.3 - Level Objects & First Game Level** *(in progress)*
+- [x] **[v0.3 - Level Objects & First Game Level](https://github.com/Hol1k/dwarf-machine/releases/tag/v0.3.0)**
 
   Environmental objects and the first playable level.
   <sub>[Task tracking](https://yougile.com/board/r7np9dz81o4s)</sub>
 
-- [ ] **v0.4 - All Character Mechanics**  
+- [ ] **v0.4 - All Character Mechanics** *(in progress)*
 
   Finalization of player and mech core mechanics. 
+  <sub>[Task tracking](https://yougile.com/board/thdj3b7gqfhk)</sub>
 
 - [ ] **v0.5 - Multiplayer**  
 
