@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using Cysharp.Threading.Tasks;
-using Loot;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using Zenject;
 using Random = UnityEngine.Random;
 
 namespace Level
@@ -23,6 +23,8 @@ namespace Level
         [Space]
         [SerializeField] private AssetReference oreVeinPrefab;
         [SerializeField] private AssetReference rareWoodPrefab;
+        
+        [Inject] private DiContainer _diContainer;
         
         [Space]
         [SerializeField] private bool drawLootSpawnRadius;
@@ -81,6 +83,7 @@ namespace Level
                 oreVeinObject.transform.Rotate(Vector3.forward, Random.Range(-20f, 20f));
                 oreVeinObject.transform.Rotate(Vector3.up, Random.Range(0f, 360f));
                 
+                _diContainer.InjectGameObject(oreVeinObject);
                 _oreVeins.Add(oreVeinObject.transform);
             }
         }
@@ -100,11 +103,12 @@ namespace Level
                 while (!Physics.Raycast(rayCastPos, Vector3.down, out hitInfo, float.PositiveInfinity) &&
                        hitInfo.transform.gameObject.layer == groundLayer) {}
                 
-                var oreVeinObject = await spawnTask;
-                oreVeinObject.transform.position = new Vector3(hitInfo.point.x, hitInfo.point.y-0.1f, hitInfo.point.z);
-                oreVeinObject.transform.Rotate(Vector3.up, Random.Range(0f, 360f));
+                var woodObject = await spawnTask;
+                woodObject.transform.position = new Vector3(hitInfo.point.x, hitInfo.point.y-0.1f, hitInfo.point.z);
+                woodObject.transform.Rotate(Vector3.up, Random.Range(0f, 360f));
                 
-                _woods.Add(oreVeinObject.transform);
+                _diContainer.InjectGameObject(woodObject);
+                _woods.Add(woodObject.transform);
             }
         }
         
