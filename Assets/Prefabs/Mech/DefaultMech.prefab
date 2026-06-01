@@ -256,15 +256,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39107fcfa6844506ac616477ed2275ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitObjectsMask:
-    serializedVersion: 2
-    m_Bits: 247
-  attackOffset: {x: 0, y: -1.5, z: 5}
-  attackArea: 4
-  damage: 25
-  attackSpeed: 20
-  knockbackHeight: 0.5
-  knockbackForce: 2
+  mechLookTransform: {fileID: 1474285214400783449}
+  weapon: {fileID: 11400000, guid: e81f864ede9165347a3cd0965d672f89, type: 2}
   attackRequestStatus: 0
 --- !u!114 &6257919939557656781
 MonoBehaviour:
@@ -278,8 +271,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8018fab9ec2e42f7ad54457c5ec632f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxResourcesWeight: 100
-  _currentResourcesWeight: 0
 --- !u!1 &8290585181583142380
 GameObject:
   m_ObjectHideFlags: 0
