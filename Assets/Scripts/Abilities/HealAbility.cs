@@ -15,7 +15,6 @@ namespace Abilities
         {
             if (handler.TryGetComponent(out IDamageable damageable))
                 damageable.Health += healAmount;
-            Debug.Log("heal cast");
         }
     }
 }
