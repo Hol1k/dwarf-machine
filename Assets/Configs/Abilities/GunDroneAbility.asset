@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d54c72bd4eef412aa322a0c7361fe11b, type: 3}
+  m_Name: GunDroneAbility
+  m_EditorClassIdentifier: 
+  dronePrefab:
+    m_AssetGUID: de96ee0e3d698e74da67d0f755aa747b
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  droneLifeTime: 15
+  cooldown: 60
+  attackSpeed: 45
+  damage: 5

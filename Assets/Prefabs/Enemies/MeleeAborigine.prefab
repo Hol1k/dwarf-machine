@@ -419,7 +419,7 @@ GameObject:
   - component: {fileID: 7973592441642326987}
   - component: {fileID: 4646801003120302987}
   - component: {fileID: 3295745724628143097}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: EnemyLookCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -489,7 +489,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5816093302139808927}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
