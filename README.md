@@ -186,25 +186,25 @@ core gameplay → mechanics → meta systems → presentation.
   Finalization of player and mech core mechanics. 
   <sub>[Task tracking](https://yougile.com/board/thdj3b7gqfhk)</sub>
 
-- [ ] **v0.5 - Multiplayer**  
-
-  Experimental multiplayer implementation.
-
-- [ ] **v0.6 - Dungeon Balance**  
+- [ ] **v0.5 - Dungeon Balance**
 
   Difficulty curves and gameplay pacing.
 
-- [ ] **v0.7 - Art Design**  
+- [ ] **v0.6 - UX / UI**
 
-  Visual pass and stylistic consistency.
+  User interface and overall usability improvements.
 
-- [ ] **v0.8 - Sound Design**  
+- [ ] **v0.7 - Sound Design**
 
   Sound effects and audio feedback.
 
-- [ ] **v0.9 - UX / UI**  
+- [ ] **v0.8 - Art Design**
 
-  User interface and overall usability improvements.
+  Visual pass and stylistic consistency.
+
+- [ ] **v0.9 - Multiplayer**  
+
+  Experimental multiplayer implementation.
 
 - [ ] **Release - Demo Build**  
 
