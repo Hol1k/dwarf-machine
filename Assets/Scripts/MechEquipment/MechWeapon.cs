@@ -9,6 +9,6 @@ namespace MechEquipment
         
         public abstract void Attack(Transform mechTransform, Transform cameraTransform, out float cooldownAfterAttack);
 
-        public abstract void DrawGizmos(Vector3 mechPosition, Transform cameraTransform);
+        public abstract void DrawGizmos(Transform mechTransform, Transform cameraTransform);
     }
 }

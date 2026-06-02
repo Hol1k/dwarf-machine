@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace MechEquipment
 {
-    [CreateAssetMenu(fileName = "NewMechWeaponHummer", menuName = "MechWeapon/MechHummer", order = 0)]
+    [CreateAssetMenu(fileName = "NewMechWeaponHummer", menuName = "MechWeapon/Hummer", order = 0)]
     public class MechHummerWeapon : MechWeapon
     {
         [Space]
@@ -46,7 +46,7 @@ namespace MechEquipment
             cooldownAfterAttack = 60f / attackSpeed;
         }
 
-        public override void DrawGizmos(Vector3 mechPosition, Transform cameraTransform)
+        public override void DrawGizmos(Transform mechTransform, Transform cameraTransform)
         {
             var mechRotation = cameraTransform.rotation;
             
@@ -54,7 +54,7 @@ namespace MechEquipment
 
             mechRotation.x = 0;
             mechRotation.z = 0;
-            var gizmosPos = mechPosition + mechRotation * attackOffset;
+            var gizmosPos = mechTransform.position + mechRotation * attackOffset;
             Gizmos.DrawSphere(gizmosPos, attackArea);
         }
     }

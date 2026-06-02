@@ -26,9 +26,9 @@ namespace Mech
                 weapon.Attack(transform, mechLookTransform, out _currAttackCooldown);
         }
 
-        private void OnDrawGizmosSelected()
+        private void OnDrawGizmos()
         {
-            weapon.DrawGizmos(transform.position, mechLookTransform);
+            weapon.DrawGizmos(transform, mechLookTransform);
         }
     }
 }

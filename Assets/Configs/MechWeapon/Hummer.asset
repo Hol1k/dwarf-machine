@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ed37c24fd704fdca5f09ec32d2fcb12, type: 3}
-  m_Name: MechWeaponHummer
+  m_Name: Hummer
   m_EditorClassIdentifier: 
   gizmosColor: {r: 1, g: 0.4575472, b: 0.4575472, a: 1}
   hitObjectsMask:
