@@ -1918,10 +1918,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2307874957303954494, guid: 81fb55248291c4443b19cf99f6e116f0, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2336763797710476704, guid: 81fb55248291c4443b19cf99f6e116f0, type: 3}
       propertyPath: weapon
       value: 
-      objectReference: {fileID: 11400000, guid: a7bacc74ba45edb458d236831f3f8a42, type: 2}
+      objectReference: {fileID: 11400000, guid: 4285a7a6b6e482f45ab2a5924ba6fa09, type: 2}
     - target: {fileID: 3996640884506013948, guid: 81fb55248291c4443b19cf99f6e116f0, type: 3}
       propertyPath: m_Name
       value: DefaultMech
