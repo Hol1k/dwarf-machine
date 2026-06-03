@@ -1,4 +1,6 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System;
+using Cysharp.Threading.Tasks;
+using ScenesManagement;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.SceneManagement;
@@ -18,12 +20,21 @@ namespace MainMenu
 
         private async UniTask StartTestLevel()
         {
-            DontDestroyOnLoad(this);
+            try
+            {
+                DontDestroyOnLoad(this);
 
-            await Addressables.LoadSceneAsync(GameplayScenePath);
-            await Addressables.LoadSceneAsync(TestMvpScenePath, LoadSceneMode.Additive);
+                await Addressables.LoadSceneAsync(GameplayScenePath);
+                await Addressables.LoadSceneAsync(TestMvpScenePath, LoadSceneMode.Additive);
+                Bootstrap mvpLevelBootstrap = FindAnyObjectByType<MvpLevelBootstrap>();
+                mvpLevelBootstrap.Init(new MvpLevelArgs());
             
-            Destroy(gameObject);
+                Destroy(gameObject);
+            }
+            catch (Exception e)
+            {
+                Debug.LogException(e);
+            }
         }
     }
 }
