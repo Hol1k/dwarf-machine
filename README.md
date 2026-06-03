@@ -196,14 +196,15 @@ core gameplay → mechanics → meta systems → presentation.
   Environmental objects and the first playable level.
   <sub>[Task tracking](https://yougile.com/board/r7np9dz81o4s)</sub>
 
-- [ ] **v0.4 - All Character Mechanics** *(in progress)*
+- [x] **v0.4 - All Character Mechanics**
 
   Finalization of player and mech core mechanics. 
   <sub>[Task tracking](https://yougile.com/board/thdj3b7gqfhk)</sub>
 
-- [ ] **v0.5 - Dungeon Balance**
+- [ ] **v0.5 - Dungeon Balance** *(in progress)*
 
   Difficulty curves and gameplay pacing.
+  <sub>[Task tracking](https://yougile.com/board/visee0thsvlp)</sub>
 
 - [ ] **v0.6 - UX / UI**
 
