@@ -13,6 +13,8 @@ The main goal is to design clean, extensible gameplay systems that can be easily
 - Mountable combat mech
 - Separate movement logic for player and mech
 - Basic melee combat
+- Expanded Arsenal (SMG, Sniper Rifle, Sword, Flamethrower)
+- Ability System with cooldown logic (Heal, Speed Boost, Drone)
 - Configurable mech stats
 - Enemy AI foundation: FSM-based behaviour system
 - Multiple enemy types with unique behaviours:
@@ -22,6 +24,7 @@ The main goal is to design clean, extensible gameplay systems that can be easily
   - Aborigines (Melee & Ranged variants) - tribal faction with team mechanics
 - Points of Interest (POI) system with faction control
 - Async enemy spawning system with dynamic factories
+- Scene management and automated bootstrap workflow
 
 ---
 
@@ -57,6 +60,18 @@ Key principles:
 - Entities parameters are defined via configuration (ScriptableObjects)
 - No hardcoded gameplay values
 - Designed to scale for upgrades and balance iterations
+
+### Weapon & Equipment System
+- Modular weapon architecture allowing rapid creation of diverse weapon types (e.g., configuring `GunEquipment` for SMG and Sniper variants).
+- Support for both character and mech-specific heavy weaponry (Sword, Flamethrower).
+- Dynamic equipment assignment logic wired through components.
+
+### Ability System
+- Extensible ability framework supporting active skills (Heal, Speed Boost, Companion Drone).
+
+### Initialization & Bootstrap Workflow
+- Cross-scene data persistence via gameplay bootstraps (passing selected mech, equipment, and abilities to the core level).
+- Developer workflow optimization using editor scripts (`EntryPointSceneAutoLoader`) for seamless testing from any scene.
 
 ### Dependency Injection
 - Core systems are wired through DI
