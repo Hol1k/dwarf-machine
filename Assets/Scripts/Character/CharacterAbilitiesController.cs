@@ -8,8 +8,8 @@ namespace Character
         public Ability ability1;
         public Ability ability2;
         
-        private float _ability1CastTime = 0f;
-        private float _ability2CastTime = 0f;
+        private float _ability1CastTime = -1000f;
+        private float _ability2CastTime = -1000f;
 
         public void CastAbility1Request()
         {
