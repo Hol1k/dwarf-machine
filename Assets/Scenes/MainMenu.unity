@@ -379,6 +379,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8768b6a7c8c0481cab44d028b2578eb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenMechType: 0
+  defaultCharacterEquipment: {fileID: 11400000, guid: 8254492ed08fd41498e5ea0ed25a1560, type: 2}
+  slot1CharacterEquipment: {fileID: 11400000, guid: f40bcecac8ecf424d819ed1ca1b26fd3, type: 2}
+  slot2CharacterEquipment: {fileID: 11400000, guid: 395cd280b3e5633498a7310031549b05, type: 2}
+  slot3CharacterEquipment: {fileID: 11400000, guid: 970b0ba072a6a784e8846152c7157e78, type: 2}
+  slot1CharacterAbility: {fileID: 11400000, guid: 0683cc55356a1a24baeca1c7553f24ed, type: 2}
+  slot2CharacterAbility: {fileID: 11400000, guid: d3fa6a00e5bfad840b1f943fb138e4ea, type: 2}
 --- !u!1 &948503276
 GameObject:
   m_ObjectHideFlags: 0
