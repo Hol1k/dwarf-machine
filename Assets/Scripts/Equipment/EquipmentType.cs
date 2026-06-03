@@ -1,6 +1,6 @@
 ﻿namespace Equipment
 {
-    public enum Equipment
+    public enum EquipmentType
     {
         Melee,
         Ranged

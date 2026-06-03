@@ -1,6 +1,5 @@
 ﻿using Equipment;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Character
 {
