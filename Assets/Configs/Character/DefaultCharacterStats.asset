@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7f8ea9d435645e98e1e2c059eb3c4fe, type: 3}
   m_Name: DefaultCharacterStats
   m_EditorClassIdentifier: 
-  maxHealth: 1000
-  currentHealth: 1000
+  maxHealth: 100
+  currentHealth: 100
   armourX: 0
   moveSpeed: 7
   dashRange: 5

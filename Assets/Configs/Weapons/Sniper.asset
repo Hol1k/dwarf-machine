@@ -22,5 +22,5 @@ MonoBehaviour:
   scutterGizmosLinesCount: 3
   scutterGizmosColor: {r: 1, g: 0, b: 0, a: 1}
   scutterValue: 0.01
-  damage: 40
+  damage: 70
   attackSpeed: 20

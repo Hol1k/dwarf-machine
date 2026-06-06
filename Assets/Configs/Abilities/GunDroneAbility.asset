@@ -20,5 +20,5 @@ MonoBehaviour:
     m_EditorAssetChanged: 0
   droneLifeTime: 15
   cooldown: 60
-  attackSpeed: 45
-  damage: 5
+  attackSpeed: 90
+  damage: 10

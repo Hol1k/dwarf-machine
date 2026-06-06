@@ -18,7 +18,7 @@ MonoBehaviour:
     m_Bits: 1152
   attackOffset: {x: 0, y: -0.64, z: 2.9}
   attackArea: 1
-  damage: 10
-  attackSpeed: 60
+  damage: 35
+  attackSpeed: 30
   knockbackHeight: 1
   knockbackForce: 2

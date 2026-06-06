@@ -23,4 +23,4 @@ MonoBehaviour:
   scutterGizmosColor: {r: 1, g: 0, b: 0, a: 1}
   scutterValue: 5
   damage: 5
-  attackSpeed: 180
+  attackSpeed: 360

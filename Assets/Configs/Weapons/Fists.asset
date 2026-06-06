@@ -19,5 +19,5 @@ MonoBehaviour:
   attackRange: 2
   raycastWidth: 0.13
   attackPositionOffset: {x: 0, y: 0.5, z: 0}
-  damage: 2
+  damage: 7
   attackSpeed: 60

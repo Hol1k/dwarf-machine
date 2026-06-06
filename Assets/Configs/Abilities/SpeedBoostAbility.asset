@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SpeedBoostAbility
   m_EditorClassIdentifier: 
   multiplicationSpeedValue: 2.5
-  duration: 15
-  cooldown: 40
+  duration: 10
+  cooldown: 60
