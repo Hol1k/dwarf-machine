@@ -64,6 +64,9 @@ namespace Character
 
         public float GetRemainingCapacity(LootType type)
         {
+            if (!_loot.ContainsKey(type))
+                return GetMaxLootCount(type);
+            
             return GetMaxLootCount(type) - _loot[type];
         }
     }
