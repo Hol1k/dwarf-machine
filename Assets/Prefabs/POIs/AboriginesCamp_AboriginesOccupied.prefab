@@ -583,7 +583,7 @@ MonoBehaviour:
   maxLootSpawnForce: 4
   loot:
   - type: 3
-    amount: 5
+    amount: 7
 --- !u!1 &661300913307563294
 GameObject:
   m_ObjectHideFlags: 0
@@ -2574,7 +2574,7 @@ MonoBehaviour:
   maxLootSpawnForce: 4
   loot:
   - type: 3
-    amount: 5
+    amount: 7
 --- !u!1 &1342538952326949423
 GameObject:
   m_ObjectHideFlags: 0
@@ -9392,7 +9392,7 @@ MonoBehaviour:
   maxLootSpawnForce: 4
   loot:
   - type: 3
-    amount: 5
+    amount: 7
 --- !u!1 &2387471707636732906
 GameObject:
   m_ObjectHideFlags: 0
@@ -27405,7 +27405,7 @@ MonoBehaviour:
   maxLootSpawnForce: 4
   loot:
   - type: 3
-    amount: 5
+    amount: 7
 --- !u!1 &7659169700072102367
 GameObject:
   m_ObjectHideFlags: 0
@@ -33290,7 +33290,7 @@ MonoBehaviour:
   maxLootSpawnForce: 4
   loot:
   - type: 3
-    amount: 5
+    amount: 7
 --- !u!1 &8877854115310564609
 GameObject:
   m_ObjectHideFlags: 0

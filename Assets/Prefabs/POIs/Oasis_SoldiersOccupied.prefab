@@ -54340,6 +54340,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 555161631541362964}
     m_Modifications:
+    - target: {fileID: 2376708083111858473, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
+      propertyPath: loot.Array.data[0].amount
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4564303415265004689, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
       propertyPath: m_Name
       value: Wood (6)
@@ -54402,6 +54406,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 555161631541362964}
     m_Modifications:
+    - target: {fileID: 2376708083111858473, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
+      propertyPath: loot.Array.data[0].amount
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4564303415265004689, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
       propertyPath: m_Name
       value: Wood (3)
@@ -54530,6 +54538,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 555161631541362964}
     m_Modifications:
+    - target: {fileID: 2376708083111858473, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
+      propertyPath: loot.Array.data[0].amount
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4564303415265004689, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
       propertyPath: m_Name
       value: Wood (16)
@@ -54592,6 +54604,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 555161631541362964}
     m_Modifications:
+    - target: {fileID: 2376708083111858473, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
+      propertyPath: loot.Array.data[0].amount
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4564303415265004689, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
       propertyPath: m_Name
       value: Wood (26)
@@ -54654,6 +54670,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 555161631541362964}
     m_Modifications:
+    - target: {fileID: 2376708083111858473, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
+      propertyPath: loot.Array.data[0].amount
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4564303415265004689, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
       propertyPath: m_Name
       value: Wood (24)
@@ -54716,6 +54736,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 555161631541362964}
     m_Modifications:
+    - target: {fileID: 2376708083111858473, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
+      propertyPath: loot.Array.data[0].amount
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4564303415265004689, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
       propertyPath: m_Name
       value: Wood (14)
@@ -54778,6 +54802,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 555161631541362964}
     m_Modifications:
+    - target: {fileID: 2376708083111858473, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
+      propertyPath: loot.Array.data[0].amount
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4564303415265004689, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
       propertyPath: m_Name
       value: Wood (28)
@@ -54840,6 +54868,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 555161631541362964}
     m_Modifications:
+    - target: {fileID: 2376708083111858473, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
+      propertyPath: loot.Array.data[0].amount
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4564303415265004689, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
       propertyPath: m_Name
       value: Wood (1)
@@ -54902,6 +54934,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 555161631541362964}
     m_Modifications:
+    - target: {fileID: 2376708083111858473, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
+      propertyPath: loot.Array.data[0].amount
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4564303415265004689, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
       propertyPath: m_Name
       value: Wood (25)
@@ -54964,6 +55000,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 555161631541362964}
     m_Modifications:
+    - target: {fileID: 2376708083111858473, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
+      propertyPath: loot.Array.data[0].amount
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4564303415265004689, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
       propertyPath: m_Name
       value: Wood (2)
@@ -55026,6 +55066,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 555161631541362964}
     m_Modifications:
+    - target: {fileID: 2376708083111858473, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
+      propertyPath: loot.Array.data[0].amount
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4564303415265004689, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
       propertyPath: m_Name
       value: Wood (23)
@@ -55088,6 +55132,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 555161631541362964}
     m_Modifications:
+    - target: {fileID: 2376708083111858473, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
+      propertyPath: loot.Array.data[0].amount
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4564303415265004689, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
       propertyPath: m_Name
       value: Wood (10)
@@ -55216,6 +55264,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 555161631541362964}
     m_Modifications:
+    - target: {fileID: 2376708083111858473, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
+      propertyPath: loot.Array.data[0].amount
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4564303415265004689, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
       propertyPath: m_Name
       value: Wood (15)
@@ -55278,6 +55330,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 555161631541362964}
     m_Modifications:
+    - target: {fileID: 2376708083111858473, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
+      propertyPath: loot.Array.data[0].amount
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4564303415265004689, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
       propertyPath: m_Name
       value: Wood (8)
@@ -55340,6 +55396,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 555161631541362964}
     m_Modifications:
+    - target: {fileID: 2376708083111858473, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
+      propertyPath: loot.Array.data[0].amount
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4564303415265004689, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
       propertyPath: m_Name
       value: Wood (7)
@@ -55402,6 +55462,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 555161631541362964}
     m_Modifications:
+    - target: {fileID: 2376708083111858473, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
+      propertyPath: loot.Array.data[0].amount
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4564303415265004689, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
       propertyPath: m_Name
       value: Wood (17)
@@ -55530,6 +55594,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 555161631541362964}
     m_Modifications:
+    - target: {fileID: 2376708083111858473, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
+      propertyPath: loot.Array.data[0].amount
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4564303415265004689, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
       propertyPath: m_Name
       value: Wood (22)
@@ -55592,6 +55660,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 555161631541362964}
     m_Modifications:
+    - target: {fileID: 2376708083111858473, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
+      propertyPath: loot.Array.data[0].amount
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4564303415265004689, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
       propertyPath: m_Name
       value: Wood (19)
@@ -55654,6 +55726,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 555161631541362964}
     m_Modifications:
+    - target: {fileID: 2376708083111858473, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
+      propertyPath: loot.Array.data[0].amount
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4564303415265004689, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
       propertyPath: m_Name
       value: Wood (27)
@@ -55716,6 +55792,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 555161631541362964}
     m_Modifications:
+    - target: {fileID: 2376708083111858473, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
+      propertyPath: loot.Array.data[0].amount
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4564303415265004689, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
       propertyPath: m_Name
       value: Wood (11)
@@ -55844,6 +55924,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 555161631541362964}
     m_Modifications:
+    - target: {fileID: 2376708083111858473, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
+      propertyPath: loot.Array.data[0].amount
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4564303415265004689, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
       propertyPath: m_Name
       value: Wood (9)
@@ -55972,6 +56056,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 555161631541362964}
     m_Modifications:
+    - target: {fileID: 2376708083111858473, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
+      propertyPath: loot.Array.data[0].amount
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4564303415265004689, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
       propertyPath: m_Name
       value: Wood
@@ -56034,6 +56122,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 555161631541362964}
     m_Modifications:
+    - target: {fileID: 2376708083111858473, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
+      propertyPath: loot.Array.data[0].amount
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4564303415265004689, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
       propertyPath: m_Name
       value: Wood (12)
@@ -56096,6 +56188,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 555161631541362964}
     m_Modifications:
+    - target: {fileID: 2376708083111858473, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
+      propertyPath: loot.Array.data[0].amount
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4564303415265004689, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
       propertyPath: m_Name
       value: Wood (5)
@@ -56224,6 +56320,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 555161631541362964}
     m_Modifications:
+    - target: {fileID: 2376708083111858473, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
+      propertyPath: loot.Array.data[0].amount
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4564303415265004689, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
       propertyPath: m_Name
       value: Wood (4)
@@ -56286,6 +56386,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 555161631541362964}
     m_Modifications:
+    - target: {fileID: 2376708083111858473, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
+      propertyPath: loot.Array.data[0].amount
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4564303415265004689, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
       propertyPath: m_Name
       value: Wood (20)
@@ -56348,6 +56452,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 555161631541362964}
     m_Modifications:
+    - target: {fileID: 2376708083111858473, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
+      propertyPath: loot.Array.data[0].amount
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4564303415265004689, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
       propertyPath: m_Name
       value: Wood (13)
@@ -56410,6 +56518,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 555161631541362964}
     m_Modifications:
+    - target: {fileID: 2376708083111858473, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
+      propertyPath: loot.Array.data[0].amount
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4564303415265004689, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
       propertyPath: m_Name
       value: Wood (21)
@@ -56472,6 +56584,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 555161631541362964}
     m_Modifications:
+    - target: {fileID: 2376708083111858473, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
+      propertyPath: loot.Array.data[0].amount
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4564303415265004689, guid: 816893d4afb447a45ac24560e5c3323b, type: 3}
       propertyPath: m_Name
       value: Wood (18)

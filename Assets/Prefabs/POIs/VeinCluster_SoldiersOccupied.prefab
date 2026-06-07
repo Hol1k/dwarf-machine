@@ -59,7 +59,7 @@ MonoBehaviour:
   maxLootSpawnForce: 4
   loot:
   - type: 0
-    amount: 5
+    amount: 6
 --- !u!114 &5263937866726465818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1618,7 +1618,7 @@ MonoBehaviour:
   maxLootSpawnForce: 4
   loot:
   - type: 0
-    amount: 5
+    amount: 6
 --- !u!114 &7436866566863900666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9238,7 +9238,7 @@ MonoBehaviour:
   maxLootSpawnForce: 4
   loot:
   - type: 0
-    amount: 5
+    amount: 6
 --- !u!114 &4408657427805077357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9389,7 +9389,7 @@ MonoBehaviour:
   maxLootSpawnForce: 4
   loot:
   - type: 0
-    amount: 5
+    amount: 6
 --- !u!114 &4104643968805014583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14293,7 +14293,7 @@ MonoBehaviour:
   maxLootSpawnForce: 4
   loot:
   - type: 0
-    amount: 5
+    amount: 6
 --- !u!114 &1828631066598809370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31152,7 +31152,7 @@ MonoBehaviour:
   maxLootSpawnForce: 4
   loot:
   - type: 0
-    amount: 5
+    amount: 6
 --- !u!114 &5475157439762237275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36726,7 +36726,7 @@ MonoBehaviour:
   maxLootSpawnForce: 4
   loot:
   - type: 0
-    amount: 5
+    amount: 6
 --- !u!114 &3893561754770212573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76111,7 +76111,7 @@ MonoBehaviour:
   maxLootSpawnForce: 4
   loot:
   - type: 0
-    amount: 5
+    amount: 6
 --- !u!114 &8127181088146313503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78160,7 +78160,7 @@ MonoBehaviour:
   maxLootSpawnForce: 4
   loot:
   - type: 0
-    amount: 5
+    amount: 6
 --- !u!114 &8619327078014801824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79673,7 +79673,7 @@ MonoBehaviour:
   maxLootSpawnForce: 4
   loot:
   - type: 0
-    amount: 5
+    amount: 6
 --- !u!114 &7403034432387383043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86696,7 +86696,7 @@ MonoBehaviour:
   maxLootSpawnForce: 4
   loot:
   - type: 0
-    amount: 5
+    amount: 6
 --- !u!114 &819911734138797385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90367,7 +90367,7 @@ MonoBehaviour:
   maxLootSpawnForce: 4
   loot:
   - type: 0
-    amount: 5
+    amount: 6
 --- !u!114 &3096654733082614101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91222,7 +91222,7 @@ MonoBehaviour:
   maxLootSpawnForce: 4
   loot:
   - type: 0
-    amount: 5
+    amount: 6
 --- !u!114 &5485862419217871793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93883,7 +93883,7 @@ MonoBehaviour:
   maxLootSpawnForce: 4
   loot:
   - type: 0
-    amount: 5
+    amount: 6
 --- !u!114 &7326706004980203690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134134,7 +134134,7 @@ MonoBehaviour:
   maxLootSpawnForce: 4
   loot:
   - type: 0
-    amount: 5
+    amount: 6
 --- !u!114 &172596605764789199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136045,7 +136045,7 @@ MonoBehaviour:
   maxLootSpawnForce: 4
   loot:
   - type: 0
-    amount: 5
+    amount: 6
 --- !u!114 &7137214890424468827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136150,7 +136150,7 @@ MonoBehaviour:
   maxLootSpawnForce: 4
   loot:
   - type: 0
-    amount: 5
+    amount: 6
 --- !u!114 &6734448214656531339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136653,7 +136653,7 @@ MonoBehaviour:
   maxLootSpawnForce: 4
   loot:
   - type: 0
-    amount: 5
+    amount: 6
 --- !u!114 &8222930549082867859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171878,7 +171878,7 @@ MonoBehaviour:
   maxLootSpawnForce: 4
   loot:
   - type: 0
-    amount: 5
+    amount: 6
 --- !u!114 &4052056059963452053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172954,7 +172954,7 @@ MonoBehaviour:
   maxLootSpawnForce: 4
   loot:
   - type: 0
-    amount: 5
+    amount: 6
 --- !u!114 &8529954419484780697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222000,7 +222000,7 @@ MonoBehaviour:
   maxLootSpawnForce: 4
   loot:
   - type: 0
-    amount: 5
+    amount: 6
 --- !u!114 &3060048535647581140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224707,7 +224707,7 @@ MonoBehaviour:
   maxLootSpawnForce: 4
   loot:
   - type: 0
-    amount: 5
+    amount: 6
 --- !u!114 &3457012366587214352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230539,7 +230539,7 @@ MonoBehaviour:
   maxLootSpawnForce: 4
   loot:
   - type: 0
-    amount: 5
+    amount: 6
 --- !u!114 &4061573847981805017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235234,7 +235234,7 @@ MonoBehaviour:
   maxLootSpawnForce: 4
   loot:
   - type: 0
-    amount: 5
+    amount: 6
 --- !u!114 &8770420204948935593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236043,7 +236043,7 @@ MonoBehaviour:
   maxLootSpawnForce: 4
   loot:
   - type: 0
-    amount: 5
+    amount: 6
 --- !u!114 &4411738672984868770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239046,7 +239046,7 @@ MonoBehaviour:
   maxLootSpawnForce: 4
   loot:
   - type: 0
-    amount: 5
+    amount: 6
 --- !u!114 &8756992471271339739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245236,7 +245236,7 @@ MonoBehaviour:
   maxLootSpawnForce: 4
   loot:
   - type: 0
-    amount: 5
+    amount: 6
 --- !u!114 &899912808039990882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249054,7 +249054,7 @@ MonoBehaviour:
   maxLootSpawnForce: 4
   loot:
   - type: 0
-    amount: 5
+    amount: 6
 --- !u!114 &7013880093807845260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253265,7 +253265,7 @@ MonoBehaviour:
   maxLootSpawnForce: 4
   loot:
   - type: 0
-    amount: 5
+    amount: 6
 --- !u!114 &1888047153520835964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254120,7 +254120,7 @@ MonoBehaviour:
   maxLootSpawnForce: 4
   loot:
   - type: 0
-    amount: 5
+    amount: 6
 --- !u!114 &7755043880354001085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255770,7 +255770,7 @@ MonoBehaviour:
   maxLootSpawnForce: 4
   loot:
   - type: 0
-    amount: 5
+    amount: 6
 --- !u!114 &8857768133629037888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257635,7 +257635,7 @@ MonoBehaviour:
   maxLootSpawnForce: 4
   loot:
   - type: 0
-    amount: 5
+    amount: 6
 --- !u!114 &7281907041385832421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259500,7 +259500,7 @@ MonoBehaviour:
   maxLootSpawnForce: 4
   loot:
   - type: 0
-    amount: 5
+    amount: 6
 --- !u!114 &602045604148904905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266918,7 +266918,7 @@ MonoBehaviour:
   maxLootSpawnForce: 4
   loot:
   - type: 0
-    amount: 5
+    amount: 6
 --- !u!114 &3518752322148304525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302701,6 +302701,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chest (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4688676155591551288, guid: 9c5020ffa86f24d45b1c4fa1ead8bb6a, type: 3}
+      propertyPath: loot.Array.data[0].type
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6487941006494377529, guid: 9c5020ffa86f24d45b1c4fa1ead8bb6a, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.8000001
@@ -302766,6 +302770,10 @@ PrefabInstance:
     - target: {fileID: 1872732314058278743, guid: 9c5020ffa86f24d45b1c4fa1ead8bb6a, type: 3}
       propertyPath: m_Name
       value: Chest (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4688676155591551288, guid: 9c5020ffa86f24d45b1c4fa1ead8bb6a, type: 3}
+      propertyPath: loot.Array.data[0].type
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6487941006494377529, guid: 9c5020ffa86f24d45b1c4fa1ead8bb6a, type: 3}
       propertyPath: m_LocalScale.z
@@ -302833,6 +302841,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chest
       objectReference: {fileID: 0}
+    - target: {fileID: 4688676155591551288, guid: 9c5020ffa86f24d45b1c4fa1ead8bb6a, type: 3}
+      propertyPath: loot.Array.data[0].type
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6487941006494377529, guid: 9c5020ffa86f24d45b1c4fa1ead8bb6a, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.79999995
@@ -302899,6 +302911,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chest
       objectReference: {fileID: 0}
+    - target: {fileID: 4688676155591551288, guid: 9c5020ffa86f24d45b1c4fa1ead8bb6a, type: 3}
+      propertyPath: loot.Array.data[0].type
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6487941006494377529, guid: 9c5020ffa86f24d45b1c4fa1ead8bb6a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11.549
@@ -302960,6 +302976,10 @@ PrefabInstance:
     - target: {fileID: 1872732314058278743, guid: 9c5020ffa86f24d45b1c4fa1ead8bb6a, type: 3}
       propertyPath: m_Name
       value: Chest
+      objectReference: {fileID: 0}
+    - target: {fileID: 4688676155591551288, guid: 9c5020ffa86f24d45b1c4fa1ead8bb6a, type: 3}
+      propertyPath: loot.Array.data[0].type
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6487941006494377529, guid: 9c5020ffa86f24d45b1c4fa1ead8bb6a, type: 3}
       propertyPath: m_LocalScale.z
@@ -303027,6 +303047,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chest (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4688676155591551288, guid: 9c5020ffa86f24d45b1c4fa1ead8bb6a, type: 3}
+      propertyPath: loot.Array.data[0].type
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6487941006494377529, guid: 9c5020ffa86f24d45b1c4fa1ead8bb6a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -22.594002
@@ -303088,6 +303112,10 @@ PrefabInstance:
     - target: {fileID: 1872732314058278743, guid: 9c5020ffa86f24d45b1c4fa1ead8bb6a, type: 3}
       propertyPath: m_Name
       value: Chest (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4688676155591551288, guid: 9c5020ffa86f24d45b1c4fa1ead8bb6a, type: 3}
+      propertyPath: loot.Array.data[0].type
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6487941006494377529, guid: 9c5020ffa86f24d45b1c4fa1ead8bb6a, type: 3}
       propertyPath: m_LocalScale.z

@@ -857,8 +857,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28c0ebc49920437387e69d8ab394b296, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oreVeinCount: 50
-  rareWoodCount: 50
+  oreVeinCount: 75
+  rareWoodCount: 75
   oreVeinPrefab:
     m_AssetGUID: 67fecd6a3d749074993bfc2ddf515bb4
     m_SubObjectName: 
@@ -871,10 +871,10 @@ MonoBehaviour:
     m_SubObjectType: 
     m_SubObjectGUID: 
     m_EditorAssetChanged: 0
-  drawLootSpawnRadius: 0
+  drawLootSpawnRadius: 1
   countOfLootSpawnRadiusLines: 35
-  centerOfLootSpawn: {x: 27.12, y: 84.5}
-  radiusOfLootSpawn: 345.4
+  centerOfLootSpawn: {x: 27.2, y: 67.3}
+  radiusOfLootSpawn: 274.7
 --- !u!4 &829343100
 Transform:
   m_ObjectHideFlags: 0
