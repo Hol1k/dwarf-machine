@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8411f1c2b28c4cb4b12c2c6da1c1c535, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
-  gizmosColor: {r: 1, g: 0, b: 0, a: 1}
+  gizmosColor: {r: 1, g: 0.45882353, b: 0.45882353, a: 1}
   hitObjectsMask:
     serializedVersion: 2
     m_Bits: 1152
-  attackOffset: {x: 0, y: -2.31, z: 2.47}
-  attackAngle: {x: 0.08750347, y: 0, z: 0, w: 0.9961642}
+  attackOffset: {x: 0.76, y: -0.4, z: 1.22}
+  attackAngle: {x: 0.087399, y: 0.04866239, z: -0.004274528, w: 0.9949749}
   attackArea: 130
-  attackRange: 5.52
-  gizmosAttackLinesCount: 54
-  damage: 20
-  attackSpeed: 20
+  attackRange: 3.32
+  gizmosAttackLinesCount: 20
+  damage: 35
+  attackSpeed: 90
   knockbackHeight: 0.2
   knockbackForce: 1

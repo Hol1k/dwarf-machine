@@ -16,11 +16,11 @@ MonoBehaviour:
   hitObjectsMask:
     serializedVersion: 2
     m_Bits: 1152
-  attackOffset: {x: 1.29, y: -0.23, z: 2.67}
-  attackAngle: {x: -0.27453858, y: 0.19947274, z: -0.05832991, w: -0.9388487}
-  startAttackArea: 0.36
-  attackRange: 3.59
-  attackConeMultiplier: 1.3
+  attackOffset: {x: 2.03, y: 0.33, z: 2.2}
+  attackAngle: {x: -0.09690425, y: 0.2526493, z: -0.025440423, w: -0.96235687}
+  startAttackArea: 0.39
+  attackRange: 4.07
+  attackConeMultiplier: 1.57
   attackCollidersCount: 4
-  damage: 2
+  damage: 6
   attackSpeed: 480

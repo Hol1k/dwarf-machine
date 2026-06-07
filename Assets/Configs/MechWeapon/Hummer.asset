@@ -16,9 +16,9 @@ MonoBehaviour:
   hitObjectsMask:
     serializedVersion: 2
     m_Bits: 1152
-  attackOffset: {x: 0, y: -1.5, z: 5}
-  attackArea: 4
-  damage: 25
-  attackSpeed: 20
+  attackOffset: {x: 0, y: -1.42, z: 5}
+  attackArea: 3.43
+  damage: 80
+  attackSpeed: 15
   knockbackHeight: 0.5
   knockbackForce: 2
