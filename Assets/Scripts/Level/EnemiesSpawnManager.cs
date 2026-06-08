@@ -132,7 +132,8 @@ namespace Level
         {
             int spawnedCamps = 0;
 
-            foreach (var pointOfInterest in pointsOfInterest)
+            foreach (var pointOfInterest in pointsOfInterest.Where(poi => poi.poiType != PoiType.VeinCluster)
+                         .OrderByDescending(poi => poi.poiValue))
             {
                 if (spawnedCamps >= _countOfAboriginesCamps)
                     break;
