@@ -130,6 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rangedAboriginePrefab: {fileID: 5409449129095409635, guid: 9a508625ed65a8d4aaf36314a08b0488, type: 3}
+  meleeAboriginePrefab: {fileID: 8167199454854353928, guid: a3a8a8bf19a97de4396082d29322f73b, type: 3}
 --- !u!114 &2452607634141457927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,7 +143,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bb7d3e3e1ed4efb8be99e282e6312f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPointsCollectionParent: {fileID: 5368492477852561846}
 --- !u!114 &-6863696000978974019
 MonoBehaviour:
   m_ObjectHideFlags: 0

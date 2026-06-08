@@ -9,6 +9,7 @@ namespace DiInstallers.Enemies
     public class AboriginesCampInstaller : MonoInstaller
     {
         [SerializeField] private EnemyAiComponent rangedAboriginePrefab;
+        [SerializeField] private EnemyAiComponent meleeAboriginePrefab;
 
         public override void InstallBindings()
         {
@@ -18,6 +19,11 @@ namespace DiInstallers.Enemies
                 .BindFactory<EnemyPatrolPointsCollection, EnemyRepositionPointsCollection, EnemyAiComponent, RangedAborigineFactory>()
                 .FromSubContainerResolve()
                 .ByNewContextPrefab<RangedAborigineAiInstaller>(rangedAboriginePrefab);
+            
+            Container
+                .BindFactory<EnemyPatrolPointsCollection, EnemyRepositionPointsCollection, EnemyAiComponent, MeleeAborigineFactory>()
+                .FromSubContainerResolve()
+                .ByNewContextPrefab<MeleeAborigineAiInstaller>(meleeAboriginePrefab);
 
             BindAborigineTeamManager();
         }

@@ -10,6 +10,7 @@ namespace Enemy.Spawners
     {
         [Inject] private IEnemyTeamController teamController;
         [Inject] private RangedAborigineFactory rangedAborigineFactory;
+        [Inject] private MeleeAborigineFactory meleeAborigineFactory;
 
         private EnemyPatrolPointsCollection _patrolPointsCollection;
         private EnemyRepositionPointsCollection _repositionPointsCollection;
@@ -26,7 +27,9 @@ namespace Enemy.Spawners
         {
             foreach (var spawnPoint in _spawnPointsCollection)
             {
-                var enemy = rangedAborigineFactory.Create(_patrolPointsCollection, _repositionPointsCollection);
+                var enemy = Random.Range(0, 2) == 0 ?
+                    rangedAborigineFactory.Create(_patrolPointsCollection, _repositionPointsCollection) :
+                    meleeAborigineFactory.Create(_patrolPointsCollection, _repositionPointsCollection);
                 enemy.transform.position = spawnPoint.position;
                 teamController.TeamCollection.Add(enemy);
             }
