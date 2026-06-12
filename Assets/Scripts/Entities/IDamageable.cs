@@ -8,6 +8,7 @@ namespace Entities
         public float MaxHealth { get; set; }
         public float Health { get; set; }
         event Action<float> OnTakeDamage;
+        event Action OnDeath;
         
         public void TakeDamage(float damage);
     }

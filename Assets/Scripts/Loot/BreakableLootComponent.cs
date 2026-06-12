@@ -31,6 +31,7 @@ namespace Loot
         [Inject] private LootableItemComponent.Factory _itemFactory;
 
         public event Action<float> OnTakeDamage;
+        public event Action OnDeath;
 
         private void OnDrawGizmosSelected()
         {
@@ -46,6 +47,7 @@ namespace Loot
             if (Health <= 0)
             {
                 SpawnItems();
+                OnDeath?.Invoke();
                 Destroy(gameObject);
             }
         }

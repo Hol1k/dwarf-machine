@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Entities;
 using Loot;
 using Mech;
@@ -22,6 +23,8 @@ namespace Enemy.Ai
         private readonly List<StatsComponent> _visibleObjects = new();
         [SerializeField] private LayerMask obstaclesLayerMask;
         [SerializeField] private LayerMask targetLayerMask;
+
+        private readonly Dictionary<StatsComponent, Action> _onDeathActionHandlersCollection = new();
 
         [Inject]
         private void Init(SphereCollider lookSphereCollider)
@@ -93,7 +96,17 @@ namespace Enemy.Ai
                 (targetLayerMask >> targetStats.gameObject.layer) % 2 == 1)
             {
                 _visibleObjects.Add(targetStats);
-                targetStats.OnDeath += () => _visibleObjects.Remove(targetStats);
+                _onDeathActionHandlersCollection.Add(
+                    targetStats,
+                    () =>
+                    {
+                        if (_visibleObjects.Contains(targetStats))
+                            _visibleObjects.Remove(targetStats);
+                        
+                        targetStats.OnDeath -= _onDeathActionHandlersCollection[targetStats];
+                        _onDeathActionHandlersCollection.Remove(targetStats);
+                    });
+                targetStats.OnDeath += _onDeathActionHandlersCollection[targetStats];
             }
         }
 
@@ -104,6 +117,12 @@ namespace Enemy.Ai
             if (_visibleObjects.Contains(targetStats))
             {
                 _visibleObjects.Remove(targetStats);
+            }
+
+            if (_onDeathActionHandlersCollection.ContainsKey(targetStats))
+            {
+                targetStats.OnDeath -= _onDeathActionHandlersCollection[targetStats];
+                _onDeathActionHandlersCollection.Remove(targetStats);
             }
         }
     }

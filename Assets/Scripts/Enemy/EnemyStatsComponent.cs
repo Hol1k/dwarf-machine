@@ -63,6 +63,7 @@ namespace Enemy
         {
             IsDied = true;
             OnDeath?.Invoke();
+            Destroy(gameObject);
         }
     }
 }
