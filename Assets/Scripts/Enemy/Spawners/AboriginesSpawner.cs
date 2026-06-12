@@ -27,7 +27,7 @@ namespace Enemy.Spawners
         {
             foreach (var spawnPoint in _spawnPointsCollection)
             {
-                var enemy = Random.Range(0, 2) == 0 ?
+                var enemy = Random.Range(0, 1) == 0 ?
                     rangedAborigineFactory.Create(_patrolPointsCollection, _repositionPointsCollection) :
                     meleeAborigineFactory.Create(_patrolPointsCollection, _repositionPointsCollection);
                 enemy.transform.position = spawnPoint.position;
