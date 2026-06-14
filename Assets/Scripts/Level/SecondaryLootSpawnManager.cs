@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Cysharp.Threading.Tasks;
+using Loot;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using Zenject;
@@ -85,6 +86,14 @@ namespace Level
                 
                 _diContainer.InjectGameObject(oreVeinObject);
                 _oreVeins.Add(oreVeinObject.transform);
+
+                if (oreVeinObject.TryGetComponent(out BreakableLootComponent oreComponent))
+                {
+                    oreComponent.OnDeath += obj =>
+                    {
+                        _oreVeins.Remove(obj.transform);
+                    };
+                }
             }
         }
         
@@ -109,6 +118,14 @@ namespace Level
                 
                 _diContainer.InjectGameObject(woodObject);
                 _woods.Add(woodObject.transform);
+
+                if (woodObject.TryGetComponent(out BreakableLootComponent woodComponent))
+                {
+                    woodComponent.OnDeath += obj =>
+                    {
+                        _woods.Remove(obj.transform);
+                    };
+                }
             }
         }
         
