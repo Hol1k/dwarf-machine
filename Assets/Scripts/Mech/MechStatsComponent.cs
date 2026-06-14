@@ -33,7 +33,7 @@ namespace Mech
         }
 
         public event Action<float> OnTakeDamage;
-        public override event Action OnDeath;
+        public override event Action<GameObject> OnDeath;
 
         public IReadOnlyDictionary<LootType, float> Loot => _inventory.Loot;
         private MechInventoryComponent _inventory;
@@ -73,7 +73,7 @@ namespace Mech
         private void Death()
         {
             IsDied = true;
-            OnDeath?.Invoke();
+            OnDeath?.Invoke(gameObject);
         }
     }
 }

@@ -31,7 +31,7 @@ namespace Enemy
         public override bool IsDied { get; protected set; }
 
         [CanBeNull] public event Action<float> OnTakeDamage;
-        public override event Action OnDeath;
+        public override event Action<GameObject> OnDeath;
         
         private void Start()
         {
@@ -62,7 +62,7 @@ namespace Enemy
         private void Death()
         {
             IsDied = true;
-            OnDeath?.Invoke();
+            OnDeath?.Invoke(gameObject);
             Destroy(gameObject);
         }
     }

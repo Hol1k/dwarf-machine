@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Entities
 {
@@ -8,7 +9,7 @@ namespace Entities
         public float MaxHealth { get; set; }
         public float Health { get; set; }
         event Action<float> OnTakeDamage;
-        event Action OnDeath;
+        event Action<GameObject> OnDeath;
         
         public void TakeDamage(float damage);
     }

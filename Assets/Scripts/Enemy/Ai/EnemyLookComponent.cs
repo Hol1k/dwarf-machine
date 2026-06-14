@@ -24,7 +24,7 @@ namespace Enemy.Ai
         [SerializeField] private LayerMask obstaclesLayerMask;
         [SerializeField] private LayerMask targetLayerMask;
 
-        private readonly Dictionary<StatsComponent, Action> _onDeathActionHandlersCollection = new();
+        private readonly Dictionary<StatsComponent, Action<GameObject>> _onDeathActionHandlersCollection = new();
 
         [Inject]
         private void Init(SphereCollider lookSphereCollider)
@@ -98,7 +98,7 @@ namespace Enemy.Ai
                 _visibleObjects.Add(targetStats);
                 _onDeathActionHandlersCollection.Add(
                     targetStats,
-                    () =>
+                    _ =>
                     {
                         if (_visibleObjects.Contains(targetStats))
                             _visibleObjects.Remove(targetStats);
