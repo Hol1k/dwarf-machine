@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d15270355ff4a53803027cdae0d79e5, type: 3}
-  m_Name: Testenemy
+  m_Name: Silver
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 100
+  maxHealth: 40
+  currentHealth: 40

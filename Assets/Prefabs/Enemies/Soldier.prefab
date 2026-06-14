@@ -52,7 +52,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 5
+  m_Radius: 10
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &9149827744181732709
 MonoBehaviour:
@@ -266,7 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a5d4c8c0e634bc992d97549c3b2e79b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyStatsConfig: {fileID: 11400000, guid: 4bfd6fba57d0a154dbb6149542d44d96, type: 2}
+  enemyStatsConfig: {fileID: 11400000, guid: 404a1d85de257f744b291f63c2135068, type: 2}
 --- !u!114 &3325625929885350494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,8 +365,8 @@ MonoBehaviour:
   scutterValue: 1
   raycastWidth: 0.13
   maxShootDistance: 2000
-  damage: 1
-  attackSpeed: 30
+  damage: 4
+  attackSpeed: 60
 --- !u!114 &3111918571049492427
 MonoBehaviour:
   m_ObjectHideFlags: 0

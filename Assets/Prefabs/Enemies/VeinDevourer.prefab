@@ -52,7 +52,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 10
+  m_Radius: 30
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &9149827744181732709
 MonoBehaviour:
@@ -264,7 +264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a5d4c8c0e634bc992d97549c3b2e79b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyStatsConfig: {fileID: 11400000, guid: 4bfd6fba57d0a154dbb6149542d44d96, type: 2}
+  enemyStatsConfig: {fileID: 11400000, guid: 2972dc35d934ad44fae3eaa89b07b18f, type: 2}
 --- !u!114 &3325625929885350494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,7 +363,7 @@ MonoBehaviour:
   attackRange: 6
   raycastWidth: 0.13
   attackPositionOffset: {x: 0, y: 0, z: 0}
-  damage: 1
+  damage: 20
   attackSpeed: 20
 --- !u!1 &4951117249020862333
 GameObject:
